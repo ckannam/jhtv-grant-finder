@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JHTV Grant Eligibility Diagnostic</title>
+<style>
+  :root {
+    --blue: #002D72;
+    --blue-mid: #1a4a9e;
+    --blue-light: #e8eef8;
+    --green: #1a7a4a;
+    --green-light: #e8f5ee;
+    --yellow: #b57a00;
+    --yellow-light: #fff8e6;
+    --red: #b52222;
+    --red-light: #fdeaea;
+    --gray: #6b7280;
+    --border: #d1d5db;
+    --bg: #f8f9fb;
+    --white: #ffffff;
+    --text: #111827;
+    --text-muted: #6b7280;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); font-size: 14px; line-height: 1.5; }
+  header { background: var(--blue); color: white; padding: 18px 32px; display: flex; align-items: center; justify-content: space-between; }
+  header .logo { font-size: 20px; font-weight: 800; letter-spacing: -0.5px; }
+  header .logo span { color: #7eb8f7; }
+  header .subtitle { font-size: 12px; opacity: 0.7; margin-top: 2px; }
+  header .badge { background: rgba(255,255,255,0.15); font-size: 11px; padding: 4px 10px; border-radius: 20px; }
+
+  .layout { display: grid; grid-template-columns: 400px 1fr; min-height: calc(100vh - 62px); }
+  .form-panel { background: var(--white); border-right: 1px solid var(--border); overflow-y: auto; max-height: calc(100vh - 62px); position: sticky; top: 0; }
+  .results-panel { padding: 20px 24px; overflow-y: auto; max-height: calc(100vh - 62px); }
+
+  .form-section { border-bottom: 1px solid var(--border); padding: 16px 20px; }
+  .form-section:last-child { border-bottom: none; }
+  .section-title { font-size: 10px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; color: var(--blue); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+  .section-title .num { background: var(--blue); color: white; width: 17px; height: 17px; border-radius: 50%; font-size: 9px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .field { margin-bottom: 11px; }
+  .field:last-child { margin-bottom: 0; }
+  label { display: block; font-size: 12px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  label .hint { font-weight: 400; color: var(--text-muted); font-size: 11px; }
+  select, input[type="number"] { width: 100%; padding: 6px 9px; border: 1px solid var(--border); border-radius: 6px; font-size: 13px; background: white; color: var(--text); transition: border-color 0.15s; }
+  select:focus, input:focus { outline: none; border-color: var(--blue-mid); box-shadow: 0 0 0 3px rgba(26,74,158,0.1); }
+  .radio-group { display: flex; flex-direction: column; gap: 5px; }
+  .radio-option { display: flex; align-items: center; gap: 8px; padding: 5px 9px; border: 1px solid var(--border); border-radius: 6px; cursor: pointer; transition: all 0.15s; font-size: 12px; }
+  .radio-option:hover { background: var(--blue-light); border-color: var(--blue-mid); }
+  .radio-option input[type="radio"] { accent-color: var(--blue); flex-shrink: 0; }
+  .radio-option.selected { background: var(--blue-light); border-color: var(--blue-mid); }
+
+  .results-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+  .results-header h2 { font-size: 15px; font-weight: 700; }
+  .score-row { display: flex; gap: 8px; }
+  .score-chip { font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 20px; }
+  .score-chip.e { background: var(--green-light); color: var(--green); }
+  .score-chip.c { background: var(--yellow-light); color: var(--yellow); }
+  .score-chip.i { background: var(--red-light); color: var(--red); }
+
+  .empty-state { text-align: center; color: var(--text-muted); padding: 60px 20px; }
+  .empty-state .icon { font-size: 36px; margin-bottom: 10px; }
+
+  .filter-tabs { display: flex; gap: 6px; margin-bottom: 14px; flex-wrap: wrap; }
+  .filter-tab { padding: 4px 11px; border-radius: 20px; font-size: 11px; font-weight: 600; cursor: pointer; border: 1.5px solid var(--border); background: white; transition: all 0.15s; }
+  .filter-tab.active { background: var(--blue); color: white; border-color: var(--blue); }
+  .filter-tab:hover:not(.active) { border-color: var(--blue-mid); color: var(--blue-mid); }
+
+  .grant-card { background: white; border: 1px solid var(--border); border-radius: 9px; padding: 14px; margin-bottom: 10px; border-left: 4px solid var(--border); transition: box-shadow 0.15s; }
+  .grant-card:hover { box-shadow: 0 2px 10px rgba(0,0,0,0.07); }
+  .grant-card.eligible { border-left-color: var(--green); }
+  .grant-card.conditional { border-left-color: #e6a817; }
+  .grant-card.ineligible { border-left-color: #dc2626; opacity: 0.55; }
+
+  .card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; margin-bottom: 7px; }
+  .card-title { font-size: 13px; font-weight: 700; line-height: 1.3; }
+  .card-org { font-size: 11px; color: var(--text-muted); margin-top: 1px; }
+  .status-pill { flex-shrink: 0; font-size: 10px; font-weight: 700; padding: 2px 9px; border-radius: 20px; white-space: nowrap; }
+  .status-pill.eligible { background: var(--green-light); color: var(--green); }
+  .status-pill.conditional { background: var(--yellow-light); color: var(--yellow); }
+  .status-pill.ineligible { background: var(--red-light); color: var(--red); }
+
+  .card-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 9px; }
+  .meta-chip { font-size: 10px; padding: 2px 7px; border-radius: 4px; background: var(--bg); color: var(--text-muted); border: 1px solid var(--border); }
+  .meta-chip.amount { background: var(--blue-light); color: var(--blue); border-color: transparent; font-weight: 600; }
+  .meta-chip.tag-md { background: #fff0f0; color: #b52222; border-color: transparent; }
+  .meta-chip.tag-fed { background: #f0f4ff; color: #2244aa; border-color: transparent; }
+  .meta-chip.tag-jhu { background: #fff7e0; color: #7a5700; border-color: transparent; }
+  .meta-chip.tag-priv { background: #f3f0ff; color: #5a35a8; border-color: transparent; }
+  .meta-chip.tag-disease { background: #fdf0f8; color: #9a2070; border-color: transparent; }
+
+  .reasons { font-size: 11.5px; color: var(--text-muted); line-height: 1.5; }
+  .reason-item { display: flex; align-items: flex-start; gap: 5px; margin-bottom: 3px; }
+  .reason-item .icon { flex-shrink: 0; margin-top: 1px; font-style: normal; }
+  .reason-item.pass .icon { color: var(--green); }
+  .reason-item.warn .icon { color: var(--yellow); }
+  .reason-item.fail .icon { color: var(--red); }
+
+  .divider-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: var(--text-muted); margin: 16px 0 8px; display: flex; align-items: center; gap: 8px; }
+  .divider-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  /* Track button */
+  .track-btn { font-size: 10px; font-weight: 700; padding: 3px 9px; border-radius: 20px; border: 1.5px solid var(--border); background: white; color: var(--text-muted); cursor: pointer; transition: all 0.15s; white-space: nowrap; }
+  .track-btn:hover { border-color: var(--blue-mid); color: var(--blue-mid); background: var(--blue-light); }
+  .track-btn.tracked { background: var(--blue); color: white; border-color: var(--blue); }
+
+  /* Tracked card state */
+  .grant-card.tracked { border-left-color: var(--blue) !important; background: #f5f8ff; }
+
+  /* Pursuing panel */
+  .pursuing-panel { background: white; border: 1.5px solid var(--border); border-radius: 10px; padding: 14px 16px; margin-bottom: 16px; }
+  .pursuing-panel-header { margin-bottom: 10px; }
+  .pursuing-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .pursuing-chip { font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 20px; background: var(--blue-light); color: var(--blue); cursor: pointer; border: 1.5px solid #c5d5f5; transition: all 0.15s; }
+  .pursuing-chip:hover { background: #dce8ff; }
+  .pursuing-chip.conflict { background: #fff3cd; color: #b57a00; border-color: #f0d070; }
+
+  /* Conflict items */
+  .conflict-list { display: flex; flex-direction: column; gap: 8px; }
+  .conflict-item { padding: 10px 12px; border-radius: 6px; }
+  .conflict-item-header { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; flex-wrap: wrap; }
+  .conflict-item-title { font-size: 12px; font-weight: 700; flex: 1; }
+  .conflict-type-pill { font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 10px; flex-shrink: 0; }
+  .conflict-item-msg { font-size: 11.5px; color: var(--text); line-height: 1.55; opacity: 0.85; }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="logo">JHT<span>V</span> Grant Diagnostic</div>
+    <div class="subtitle">Translational Funding Eligibility Engine · Johns Hopkins Technology Ventures</div>
+  </div>
+  <div class="badge">23 Grants Indexed</div>
+  <div id="liveDataBadge" style="display:none;font-size:11px;background:rgba(255,255,255,0.12);padding:3px 10px;border-radius:20px;margin-left:8px"></div>
+</header>
+
+<div class="layout">
+  <div class="form-panel">
+
+    <div class="form-section">
+      <div class="section-title"><span class="num">1</span> Entity &amp; Team Posture</div>
+      <div class="field">
+        <label>Entity Type</label>
+        <select id="entityType" onchange="evaluate()">
+          <option value="">— Select —</option>
+          <option value="corporation">Corporation (C-Corp / S-Corp)</option>
+          <option value="llc">LLC</option>
+          <option value="partnership">Partnership</option>
+          <option value="sole_prop">Sole Proprietor</option>
+          <option value="unincorporated">Unincorporated Faculty / Student</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Total Headcount <span class="hint">(W-2 employees + active founders)</span></label>
+        <input type="number" id="headcount" min="0" max="9999" placeholder="e.g. 3" oninput="evaluate()" />
+      </div>
+      <div class="field">
+        <label>Maryland Workforce Ratio <span class="hint">(%)</span></label>
+        <input type="number" id="mdRatio" min="0" max="100" placeholder="e.g. 80" oninput="evaluate()" />
+      </div>
+      <div class="field">
+        <label>Academic / JHU Role of Lead Applicant</label>
+        <select id="leadRole" onchange="evaluate()">
+          <option value="">— Select —</option>
+          <option value="faculty">Faculty</option>
+          <option value="postdoc">Postdoc</option>
+          <option value="student">Student</option>
+          <option value="external">External Founder (no current JHU affiliation)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="section-title"><span class="num">2</span> University Relationship &amp; IP</div>
+      <div class="field">
+        <label>JHTV Invention Disclosure Status</label>
+        <select id="jhtv" onchange="evaluate()">
+          <option value="">— Select —</option>
+          <option value="yes">Yes — formally disclosed with case number</option>
+          <option value="no">No disclosure filed</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Licensing Status</label>
+        <select id="licensing" onchange="evaluate()">
+          <option value="">— Select —</option>
+          <option value="unlicensed">Unlicensed JHU patent</option>
+          <option value="lt12">Licensed within the last 12 months</option>
+          <option value="gt12">Licensed more than 12 months ago</option>
+          <option value="noip">No JHU IP involved</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>JHU School Connection</label>
+        <select id="jhuSchool" onchange="evaluate()">
+          <option value="">— Select —</option>
+          <option value="wse">Whiting School of Engineering (WSE)</option>
+          <option value="som">School of Medicine (SOM)</option>
+          <option value="bsph">Bloomberg School of Public Health</option>
+          <option value="krieger">Krieger School of Arts &amp; Sciences</option>
+          <option value="nursing">School of Nursing</option>
+          <option value="other_jhu">Other JHU School</option>
+          <option value="none">No JHU affiliation</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>TEDCO Site Miner Engagement</label>
+        <div class="radio-group">
+          <label class="radio-option" onclick="selectRadio('siteMiner','yes',this)">
+            <input type="radio" name="siteMiner" value="yes"> Yes — engaged a Site Miner
+          </label>
+          <label class="radio-option" onclick="selectRadio('siteMiner','no',this)">
+            <input type="radio" name="siteMiner" value="no"> No — not yet engaged
+          </label>
+        </div>
+      </div>
+      <div class="field" id="siteMinerDaysField" style="display:none">
+        <label>Days since Site Miner engagement</label>
+        <input type="number" id="siteMinerDays" min="0" placeholder="e.g. 30" oninput="evaluate()" />
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="section-title"><span class="num">3</span> Financial &amp; Operational Metrics</div>
+      <div class="field">
+        <label>Months in Operation <span class="hint">(since formal formation)</span></label>
+        <input type="number" id="monthsOp" min="0" placeholder="e.g. 18" oninput="evaluate()" />
+      </div>
+      <div class="field">
+        <label>Prior Year Revenue</label>
+        <select id="revenue" onchange="evaluate()">
+          <option value="">— Select —</option>
+          <option value="0">$0 (pre-revenue)</option>
+          <option value="lt150k">$1 – $150,000</option>
+          <option value="lt1m">$150,001 – $1,000,000</option>
+          <option value="gt1m">Over $1,000,000</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Aggregate Dilutive Funding <span class="hint">(VC, Angel, SAFEs; excl. grants)</span></label>
+        <select id="dilutive" onchange="evaluate()">
+          <option value="">— Select —</option>
+          <option value="0">$0 — none raised</option>
+          <option value="lt500k">Under $500,000</option>
+          <option value="lt2m">$500,001 – $2,000,000</option>
+          <option value="lt5m">$2,000,001 – $5,000,000</option>
+          <option value="gt5m">Over $5,000,000</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Disadvantaged Founder Status</label>
+        <select id="sedi" onchange="evaluate()">
+          <option value="">— Select —</option>
+          <option value="sedi">SEDI — Socially &amp; Economically Disadvantaged</option>
+          <option value="rural">Rural (Rural Maryland Council definition)</option>
+          <option value="both">Both SEDI and Rural</option>
+          <option value="none">Neither</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="section-title"><span class="num">4</span> Technical &amp; Regulatory Profile</div>
+      <div class="field">
+        <label>Biological Platform — Human Stem Cells?</label>
+        <div class="radio-group">
+          <label class="radio-option" onclick="selectRadio('stemCells','yes',this)">
+            <input type="radio" name="stemCells" value="yes"> Yes — technology utilizes human stem cells
+          </label>
+          <label class="radio-option" onclick="selectRadio('stemCells','no',this)">
+            <input type="radio" name="stemCells" value="no"> No
+          </label>
+        </div>
+      </div>
+      <div class="field">
+        <label>Primary Regulatory Pathway</label>
+        <select id="regPathway" onchange="evaluate()">
+          <option value="">— Select —</option>
+          <option value="fda_therapeutic">FDA Therapeutic (IND / NDA / BLA)</option>
+          <option value="fda_device">FDA Device (510(k) / PMA / De Novo)</option>
+          <option value="digital_health">Digital Health (SaMD / wellness)</option>
+          <option value="none">None / Non-medical</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Research Subjects Involved</label>
+        <select id="subjects" onchange="evaluate()">
+          <option value="">— Select —</option>
+          <option value="human">Human subjects (Phase I / early clinical)</option>
+          <option value="animal">Animal testing only</option>
+          <option value="neither">Neither — in vitro / computational</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Disease / Therapeutic Area <span class="hint">(for disease-specific foundations)</span></label>
+        <select id="diseaseArea" onchange="evaluate()">
+          <option value="">— Select —</option>
+          <option value="cardio">Cardiovascular / Stroke</option>
+          <option value="neuro">Neurodegenerative (Alzheimer's, Parkinson's)</option>
+          <option value="cancer">Oncology / Cancer</option>
+          <option value="cf">Cystic Fibrosis</option>
+          <option value="amr">Antimicrobial Resistance (AMR)</option>
+          <option value="womens">Women's Health / Reproductive</option>
+          <option value="peds">Pediatrics</option>
+          <option value="veterans">Veterans Health / Military Medicine</option>
+          <option value="global">Global Health / LMIC-relevant</option>
+          <option value="other">Other / General Biotech</option>
+        </select>
+      </div>
+    </div>
+
+  </div><!-- /form-panel -->
+
+  <div class="results-panel" id="resultsPanel">
+    <div class="empty-state">
+      <div class="icon">🔍</div>
+      <p>Fill in the form to see matching grants and eligibility rationale.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── Live data layer ───────────────────────────────────────────────────────────
+// Populated by fetch_grants.js → grants_live.json, fetched on page load.
+// Each entry overrides the static deadline/amount/status in the matching grant.
+let LIVE_DATA = {};
+
+function loadLiveData() {
+  fetch('./grants_live.json?v=' + Date.now())
+    .then(r => r.ok ? r.json() : null)
+    .then(data => {
+      if (!data || !data.grants) return;
+      LIVE_DATA = data.grants;
+
+      // Show freshness badge in header
+      const badge = document.getElementById('liveDataBadge');
+      if (badge && data.lastUpdated) {
+        const days = Math.floor((Date.now() - new Date(data.lastUpdated)) / 86400000);
+        const label = days === 0 ? 'Live data: today' : `Live data: ${days}d ago`;
+        badge.textContent = '🟢 ' + label;
+        badge.style.display = 'inline-block';
+      }
+
+      // Re-render if the form already has values
+      const d = collectData();
+      if (Object.values(d).some(v => v && v !== '')) evaluate();
+    })
+    .catch(() => {
+      // Silently fall back to static data — file may not exist locally
+      console.log('grants_live.json not found — using static data');
+    });
+}
+
+// Merge live deadline/amount into a grant object if data exists
+function applyLiveData(grant) {
+  const live = LIVE_DATA[grant.id];
+  if (!live) return grant;
+  return {
+    ...grant,
+    deadline: live.deadlineLabel || grant.deadline,
+    amount:   grant.amount, // amount stays static unless API returns it
+    _live: {
+      status:     live.status,
+      daysUntil:  live.daysUntil,
+      openTopics: live.openTopics,
+      source:     live.source,
+      verified:   live.fetchedAt,
+    },
+  };
+}
+
+function getVal(id) { const el = document.getElementById(id); return el ? el.value : ''; }
+function getRadio(name) { const el = document.querySelector(`input[name="${name}"]:checked`); return el ? el.value : ''; }
+
+function selectRadio(name, value, labelEl) {
+  document.querySelectorAll(`input[name="${name}"]`).forEach(r => r.closest('.radio-option').classList.remove('selected'));
+  labelEl.classList.add('selected');
+  if (name === 'siteMiner') document.getElementById('siteMinerDaysField').style.display = value === 'yes' ? 'block' : 'none';
+  evaluate();
+}
+
+function collectData() {
+  return {
+    entityType: getVal('entityType'),
+    headcount: getVal('headcount'),
+    mdRatio: getVal('mdRatio'),
+    leadRole: getVal('leadRole'),
+    jhtv: getVal('jhtv'),
+    licensing: getVal('licensing'),
+    jhuSchool: getVal('jhuSchool'),
+    siteMiner: getRadio('siteMiner'),
+    siteMinerDays: getVal('siteMinerDays'),
+    monthsOp: getVal('monthsOp'),
+    revenue: getVal('revenue'),
+    dilutive: getVal('dilutive'),
+    sedi: getVal('sedi'),
+    stemCells: getRadio('stemCells'),
+    regPathway: getVal('regPathway'),
+    subjects: getVal('subjects'),
+    diseaseArea: getVal('diseaseArea'),
+  };
+}
+
+function getGrants(d) {
+  const grants = [];
+  const hasJHU = d.jhuSchool && d.jhuSchool !== 'none';
+  const isMD = d.mdRatio && parseFloat(d.mdRatio) > 0;
+  const formalEntity = ['corporation','llc','partnership'].includes(d.entityType);
+  const smallBiz = !d.headcount || parseInt(d.headcount) < 500;
+  const isSEDI = ['sedi','both'].includes(d.sedi);
+  const isRural = ['rural','both'].includes(d.sedi);
+  const hasDisclosure = d.jhtv === 'yes';
+  const isMedical = ['fda_therapeutic','fda_device'].includes(d.regPathway);
+  const isTherapeutic = d.regPathway === 'fda_therapeutic';
+  const isDevice = d.regPathway === 'fda_device';
+  const notVCMajority = !['lt5m','gt5m'].includes(d.dilutive);
+
+  // ── 1. MII ─────────────────────────────────────────────────────────────
+  {
+    const r = []; let s = 'eligible';
+    if (hasJHU) r.push({t:'pass', x:'JHU school affiliation confirmed'});
+    else { r.push({t:'fail', x:'Requires JHU institutional connection'}); s='ineligible'; }
+    if (hasDisclosure) r.push({t:'pass', x:'JHTV invention disclosure filed — case number required'});
+    else { r.push({t:'fail', x:'Technology must be formally disclosed to JHTV with a case number'}); s='ineligible'; }
+    if (isMD) r.push({t:'pass', x:'Maryland workforce presence confirmed'});
+    else { r.push({t:'warn', x:'Maryland nexus recommended'}); if(s==='eligible') s='conditional'; }
+    grants.push({ id:'mii', title:'Maryland Innovation Initiative (MII)', org:'TEDCO / JHTV', cat:'Maryland', s, amount:'$130K (JHU) · $180K (joint USM)', deadline:'Quarterly: Jan 15 · Apr 15 · Jul 15 · Oct 15', tags:['tag-md','tag-jhu'], r });
+  }
+
+  // ── 2. MSCRF ───────────────────────────────────────────────────────────
+  {
+    const r = []; let s = 'eligible';
+    const sc = getRadio('stemCells');
+    if (sc === 'yes') r.push({t:'pass', x:'Human stem cell platform — core MSCRF mandate met'});
+    else if (sc === 'no') { r.push({t:'fail', x:'MSCRF exclusively funds human stem cell research'}); s='ineligible'; }
+    else { r.push({t:'warn', x:'Confirm whether technology involves human stem cells'}); s='conditional'; }
+    if (hasJHU) r.push({t:'pass', x:'JHU affiliation eligible under Validation / Commercialization tracks'});
+    else r.push({t:'pass', x:'Maryland-based company or institution is eligible'});
+    if (d.subjects === 'human') r.push({t:'pass', x:'Clinical program available for human stem cell trials (1:1 non-state match required)'});
+    grants.push({ id:'mscrf', title:'Maryland Stem Cell Research Fund (MSCRF)', org:'TEDCO / MD Stem Cell Research Commission', cat:'Maryland', s, amount:'Up to $4.7M/cycle across 7 program tracks', deadline:'FY26 Cycle 2 open · mscrf.org', tags:['tag-md'], r });
+  }
+
+  // ── 3. TEDCO Builder Fund ──────────────────────────────────────────────
+  {
+    const r = []; let s = 'eligible';
+    const hasFTE = d.headcount && parseInt(d.headcount) >= 1;
+    if (isMD) r.push({t:'pass', x:'Maryland principal place of business required — confirmed'});
+    else { r.push({t:'fail', x:'Principal place of business must be in Maryland'}); s='ineligible'; }
+    if (isSEDI) r.push({t:'pass', x:'50%+ founders demonstrate economic disadvantage — qualifies'});
+    else { r.push({t:'fail', x:'At least 50% of founders must demonstrate social/economic disadvantage'}); s='ineligible'; }
+    if (hasFTE) r.push({t:'pass', x:'At least 1 full-time employee confirmed'});
+    else { r.push({t:'warn', x:'At least 1 full-time employee required'}); if(s==='eligible') s='conditional'; }
+    grants.push({ id:'builder', title:'TEDCO Pre-Seed Builder Fund', org:'TEDCO Social Impact Funds', cat:'Maryland', s, amount:'Pre-seed equity investment', deadline:'Rolling · tedcomd.com/builderfund', tags:['tag-md'], r });
+  }
+
+  // ── 4. TEDCO Inclusion Fund ────────────────────────────────────────────
+  {
+    const r = []; let s = 'eligible';
+    if (isMD) r.push({t:'pass', x:'Maryland-based company qualifies'});
+    else { r.push({t:'fail', x:'Company must be Maryland-based'}); s='ineligible'; }
+    if (isSEDI) r.push({t:'pass', x:'30%+ ownership by SEDI individual(s) — qualifies'});
+    else { r.push({t:'fail', x:'Requires 30%+ ownership and management control by SEDI individuals'}); s='ineligible'; }
+    if (['0','lt500k'].includes(d.dilutive)) r.push({t:'pass', x:'Early-stage — targeting pre-seed/seed gap'});
+    else if (d.dilutive) r.push({t:'warn', x:'Fund targets early gap — verify stage fit with TEDCO'});
+    grants.push({ id:'inclusion', title:'TEDCO Inclusion Fund', org:'TEDCO Social Impact Funds', cat:'Maryland', s, amount:'Equity investment (early-stage)', deadline:'Rolling · tedcomd.com', tags:['tag-md'], r });
+  }
+
+  // ── 5. TEDCO Rural RBII ────────────────────────────────────────────────
+  {
+    const r = []; let s = 'eligible';
+    if (isRural) r.push({t:'pass', x:'Rural Maryland qualifier confirmed'});
+    else { r.push({t:'fail', x:'Company must be in rural Maryland (Rural Maryland Council definition)'}); s='ineligible'; }
+    if (['0','lt150k'].includes(d.revenue) || !d.revenue) r.push({t:'pass', x:'Revenue under $1M — meets threshold'});
+    else if (d.revenue === 'gt1m') { r.push({t:'fail', x:'Revenue exceeds $1M limit'}); s='ineligible'; }
+    if (d.headcount && parseInt(d.headcount) <= 15) r.push({t:'pass', x:'Headcount under 16 — qualifies'});
+    else if (d.headcount && parseInt(d.headcount) > 15) { r.push({t:'fail', x:'Exceeds 15-employee limit'}); s='ineligible'; }
+    r.push({t:'warn', x:'Must complete 90 days of RBII mentoring before applying for $25K pre-seed grant'});
+    grants.push({ id:'rbii', title:'TEDCO Rural Business Innovation Initiative (RBII)', org:'TEDCO', cat:'Maryland', s, amount:'$25K pre-seed (after 90-day mentoring)', deadline:'Contact regional RBII mentor first · tedcomd.com', tags:['tag-md'], r });
+  }
+
+  // ── 6. NIH SBIR Phase I ────────────────────────────────────────────────
+  {
+    const r = []; let s = 'eligible';
+    if (formalEntity) r.push({t:'pass', x:'Formal U.S. small business entity (Corp / LLC / Partnership)'});
+    else if (d.entityType === 'unincorporated') { r.push({t:'fail', x:'Must form a legal entity before applying'}); s='ineligible'; }
+    else if (d.entityType === 'sole_prop') { r.push({t:'warn', x:'Sole proprietors may qualify — verify with NIH program officer'}); if(s==='eligible') s='conditional'; }
+    else { r.push({t:'warn', x:'Confirm entity eligibility'}); if(s==='eligible') s='conditional'; }
+    if (smallBiz) r.push({t:'pass', x:'Under 500 employees — meets SBA small business definition'});
+    else { r.push({t:'fail', x:'Exceeds 500-employee SBIR cap'}); s='ineligible'; }
+    if (isMedical) r.push({t:'pass', x:'FDA pathway aligns with NIH SBIR medical research priorities'});
+    else if (d.regPathway === 'digital_health') r.push({t:'pass', x:'Digital health / SaMD fundable — check NCI, NIBIB, NIA topics'});
+    else if (d.regPathway === 'none') r.push({t:'warn', x:'Non-medical platforms still eligible — confirm topic alignment (NIGMS, NICHD, etc.)'});
+    r.push({t:'pass', x:'✓ SBIR/STTR reauthorized April 13, 2026 — program active'});
+    grants.push({ id:'nih_sbir', title:'NIH SBIR Phase I (R43)', org:'NIH / National Institutes of Health', cat:'Federal', s, amount:'Up to $323K Phase I · up to $2.15M Phase II', deadline:'Multiple IC deadlines · seed.nih.gov', tags:['tag-fed'], r });
+  }
+
+  // ── 7. NIH STTR Phase I ────────────────────────────────────────────────
+  {
+    const r = []; let s = 'eligible';
+    if (formalEntity) r.push({t:'pass', x:'Formal U.S. small business entity qualifies'});
+    else if (d.entityType === 'unincorporated') { r.push({t:'fail', x:'Must form a legal entity before applying'}); s='ineligible'; }
+    else { r.push({t:'warn', x:'Confirm entity eligibility'}); if(s==='eligible') s='conditional'; }
+    if (smallBiz) r.push({t:'pass', x:'Under 500 employees — meets SBA small business definition'});
+    else { r.push({t:'fail', x:'Exceeds 500-employee SBIR/STTR cap'}); s='ineligible'; }
+    if (hasJHU) r.push({t:'pass', x:'JHU serves as the required nonprofit research partner — strong structural fit for STTR'});
+    else r.push({t:'warn', x:'STTR requires a formal subcontract with a nonprofit research institution'});
+    if (['lt12','gt12'].includes(d.licensing)) r.push({t:'pass', x:'Licensed JHU technology strengthens IP chain for STTR'});
+    else if (d.licensing === 'unlicensed') r.push({t:'warn', x:'Complete JHU licensing before submission for cleaner IP ownership'});
+    if (isMedical) r.push({t:'pass', x:'Medical pathway aligns with NIH STTR focus areas'});
+    r.push({t:'pass', x:'✓ SBIR/STTR reauthorized April 13, 2026 — program active'});
+    grants.push({ id:'nih_sttr', title:'NIH STTR Phase I (R41)', org:'NIH / National Institutes of Health', cat:'Federal', s, amount:'Up to $323K Phase I · up to $2.15M Phase II', deadline:'Multiple IC deadlines · seed.nih.gov', tags:['tag-fed'], r });
+  }
+
+  // ── 8. NSF SBIR/STTR ──────────────────────────────────────────────────
+  {
+    const r = []; let s = 'eligible';
+    if (formalEntity) r.push({t:'pass', x:'U.S. small business entity qualifies'});
+    else if (d.entityType === 'unincorporated') { r.push({t:'fail', x:'Must form a legal entity'}); s='ineligible'; }
+    else { r.push({t:'warn', x:'Verify entity eligibility'}); if(s==='eligible') s='conditional'; }
+    if (smallBiz) r.push({t:'pass', x:'Under 500 employees — qualifies'});
+    if (notVCMajority) r.push({t:'pass', x:'Not majority VC/PE-owned — meets NSF equity ownership requirement'});
+    else { r.push({t:'fail', x:'NSF does not fund companies majority-owned by VC/PE/hedge funds'}); s='ineligible'; }
+    if (isMedical || d.regPathway === 'digital_health') r.push({t:'pass', x:'Biological / biomedical technologies are a core NSF SBIR topic area'});
+    r.push({t:'pass', x:'Project Pitches open June 2, 2026 · seedfund.nsf.gov'});
+    grants.push({ id:'nsf_sbir', title:'NSF SBIR / STTR Phase I', org:'National Science Foundation', cat:'Federal', s, amount:'Up to $305K Phase I · up to $1.25M Phase II', deadline:'Project Pitch: rolling · seedfund.nsf.gov', tags:['tag-fed'], r });
+  }
+
+  // ── 9. ARPA-H SBIR/STTR ───────────────────────────────────────────────
+  {
+    const r = []; let s = 'eligible';
+    if (formalEntity) r.push({t:'pass', x:'U.S. small business entity qualifies'});
+    else if (d.entityType === 'unincorporated') { r.push({t:'fail', x:'Must form a legal entity before applying'}); s='ineligible'; }
+    else { r.push({t:'warn', x:'Confirm entity eligibility'}); if(s==='eligible') s='conditional'; }
+    if (smallBiz) r.push({t:'pass', x:'Under 500 employees — qualifies'});
+    else { r.push({t:'fail', x:'Exceeds 500-employee SBIR cap'}); s='ineligible'; }
+    if (isMedical || d.regPathway === 'digital_health') r.push({t:'pass', x:'Health innovation focus matches ARPA-H mandate (diagnostics, therapeutics, devices, women\'s health, neurosurgery, synthetic bio)'});
+    else { r.push({t:'warn', x:'ARPA-H exclusively funds health-related research — verify topic alignment'}); if(s==='eligible') s='conditional'; }
+    r.push({t:'warn', x:'Current topics: women\'s health, autoimmune, diagnostics, synthetic biology, endometriosis, neurosurgical robotics'});
+    r.push({t:'warn', x:'⏰ Deadline: Solution Summaries due July 10, 2026 — arpa-h.gov/explore-funding/sbir'});
+    grants.push({ id:'arpah', title:'ARPA-H SBIR / STTR', org:'Advanced Research Projects Agency for Health (HHS)', cat:'Federal', s, amount:'Up to $600K Phase I · up to $3.5M Phase II', deadline:'July 10, 2026 · arpa-h.gov/explore-funding/sbir', tags:['tag-fed'], r });
+  }
+
+  // ── 10. DOD SBIR ──────────────────────────────────────────────────────
+  {
+    const r = []; let s = 'eligible';
+    if (formalEntity) r.push({t:'pass', x:'U.S. small business entity qualifies'});
+    else if (d.entityType === 'unincorporated') { r.push({t:'fail', x:'Must form a legal entity'}); s='ineligible'; }
+    else { r.push({t:'warn', x:'Verify entity eligibility'}); if(s==='eligible') s='conditional'; }
+    if (isMedical || getRadio('stemCells') === 'yes') r.push({t:'pass', x:'Biomedical / biotech platforms align with Army, Navy, MRMC, USAMRIID topic areas'});
+    else r.push({t:'warn', x:'Review component-specific solicitations for topic alignment'});
+    if (d.diseaseArea === 'veterans') r.push({t:'pass', x:'Veterans / military medicine focus strongly aligns with DOD priorities'});
+    if (d.diseaseArea === 'amr') r.push({t:'pass', x:'AMR / infectious disease is a DOD biodefense priority'});
+    r.push({t:'pass', x:'Largest SBIR funder — $1.8B+ annually across Army, Navy, Air Force, DARPA, MDA, SOCOM, DTRA'});
+    grants.push({ id:'dod_sbir', title:'DOD SBIR / STTR', org:'U.S. Department of Defense', cat:'Federal', s, amount:'Up to $275K Phase I · up to $1.5M+ Phase II', deadline:'Component-specific · defensesbirsttr.mil', tags:['tag-fed'], r });
+  }
+
+  // ── 11. DARPA BTO ─────────────────────────────────────────────────────
+  {
+    const r = []; let s = 'eligible';
+    if (formalEntity) r.push({t:'pass', x:'U.S. small business qualifies for DARPA SBIR topics'});
+    else if (d.entityType === 'unincorporated') { r.push({t:'fail', x:'Must form a legal entity'}); s='ineligible'; }
+    else { r.push({t:'warn', x:'Confirm entity structure'}); if(s==='eligible') s='conditional'; }
+    if (smallBiz) r.push({t:'pass', x:'Under 500 employees — meets SBIR eligibility'});
+    else { r.push({t:'fail', x:'Exceeds 500-employee SBIR cap'}); s='ineligible'; }
+    if (isTherapeutic || getRadio('stemCells') === 'yes') r.push({t:'pass', x:'Biological Technologies Office — most active DARPA SBIR shop in FY25/26'});
+    else { r.push({t:'warn', x:'Check DARPA BTO topic alignment — defense-relevant biological platforms prioritized'}); if(s==='eligible') s='conditional'; }
+    r.push({t:'warn', x:'Active topics: SWIFT, BARK (veterinary therapeutics), EXPOSITION, PEPI — defensesbirsttr.mil'});
+    r.push({t:'warn', x:'DARPA requires clear defense relevance and breakthrough-level innovation'});
+    grants.push({ id:'darpa', title:'DARPA Biological Technologies Office (BTO) SBIR', org:'DARPA / DOD', cat:'Federal', s, amount:'Variable · often $500K–$2M+ Phase I', deadline:'Topic-specific · defensesbirsttr.mil', tags:['tag-fed'], r });
+  }
+
+  // ── 12. FDA/CDC Joint SBIR ────────────────────────────────────────────
+  {
+    const r = []; let s = 'eligible';
+    if (formalEntity) r.push({t:'pass', x:'U.S. small business entity qualifies'});
+    else if (d.entityType === 'unincorporated') { r.push({t:'fail', x:'Must form a legal entity'}); s='ineligible'; }
+    else { r.push({t:'warn', x:'Confirm entity eligibility'}); if(s==='eligible') s='conditional'; }
+    if (isDevice) r.push({t:'pass', x:'FDA device pathway — FDA SBIR funds diagnostics, medical devices, and regulatory science'});
+    else if (isTherapeutic) r.push({t:'pass', x:'Therapeutic development aligns with FDA/CDC public health mandate'});
+    else if (d.regPathway === 'digital_health') r.push({t:'pass', x:'Digital health / SaMD within FDA regulatory scope'});
+    else { r.push({t:'warn', x:'FDA/CDC SBIR focuses on regulated health products — confirm alignment'}); if(s==='eligible') s='conditional'; }
+    if (d.diseaseArea === 'amr') r.push({t:'pass', x:'AMR is a CDC/FDA priority area with dedicated SBIR topics'});
+    r.push({t:'pass', x:'Joint NIH/CDC/FDA NOFO — single application covers multiple agencies'});
+    grants.push({ id:'fda_cdc', title:'FDA / CDC Joint SBIR (R43/R44)', org:'FDA + CDC (via NIH portal)', cat:'Federal', s, amount:'Up to $323K Phase I · up to $2.15M Phase II', deadline:'seed.nih.gov — check joint NOFO', tags:['tag-fed'], r });
+  }
+
+  // ── 13. DOE SBIR ──────────────────────────────────────────────────────
+  {
+    const r = []; let s = 'eligible';
+    if (formalEntity) r.push({t:'pass', x:'U.S. small business entity qualifies'});
+    else if (d.entityType === 'unincorporated') { r.push({t:'fail', x:'Must form a legal entity'}); s='ineligible'; }
+    else { r.push({t:'warn', x:'Verify entity eligibility'}); if(s==='eligible') s='conditional'; }
+    if (['fda_therapeutic','fda_device','none'].includes(d.regPathway) || !d.regPathway) {
+      r.push({t:'warn', x:'DOE SBIR funds energy-adjacent biotech — synthetic biology, biosensors, biofuels, biomanufacturing, computational biology'});
+      if (!['fda_therapeutic','fda_device'].includes(d.regPathway)) {} else { if(s==='eligible') s='conditional'; }
+    }
+    if (d.regPathway === 'none') r.push({t:'pass', x:'Non-medical / computational biotech strong fit for DOE topics'});
+    r.push({t:'pass', x:'✓ DOE SBIR/STTR reauthorized April 13, 2026 — now managed by DOE Office of Technology Commercialization (OTC)'});
+    grants.push({ id:'doe_sbir', title:'DOE SBIR / STTR', org:'U.S. Department of Energy', cat:'Federal', s, amount:'Up to $323K Phase I', deadline:'science.osti.gov/sbir', tags:['tag-fed'], r });
+  }
+
+  // ── 14. BARDA / DRIVe ─────────────────────────────────────────────────
+  {
+    const r = []; let s = 'eligible';
+    if (!formalEntity && d.entityType === 'unincorporated') { r.push({t:'fail', x:'Must have legal entity to contract with BARDA'}); s='ineligible'; }
+    if (isMedical) r.push({t:'pass', x:'FDA therapeutic/device pathway aligns with BARDA medical countermeasure mandate'});
+    else { r.push({t:'fail', x:'BARDA exclusively funds medical countermeasures and health security — non-medical ineligible'}); s='ineligible'; }
+    if (d.diseaseArea === 'amr') r.push({t:'pass', x:'AMR is a top BARDA priority — strongest fit for this program'});
+    r.push({t:'warn', x:'BARDA typically funds Phase 2+ assets; BARDA DRIVe targets earlier innovation stage'});
+    r.push({t:'warn', x:'Priority: biodefense, pandemic preparedness, CBRN threats, AMR'});
+    grants.push({ id:'barda', title:'BARDA / BARDA DRIVe', org:'Biomedical Advanced Research & Development Authority (HHS)', cat:'Federal', s, amount:'Contracts: $1M–$100M+ (stage-dependent)', deadline:'Rolling BAAs · medicalcountermeasures.gov', tags:['tag-fed'], r });
+  }
+
+  // ── 15. CARB-X ────────────────────────────────────────────────────────
+  {
+    const r = []; let s = 'eligible';
+    if (!isTherapeutic) { r.push({t:'fail', x:'CARB-X funds novel antibacterial/antifungal development only — FDA therapeutic pipeline required'}); s='ineligible'; }
+    else if (d.diseaseArea === 'amr') { r.push({t:'pass', x:'AMR focus — perfect alignment with CARB-X mandate'}); r.push({t:'pass', x:'Therapeutic pipeline confirmed'}); }
+    else if (!d.diseaseArea) { r.push({t:'warn', x:'Therapeutic pipeline present — but CARB-X is exclusively AMR/antibacterial. Select a Disease Area to confirm scope'}); s='conditional'; }
+    else { r.push({t:'fail', x:'CARB-X exclusively funds antibacterial/antifungal R&D — your indicated disease area is out of scope'}); s='ineligible'; }
+    r.push({t:'warn', x:'Priority: first-in-class compounds with novel mechanisms targeting WHO priority pathogens'});
+    r.push({t:'warn', x:'Q4 2026 funding round expected · CARB-X Novel Chemistry for AMR Challenge open · carb-x.org'});
+    grants.push({ id:'carbx', title:'CARB-X (AMR Antimicrobial Accelerator)', org:'BARDA + Wellcome + NIAID', cat:'Federal', s, amount:'Up to $2M Phase 1 · up to $10M total portfolio', deadline:'Q4 2026 round expected · carb-x.org', tags:['tag-fed'], r });
+  }
+
+  // ── 16. VA SBIR ───────────────────────────────────────────────────────
+  {
+    const r = []; let s = 'eligible';
+    if (formalEntity) r.push({t:'pass', x:'U.S. small business entity qualifies'});
+    else if (d.entityType === 'unincorporated') { r.push({t:'fail', x:'Must form a legal entity'}); s='ineligible'; }
+    else { r.push({t:'warn', x:'Verify entity eligibility'}); if(s==='eligible') s='conditional'; }
+    if (d.diseaseArea === 'veterans') r.push({t:'pass', x:'Veterans health focus — strongest alignment with VA SBIR priorities (PTSD, TBI, prosthetics, rehabilitation)'});
+    else if (isMedical || d.regPathway === 'digital_health') { r.push({t:'warn', x:'VA SBIR focuses on veteran-relevant conditions (PTSD, TBI, mobility, chronic pain) — confirm alignment with VA research priorities'}); if(s==='eligible') s='conditional'; }
+    else { r.push({t:'fail', x:'VA SBIR restricted to veteran health-relevant technologies'}); s='ineligible'; }
+    grants.push({ id:'va_sbir', title:'VA SBIR / STTR', org:'U.S. Department of Veterans Affairs', cat:'Federal', s, amount:'Up to $275K Phase I', deadline:'sbir.gov/agencies/VA', tags:['tag-fed'], r });
+  }
+
+  // ── 17. JHU-Coulter Translational Partnership ─────────────────────────
+  {
+    const r = []; let s = 'eligible';
+    const isWSEorSOM = ['wse','som'].includes(d.jhuSchool);
+    if (hasJHU) r.push({t:'pass', x:'JHU affiliation confirmed'});
+    else { r.push({t:'fail', x:'Exclusively for JHU researchers (Biomedical Engineering + School of Medicine)'}); s='ineligible'; }
+    if (isWSEorSOM) r.push({t:'pass', x:'WSE / SOM affiliation — core Coulter program schools'});
+    else if (hasJHU) r.push({t:'warn', x:'Program led by BME/WSE and SOM — other JHU schools may participate as co-investigators'});
+    if (isDevice) r.push({t:'pass', x:'Medical device / diagnostics pathway — Coulter explicitly targets device and diagnostic innovations'});
+    else if (isTherapeutic) r.push({t:'warn', x:'Program historically device/diagnostics focused — therapeutics may qualify but verify with program office'});
+    else { r.push({t:'warn', x:'Coulter Partnership targets device and diagnostic technologies with clinical translational path'}); if(s==='eligible') s='conditional'; }
+    r.push({t:'warn', x:'Requires joint PI team: clinician (SOM) + engineering faculty (WSE/BME) — lone investigator teams ineligible'});
+    grants.push({ id:'coulter', title:'JHU-Coulter Translational Partnership', org:'Wallace H. Coulter Foundation / JHU BME', cat:'JHU/Private', s, amount:'Translational seed grants per project', deadline:'Annual cycle · cbid.bme.jhu.edu', tags:['tag-jhu'], r });
+  }
+
+  // ── 18. Bisciotti Foundation Translational Fund ───────────────────────
+  {
+    const r = []; let s = 'eligible';
+    if (hasJHU) r.push({t:'pass', x:'JHU researcher / inventor affiliation required — confirmed'});
+    else { r.push({t:'fail', x:'Exclusively for JHU researchers and inventors'}); s='ineligible'; }
+    if (hasDisclosure) r.push({t:'pass', x:'JHTV disclosure filed — required for Bisciotti Fund consideration'});
+    else { r.push({t:'warn', x:'JHTV invention disclosure typically required before award'}); if(s==='eligible') s='conditional'; }
+    if (['faculty','postdoc'].includes(d.leadRole)) r.push({t:'pass', x:'Faculty / Postdoc lead — primary audience for Bisciotti Fund'});
+    else if (d.leadRole === 'student') r.push({t:'warn', x:'Student applicants may qualify — faculty co-PI often required'});
+    r.push({t:'pass', x:'$300K total/year distributed as $25K–$100K awards for up to 9 months'});
+    grants.push({ id:'bisciotti', title:'Bisciotti Foundation Translational Fund', org:'JHTV / Bisciotti Foundation', cat:'JHU/Private', s, amount:'$25K – $100K per team (9-month project)', deadline:'Annual cycle · ventures.jhu.edu', tags:['tag-jhu'], r });
+  }
+
+  // ── 19. JHTV Internal Translational Funding ───────────────────────────
+  {
+    const r = []; let s = 'eligible';
+    if (hasJHU) r.push({t:'pass', x:'JHU affiliation confirmed — access to JHTV philanthropic pool'});
+    else { r.push({t:'fail', x:'JHTV internal funds restricted to JHU researchers and startups'}); s='ineligible'; }
+    if (hasDisclosure) r.push({t:'pass', x:'Invention disclosed to JHTV — required for internal funding pipeline'});
+    else { r.push({t:'warn', x:'File JHTV invention disclosure to unlock internal funding'}); if(s==='eligible') s='conditional'; }
+    r.push({t:'pass', x:'$1M+ annually via JHTV — contact a FastForward advisor to initiate'});
+    grants.push({ id:'jhtv_internal', title:'JHTV Internal Translational Funding', org:'Johns Hopkins Technology Ventures', cat:'JHU/Private', s, amount:'Variable · ~$25K–$100K typical', deadline:'Rolling · ventures.jhu.edu/programs-services/fastforward', tags:['tag-jhu'], r });
+  }
+
+  // ── 20. Maryland Momentum Fund ────────────────────────────────────────
+  {
+    const r = []; let s = 'conditional'; // always conditional — USM affiliation not confirmed by this form
+    if (isMD) r.push({t:'pass', x:'Maryland-based company required — confirmed'});
+    else { r.push({t:'fail', x:'Company must be Maryland-based'}); s='ineligible'; }
+    r.push({t:'warn', x:'⚠ MMF requires University System of Maryland (USM) affiliation — JHU is private and NOT a USM member. Verify you have a USM (UMD, UMBC, UMB, Morgan State, Towson, etc.) co-founder, faculty collaborator, or institutional connection'});
+    if (hasJHU) r.push({t:'warn', x:'JHU founders: check if a USM co-inventor, licensed USM technology, or USM research collaboration exists — that may establish eligibility'});
+    else r.push({t:'warn', x:'Non-JHU Maryland company: confirm USM institutional connection to establish eligibility'});
+    r.push({t:'pass', x:'$150K–$500K equity investment for early-stage tech companies'});
+    grants.push({ id:'mmf', title:'Maryland Momentum Fund (MMF)', org:'University System of Maryland', cat:'Maryland', s, amount:'$150K – $500K equity', deadline:'Rolling · momentum.usmd.edu', tags:['tag-md'], r });
+  }
+
+  // ── 21. American Heart Association ────────────────────────────────────
+  {
+    const r = []; let s = 'eligible';
+    if (d.diseaseArea === 'cardio') r.push({t:'pass', x:'Cardiovascular / stroke focus — directly in scope for AHA funding'});
+    else if (!d.diseaseArea) { r.push({t:'warn', x:'AHA funds cardiovascular / cerebrovascular research — select a Disease Area to confirm eligibility'}); if(s==='eligible') s='conditional'; }
+    else { r.push({t:'fail', x:'AHA exclusively funds cardiovascular / cerebrovascular science'}); s='ineligible'; }
+    if (isMedical) r.push({t:'pass', x:'Therapeutic / device pathway aligns with AHA translational grant priorities'});
+    r.push({t:'warn', x:'AHA Transformational Project Award: up to $770K over 4 years. Predoctoral, postdoc, and career development awards also available'});
+    grants.push({ id:'aha', title:'American Heart Association (AHA) Research Grants', org:'American Heart Association', cat:'Disease Foundation', s, amount:'$77K–$770K depending on mechanism', deadline:'Rolling cycles · heart.org/en/professional/research', tags:['tag-disease','tag-priv'], r });
+  }
+
+  // ── 22. Alzheimer's Association ───────────────────────────────────────
+  {
+    const r = []; let s = 'eligible';
+    if (d.diseaseArea === 'neuro') r.push({t:'pass', x:'Neurodegenerative focus — Alzheimer\'s / dementia research directly in scope'});
+    else if (!d.diseaseArea) { r.push({t:'warn', x:'Alzheimer\'s Association funds Alzheimer\'s and dementia research — select a Disease Area to confirm'}); if(s==='eligible') s='conditional'; }
+    else { r.push({t:'fail', x:'Alzheimer\'s Association restricted to Alzheimer\'s and related dementias'}); s='ineligible'; }
+    if (isTherapeutic) r.push({t:'pass', x:'Therapeutic drug / biologics development aligns with AARG and PIA grant mechanisms'});
+    r.push({t:'warn', x:'Part the Cloud Translational grants: up to $600K for translational projects targeting disease modification'});
+    grants.push({ id:'alz', title:"Alzheimer's Association Research Grants", org:"Alzheimer's Association", cat:'Disease Foundation', s, amount:'$200K–$600K (mechanism-dependent)', deadline:'Annual cycles · alz.org/research/for_researchers', tags:['tag-disease','tag-priv'], r });
+  }
+
+  // ── 23. Michael J. Fox Foundation (MJFF) ─────────────────────────────
+  {
+    const r = []; let s = 'eligible';
+    if (d.diseaseArea === 'neuro') r.push({t:'pass', x:'Neurodegenerative focus — Parkinson\'s disease directly in scope for MJFF'});
+    else if (!d.diseaseArea) { r.push({t:'warn', x:'MJFF exclusively funds Parkinson\'s disease research — select a Disease Area to confirm'}); if(s==='eligible') s='conditional'; }
+    else { r.push({t:'fail', x:'MJFF restricted to Parkinson\'s disease therapeutics and biomarkers'}); s='ineligible'; }
+    if (isTherapeutic) r.push({t:'pass', x:'Therapeutics Pipeline Program: pre-clinical to early clinical Parkinson\'s assets'});
+    r.push({t:'warn', x:'Strong commercialization narrative required alongside scientific rationale'});
+    r.push({t:'pass', x:'$250K–$2M+ · rolling pre-proposal deadlines · michaeljfox.org/grants'});
+    grants.push({ id:'mjff', title:'Michael J. Fox Foundation (MJFF) Therapeutics Pipeline', org:'Michael J. Fox Foundation for Parkinson\'s Research', cat:'Disease Foundation', s, amount:'$250K – $2M+', deadline:'Rolling pre-proposals · michaeljfox.org/grants', tags:['tag-disease','tag-priv'], r });
+  }
+
+  // ── 24. Cystic Fibrosis Foundation Therapeutics (CFFT) ───────────────
+  {
+    const r = []; let s = 'eligible';
+    if (d.diseaseArea === 'cf') r.push({t:'pass', x:'Cystic fibrosis focus — directly in scope for CFFT funding'});
+    else { r.push({t:'fail', x:'CFFT restricted to cystic fibrosis therapeutics and related rare airway diseases'}); s='ineligible'; }
+    if (isTherapeutic) r.push({t:'pass', x:'Therapeutics development — CFFT funds pre-clinical through Phase 2 assets'});
+    r.push({t:'pass', x:'CFFT is one of the most active disease foundation funders — contracts, not grants, with milestone payments'});
+    grants.push({ id:'cfft', title:'Cystic Fibrosis Foundation Therapeutics (CFFT)', org:'Cystic Fibrosis Foundation', cat:'Disease Foundation', s, amount:'$1M–$25M+ (contract milestones)', deadline:'Rolling · cff.org/researchers', tags:['tag-disease','tag-priv'], r });
+  }
+
+  // ── 25. Wellcome Leap ─────────────────────────────────────────────────
+  {
+    const r = []; let s = 'eligible';
+    if (isMedical || d.regPathway === 'digital_health') r.push({t:'pass', x:'Health innovation focus aligns with Wellcome Leap\'s bold health program mandate'});
+    else { r.push({t:'warn', x:'Wellcome Leap funds unconventional health breakthroughs — non-medical platforms unlikely to qualify'}); if(s==='eligible') s='conditional'; }
+    if (d.diseaseArea === 'womens') r.push({t:'pass', x:'Women\'s health — $250M program active in 2026 (Wellcome + Pivotal Ventures partnership)'});
+    if (d.diseaseArea === 'neuro') r.push({t:'pass', x:'Neuroscience / mental health aligns with Wellcome Leap Human Organs, Cells and AI programs'});
+    r.push({t:'warn', x:'Wellcome Leap funds time-limited programs with defined milestones — not traditional grant mechanism. Requires bold, field-changing ambition'});
+    r.push({t:'warn', x:'Open programs vary — check wellcomeleap.org for current solicitations'});
+    grants.push({ id:'wellcome', title:'Wellcome Leap Health Programs', org:'Wellcome Leap (UK/global)', cat:'Private Foundation', s, amount:'Program-dependent · $1M–$50M+ scale', deadline:'Program-specific · wellcomeleap.org', tags:['tag-priv'], r });
+  }
+
+  // ── 26. Burroughs Wellcome Fund ───────────────────────────────────────
+  {
+    const r = []; let s = 'eligible';
+    if (['faculty','postdoc'].includes(d.leadRole)) r.push({t:'pass', x:'Academic PI (faculty/postdoc) eligible for BWF career and translational awards'});
+    else if (d.leadRole === 'external') { r.push({t:'fail', x:'BWF awards tied to academic/institutional affiliation — external-only founders not eligible'}); s='ineligible'; }
+    else if (d.leadRole === 'student') { r.push({t:'warn', x:'Students may qualify for trainee awards — most translational mechanisms require faculty-level PI'}); if(s==='eligible') s='conditional'; }
+    if (isMedical) r.push({t:'pass', x:'Biomedical research aligns with BWF Translational Research and CASI award mechanisms'});
+    else if (d.regPathway === 'none') { r.push({t:'warn', x:'BWF focuses on biomedical / life sciences — non-medical platforms may not qualify'}); if(s==='eligible') s='conditional'; }
+    if (hasJHU) r.push({t:'pass', x:'JHU affiliation strengthens institutional track record for BWF review'});
+    r.push({t:'warn', x:'CASI Award (Career Award at the Scientific Interface): $500K over 5 years for researchers bridging physical/computational and biological sciences'});
+    grants.push({ id:'bwf', title:'Burroughs Wellcome Fund (BWF) Translational Awards', org:'Burroughs Wellcome Fund', cat:'Private Foundation', s, amount:'$500K – $2M (mechanism-dependent)', deadline:'Annual cycles · bwfund.org', tags:['tag-priv'], r });
+  }
+
+  return grants;
+}
+
+// ── Pursuing Tracker State ─────────────────────────────────────────────────
+let activeFilter = 'All';
+const pursuing = new Set();
+
+function togglePursuing(id) {
+  if (pursuing.has(id)) pursuing.delete(id); else pursuing.add(id);
+  renderResults(getGrants(collectData()));
+}
+
+// ── Conflict Matrix ────────────────────────────────────────────────────────
+// Types: 'pick_one' = cannot submit same project to both (hard rule)
+//        'equivalent_work' = allowed only if different aims (common mistake)
+//        'sequential' = designed to stack in order, not concurrently
+//        'disclose' = must declare one when applying for the other (compliance)
+
+const FEDERAL_SBIR = ['nih_sbir','nih_sttr','nsf_sbir','arpah','dod_sbir','darpa','fda_cdc','doe_sbir','va_sbir'];
+const DISEASE_FDNS = ['aha','alz','mjff','cfft'];
+
+function getConflicts(pursuingIds, allGrants) {
+  const conflicts = [];
+  const ids = [...pursuingIds];
+  const grantMap = {};
+  allGrants.forEach(g => { grantMap[g.id] = g; });
+
+  // ── Rule 1: NIH SBIR vs NIH STTR — pick one mechanism ──────────────────
+  if (ids.includes('nih_sbir') && ids.includes('nih_sttr')) {
+    conflicts.push({
+      type: 'pick_one',
+      grants: ['nih_sbir','nih_sttr'],
+      title: 'NIH SBIR vs. NIH STTR — Choose One Mechanism',
+      msg: 'You cannot submit the same project as both an SBIR (R43) and STTR (R41) to NIH simultaneously. Choose the mechanism that best fits your team: SBIR if the PI is primarily employed by the company; STTR if you want JHU to be the formal research partner with flexible PI employment.',
+    });
+  }
+
+  // ── Rule 2: Any two Federal SBIR programs — essentially equivalent work ─
+  const federalPursuing = ids.filter(id => FEDERAL_SBIR.includes(id) && id !== 'nih_sttr' || (id === 'nih_sttr' && !ids.includes('nih_sbir')));
+  const federalFull = ids.filter(id => FEDERAL_SBIR.includes(id));
+  if (federalFull.length >= 2 && !(federalFull.length === 2 && ids.includes('nih_sbir') && ids.includes('nih_sttr'))) {
+    // Don't double-report the nih_sbir/nih_sttr pair already caught above
+    const pairs = [];
+    for (let i = 0; i < federalFull.length; i++) {
+      for (let j = i+1; j < federalFull.length; j++) {
+        const a = federalFull[i], b = federalFull[j];
+        if (a === 'nih_sbir' && b === 'nih_sttr') continue; // already covered
+        pairs.push([a, b]);
+      }
+    }
+    if (pairs.length) {
+      const names = pairs.map(([a,b]) => `${grantMap[a]?.title||a} + ${grantMap[b]?.title||b}`).join('; ');
+      conflicts.push({
+        type: 'equivalent_work',
+        grants: federalFull,
+        title: 'Federal SBIR/STTR — Essentially Equivalent Work Prohibited',
+        msg: `Federal agencies prohibit funding the same research aims under two separate SBIR/STTR awards. The following combinations require distinct, non-overlapping aims: ${names}. You must be able to demonstrate to each program officer that the projects address different scientific questions or phases. All pending/active SBIR/STTR support must be disclosed in each application (Current & Pending Support section).`,
+      });
+    }
+  }
+
+  // ── Rule 3: BARDA + CARB-X — sequential preferred, not concurrent ───────
+  if (ids.includes('barda') && ids.includes('carbx')) {
+    conflicts.push({
+      type: 'sequential',
+      grants: ['barda','carbx'],
+      title: 'CARB-X + BARDA — Designed Sequential, Not Concurrent',
+      msg: 'CARB-X and BARDA are intentionally staged: CARB-X de-risks early pre-clinical AMR assets, BARDA picks up later-stage assets. Concurrent funding of the same program from both requires explicit approval and a clear delineation of scope — CARB-X covers early R&D, BARDA covers IND-enabling or advanced development. If pursuing both, confirm with your CARB-X program manager that BARDA pursuit does not constitute scope overlap.',
+    });
+  }
+
+  // ── Rule 4: Disease foundation duplicate funding ─────────────────────────
+  const fdnPursuing = ids.filter(id => DISEASE_FDNS.includes(id));
+  if (fdnPursuing.length >= 2) {
+    const fdnNames = fdnPursuing.map(id => grantMap[id]?.title || id).join(', ');
+    conflicts.push({
+      type: 'equivalent_work',
+      grants: fdnPursuing,
+      title: 'Disease Foundation Duplicate Funding',
+      msg: `${fdnNames} — most disease foundations prohibit "essentially equivalent" concurrent support. Each application must cover distinct research aims or phases. AHA, Alzheimer's Association, MJFF, and CFFT all require disclosure of other pending support. If scopes overlap, you must either stagger applications or clearly partition aims (e.g., one funder covers biomarker validation, another covers lead optimization).`,
+    });
+  }
+
+  // ── Rule 5: NSF SBIR — VC ownership warning if also raising dilutive ────
+  if (ids.includes('nsf_sbir')) {
+    const d = collectData();
+    if (['lt2m','lt5m'].includes(d.dilutive)) {
+      conflicts.push({
+        type: 'disclose',
+        grants: ['nsf_sbir'],
+        title: 'NSF SBIR — Approaching VC Majority Ownership Threshold',
+        msg: 'NSF SBIR prohibits majority ownership by VC/PE/hedge funds at time of award and throughout the project period. If you raise a round that crosses majority VC ownership after receiving NSF Phase I, you become ineligible for Phase II. Plan your equity raise timeline carefully relative to NSF Phase II application dates.',
+      });
+    }
+  }
+
+  // ── Rule 6: State grants + Federal SBIR — disclosure required ───────────
+  const statePursuing = ids.filter(id => ['mii','mscrf'].includes(id));
+  const federalAny = ids.filter(id => FEDERAL_SBIR.includes(id));
+  if (statePursuing.length && federalAny.length) {
+    const stateNames = statePursuing.map(id => grantMap[id]?.title||id).join(', ');
+    conflicts.push({
+      type: 'disclose',
+      grants: [...statePursuing, ...federalAny],
+      title: 'State Grants Must Be Disclosed in Federal Applications',
+      msg: `${stateNames} must be listed in the Current & Pending Support (C&P) section of all federal SBIR/STTR applications. This is not a disqualifier, but omitting active state funding is considered misrepresentation and can result in award termination. Disclose the funding amount, period of performance, and overlap of aims (even if minimal).`,
+    });
+  }
+
+  // ── Rule 7: MII + any other TEDCO grant — internal stacking ────────────
+  const tedcoPursuing = ids.filter(id => ['mii','builder','inclusion','rbii'].includes(id));
+  if (tedcoPursuing.length >= 2) {
+    conflicts.push({
+      type: 'disclose',
+      grants: tedcoPursuing,
+      title: 'Multiple TEDCO Programs — Internal Disclosure Required',
+      msg: 'TEDCO requires disclosure of all active TEDCO funding relationships when applying to any TEDCO program. Receiving multiple TEDCO awards simultaneously is possible but requires explicit TEDCO program officer awareness and approval. Contact your TEDCO program manager before submitting multiple applications.',
+    });
+  }
+
+  return conflicts;
+}
+
+// ── Conflict type config ───────────────────────────────────────────────────
+const CONFLICT_CONFIG = {
+  pick_one:        { color: '#dc2626', bg: '#fdeaea', icon: '🚫', label: 'Choose One' },
+  equivalent_work: { color: '#b57a00', bg: '#fff3cd', icon: '⚠️', label: 'Aims Conflict' },
+  sequential:      { color: '#b57a00', bg: '#fff3cd', icon: '🔄', label: 'Sequence Risk' },
+  disclose:        { color: '#2244aa', bg: '#e8eef8', icon: 'ℹ️', label: 'Must Disclose' },
+};
+
+// ── Rendering ──────────────────────────────────────────────────────────────
+function setFilter(f) { activeFilter = f; renderResults(getGrants(collectData())); }
+
+function cardHTML(g) {
+  const pillLabel = g.s === 'eligible' ? '✓ Eligible' : g.s === 'conditional' ? '◐ Conditions' : '✗ Not Eligible';
+  const tagLabel = { 'tag-md':'🏛 Maryland', 'tag-fed':'🇺🇸 Federal', 'tag-jhu':'🎓 JHU/Private', 'tag-priv':'🏦 Foundation', 'tag-disease':'🩺 Disease Fdn' };
+  const tagHTML = g.tags.map(t => `<span class="meta-chip ${t}">${tagLabel[t]||t}</span>`).join('');
+  const rHTML = g.r.map(r => `<div class="reason-item ${r.t}"><span class="icon">${r.t==='pass'?'✓':r.t==='warn'?'⚠':'✗'}</span><span>${r.x}</span></div>`).join('');
+  const liveTag = g._live
+    ? `<span style="font-size:9px;font-weight:700;background:#e8f5ee;color:#1a7a4a;padding:1px 6px;border-radius:3px;margin-left:5px" title="Deadline verified from ${g._live.source}">🟢 LIVE</span>`
+    : '';
+  const isTracked = pursuing.has(g.id);
+  const canTrack = g.s !== 'ineligible';
+  const trackBtn = canTrack
+    ? `<button class="track-btn ${isTracked?'tracked':''}" onclick="event.stopPropagation();togglePursuing('${g.id}')">${isTracked ? '★ Pursuing' : '☆ Track'}</button>`
+    : '';
+  // Conflict badge — shown if this grant is tracked and involved in a conflict
+  const allGrants = getGrants(collectData());
+  const activeConflicts = getConflicts(pursuing, allGrants);
+  const myConflicts = activeConflicts.filter(c => c.grants.includes(g.id) && pursuing.has(g.id));
+  const conflictBadge = myConflicts.length
+    ? `<div class="conflict-badge-inline">${myConflicts.map(c => {
+        const cfg = CONFLICT_CONFIG[c.type];
+        return `<span style="background:${cfg.bg};color:${cfg.color};font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;margin-right:4px">${cfg.icon} ${cfg.label}</span>`;
+      }).join('')}</div>`
+    : '';
+  return `<div class="grant-card ${g.s} ${isTracked?'tracked':''}">
+    <div class="card-header">
+      <div><div class="card-title">${g.title}</div><div class="card-org">${g.org}</div></div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:5px;flex-shrink:0">
+        <span class="status-pill ${g.s}">${pillLabel}</span>
+        ${trackBtn}
+      </div>
+    </div>
+    ${conflictBadge}
+    <div class="card-meta">
+      <span class="meta-chip amount">💰 ${g.amount}</span>${tagHTML}<span class="meta-chip">📅 ${g.deadline}${liveTag}</span>
+    </div>
+    <div class="reasons">${rHTML}</div>
+  </div>`;
+}
+
+function pursuingPanelHTML(allGrants) {
+  if (pursuing.size === 0) return '';
+  const grantMap = {};
+  allGrants.forEach(g => { grantMap[g.id] = g; });
+  const conflicts = getConflicts(pursuing, allGrants);
+
+  const trackedChips = [...pursuing].map(id => {
+    const g = grantMap[id];
+    if (!g) return '';
+    const hasConflict = conflicts.some(c => c.grants.includes(id));
+    return `<span class="pursuing-chip ${hasConflict?'conflict':''}" onclick="togglePursuing('${id}')" title="Click to remove">
+      ${g.title} ${hasConflict ? '⚠' : '✓'} <span style="opacity:0.6;font-size:10px">✕</span>
+    </span>`;
+  }).join('');
+
+  const conflictHTML = conflicts.length ? conflicts.map(c => {
+    const cfg = CONFLICT_CONFIG[c.type];
+    return `<div class="conflict-item" style="border-left:3px solid ${cfg.color};background:${cfg.bg}">
+      <div class="conflict-item-header">
+        <span style="font-size:13px">${cfg.icon}</span>
+        <span class="conflict-item-title" style="color:${cfg.color}">${c.title}</span>
+        <span class="conflict-type-pill" style="background:${cfg.color}20;color:${cfg.color}">${cfg.label}</span>
+      </div>
+      <div class="conflict-item-msg">${c.msg}</div>
+    </div>`;
+  }).join('') : `<div style="font-size:12px;color:var(--green);padding:10px 0">✓ No conflicts detected among your selected grants. Review compliance notes for disclosure requirements as applications progress.</div>`;
+
+  return `<div class="pursuing-panel">
+    <div class="pursuing-panel-header">
+      <div>
+        <div style="font-size:12px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:0.6px">📋 Grants I'm Pursuing <span style="background:var(--blue);color:white;font-size:10px;padding:1px 7px;border-radius:10px;margin-left:4px">${pursuing.size}</span></div>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:2px">Click a chip to remove · ${conflicts.length ? `<span style="color:#b57a00;font-weight:600">${conflicts.length} conflict${conflicts.length>1?'s':''} detected</span>` : '<span style="color:var(--green)">No conflicts</span>'}</div>
+      </div>
+    </div>
+    <div class="pursuing-chips">${trackedChips}</div>
+    <div class="conflict-list">${conflictHTML}</div>
+  </div>`;
+}
+
+function renderResults(grants) {
+  const panel = document.getElementById('resultsPanel');
+  const cats = ['All','Maryland','Federal','JHU/Private','Disease Foundation','Private Foundation'];
+  const filtered = activeFilter === 'All' ? grants : grants.filter(g => g.cat === activeFilter);
+  const elig = filtered.filter(g=>g.s==='eligible');
+  const cond = filtered.filter(g=>g.s==='conditional');
+  const inel = filtered.filter(g=>g.s==='ineligible');
+
+  const tabsHTML = cats.map(c => {
+    const cnt = c==='All' ? grants.length : grants.filter(g=>g.cat===c).length;
+    return `<div class="filter-tab ${activeFilter===c?'active':''}" onclick="setFilter('${c}')">${c} <span style="opacity:0.55">${cnt}</span></div>`;
+  }).join('');
+
+  let body = '';
+  if (elig.length) { body += `<div class="divider-label" style="color:var(--green)">✓ Eligible — ${elig.length}</div>${elig.map(cardHTML).join('')}`; }
+  if (cond.length) { body += `<div class="divider-label" style="color:var(--yellow)">◐ Check Conditions — ${cond.length}</div>${cond.map(cardHTML).join('')}`; }
+  if (inel.length) { body += `<div class="divider-label" style="color:var(--red)">✗ Not Eligible — ${inel.length}</div>${inel.map(cardHTML).join('')}`; }
+
+  const totalE = grants.filter(g=>g.s==='eligible').length;
+  const totalC = grants.filter(g=>g.s==='conditional').length;
+  const totalI = grants.filter(g=>g.s==='ineligible').length;
+
+  panel.innerHTML = `
+    <div class="results-header">
+      <h2>Grant Matches <span style="font-weight:400;font-size:12px;color:var(--text-muted)">(${grants.length} indexed)</span></h2>
+      <div class="score-row">
+        <span class="score-chip e">✓ ${totalE}</span>
+        <span class="score-chip c">◐ ${totalC}</span>
+        <span class="score-chip i">✗ ${totalI}</span>
+      </div>
+    </div>
+    ${pursuingPanelHTML(grants)}
+    <div class="filter-tabs">${tabsHTML}</div>
+    ${body}`;
+}
+
+function evaluate() {
+  const d = collectData();
+  if (!Object.values(d).some(v=>v&&v!=='')) {
+    document.getElementById('resultsPanel').innerHTML = `<div class="empty-state"><div class="icon">🔍</div><p>Fill in the form to see matching grants and eligibility rationale.</p></div>`;
+    return;
+  }
+  // Apply live data overlay before rendering
+  const grants = getGrants(d).map(applyLiveData);
+  renderResults(grants);
+}
+
+// Load live data when page opens
+window.addEventListener('DOMContentLoaded', loadLiveData);
+</script>
+</body>
+</html>
