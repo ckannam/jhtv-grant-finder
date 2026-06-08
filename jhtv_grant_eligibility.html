@@ -334,10 +334,14 @@ function loadLiveData() {
       if (!data || !data.grants) return;
       LIVE_DATA = data.grants;
 
-      // Show freshness badge in header
+      // Show freshness badge in header — use whichever timestamp is more recent
       const badge = document.getElementById('liveDataBadge');
-      if (badge && data.lastUpdated) {
-        const days = Math.floor((Date.now() - new Date(data.lastUpdated)) / 86400000);
+      const freshestTs = [data.lastUpdated, data.lastScrapedAt]
+        .filter(Boolean)
+        .map(t => new Date(t))
+        .reduce((a, b) => (a > b ? a : b), new Date(0));
+      if (badge && freshestTs > new Date(0)) {
+        const days = Math.floor((Date.now() - freshestTs) / 86400000);
         const label = days === 0 ? 'Live data: today' : `Live data: ${days}d ago`;
         badge.textContent = '🟢 ' + label;
         badge.style.display = 'inline-block';
