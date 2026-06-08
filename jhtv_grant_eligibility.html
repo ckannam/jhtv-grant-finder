@@ -131,7 +131,7 @@
     <div class="logo">JHT<span>V</span> Grant Diagnostic</div>
     <div class="subtitle">Translational Funding Eligibility Engine · Johns Hopkins Technology Ventures</div>
   </div>
-  <div class="badge">23 Grants Indexed</div>
+  <div class="badge">24 Grants Indexed</div>
   <div id="liveDataBadge" style="display:none;font-size:11px;background:rgba(255,255,255,0.12);padding:3px 10px;border-radius:20px;margin-left:8px"></div>
 </header>
 
@@ -651,31 +651,7 @@ function getGrants(d) {
     grants.push({ id:'coulter', title:'JHU-Coulter Translational Partnership', org:'Wallace H. Coulter Foundation / JHU BME', cat:'JHU/Private', s, amount:'Translational seed grants per project', deadline:'Annual cycle · cbid.bme.jhu.edu', tags:['tag-jhu'], r });
   }
 
-  // ── 18. Bisciotti Foundation Translational Fund ───────────────────────
-  {
-    const r = []; let s = 'eligible';
-    if (hasJHU) r.push({t:'pass', x:'JHU researcher / inventor affiliation required — confirmed'});
-    else { r.push({t:'fail', x:'Exclusively for JHU researchers and inventors'}); s='ineligible'; }
-    if (hasDisclosure) r.push({t:'pass', x:'JHTV disclosure filed — required for Bisciotti Fund consideration'});
-    else { r.push({t:'warn', x:'JHTV invention disclosure typically required before award'}); if(s==='eligible') s='conditional'; }
-    if (['faculty','postdoc'].includes(d.leadRole)) r.push({t:'pass', x:'Faculty / Postdoc lead — primary audience for Bisciotti Fund'});
-    else if (d.leadRole === 'student') r.push({t:'warn', x:'Student applicants may qualify — faculty co-PI often required'});
-    r.push({t:'pass', x:'$300K total/year distributed as $25K–$100K awards for up to 9 months'});
-    grants.push({ id:'bisciotti', title:'Bisciotti Foundation Translational Fund', org:'JHTV / Bisciotti Foundation', cat:'JHU/Private', s, amount:'$25K – $100K per team (9-month project)', deadline:'Annual cycle · ventures.jhu.edu', tags:['tag-jhu'], r });
-  }
-
-  // ── 19. JHTV Internal Translational Funding ───────────────────────────
-  {
-    const r = []; let s = 'eligible';
-    if (hasJHU) r.push({t:'pass', x:'JHU affiliation confirmed — access to JHTV philanthropic pool'});
-    else { r.push({t:'fail', x:'JHTV internal funds restricted to JHU researchers and startups'}); s='ineligible'; }
-    if (hasDisclosure) r.push({t:'pass', x:'Invention disclosed to JHTV — required for internal funding pipeline'});
-    else { r.push({t:'warn', x:'File JHTV invention disclosure to unlock internal funding'}); if(s==='eligible') s='conditional'; }
-    r.push({t:'pass', x:'$1M+ annually via JHTV — contact a FastForward advisor to initiate'});
-    grants.push({ id:'jhtv_internal', title:'JHTV Internal Translational Funding', org:'Johns Hopkins Technology Ventures', cat:'JHU/Private', s, amount:'Variable · ~$25K–$100K typical', deadline:'Rolling · ventures.jhu.edu/programs-services/fastforward', tags:['tag-jhu'], r });
-  }
-
-  // ── 20. Maryland Momentum Fund ────────────────────────────────────────
+  // ── 18. Maryland Momentum Fund ────────────────────────────────────────
   {
     const r = []; let s = 'conditional'; // always conditional — USM affiliation not confirmed by this form
     if (isMD) r.push({t:'pass', x:'Maryland-based company required — confirmed'});
