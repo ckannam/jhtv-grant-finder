@@ -366,11 +366,15 @@ function applyLiveData(grant) {
     deadline: live.deadlineLabel || grant.deadline,
     amount:   grant.amount, // amount stays static unless API returns it
     _live: {
-      status:     live.status,
-      daysUntil:  live.daysUntil,
-      openTopics: live.openTopics,
-      source:     live.source,
-      verified:   live.fetchedAt,
+      status:           live.status,
+      daysUntil:        live.daysUntil,
+      openTopics:       live.openTopics,
+      source:           live.source,
+      verified:         live.fetchedAt,
+      recentAwardCount: live.recentAwardCount,
+      avgAwardAmount:   live.avgAwardAmount,
+      winnerData:       live.winnerData,
+      nsfWinners:       live.nsfWinners,
     },
   };
 }
@@ -749,6 +753,7 @@ const pursuing = new Set();
 
 function togglePursuing(id) {
   if (pursuing.has(id)) pursuing.delete(id); else pursuing.add(id);
+  try { localStorage.setItem('jhtv_pursuing', JSON.stringify([...pursuing])); } catch {}
   renderResults(getGrants(collectData()));
 }
 
@@ -897,6 +902,42 @@ function cardHTML(g) {
         return `<span style="background:${cfg.bg};color:${cfg.color};font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;margin-right:4px">${cfg.icon} ${cfg.label}</span>`;
       }).join('')}</div>`
     : '';
+  // Recent winners section — only for grants with live winner data
+  let winnersHTML = '';
+  if (g._live) {
+    const wd  = g._live.winnerData;
+    const nsf = g._live.nsfWinners;
+    const cnt = g._live.recentAwardCount;
+    const avg = g._live.avgAwardAmount;
+    if (wd && wd.recentProjects && wd.recentProjects.length > 0) {
+      const rows = wd.recentProjects.map(p =>
+        `<div style="padding:5px 0;border-bottom:1px solid #f0f0f0;font-size:12px">
+          <strong>${p.company}</strong> · $${(p.amount||0).toLocaleString()} · FY${p.year}
+          <div style="color:#666;font-size:11px;margin-top:1px">${(p.title||'').slice(0,90)}${(p.title||'').length>90?'…':''}</div>
+        </div>`
+      ).join('');
+      winnersHTML = `<details style="margin-top:8px">
+        <summary style="cursor:pointer;font-size:12px;color:#2244aa;font-weight:600;list-style:none;display:flex;align-items:center;gap:4px">
+          🏆 ${cnt} Maryland companies won recently · avg $${Math.round(avg/1000)}K
+        </summary>
+        <div style="margin-top:6px;padding:0 2px">${rows}</div>
+      </details>`;
+    } else if (nsf && nsf.length > 0) {
+      const rows = nsf.map(p =>
+        `<div style="padding:5px 0;border-bottom:1px solid #f0f0f0;font-size:12px">
+          <strong>${p.org}</strong> · $${(p.amount||0).toLocaleString()} · ${p.state}
+          <div style="color:#666;font-size:11px;margin-top:1px">${(p.title||'').slice(0,90)}${(p.title||'').length>90?'…':''}</div>
+        </div>`
+      ).join('');
+      winnersHTML = `<details style="margin-top:8px">
+        <summary style="cursor:pointer;font-size:12px;color:#2244aa;font-weight:600;list-style:none;display:flex;align-items:center;gap:4px">
+          🏆 ${cnt} recent NSF SBIR awards · avg $${Math.round(avg/1000)}K
+        </summary>
+        <div style="margin-top:6px;padding:0 2px">${rows}</div>
+      </details>`;
+    }
+  }
+
   return `<div class="grant-card ${g.s} ${isTracked?'tracked':''}">
     <div class="card-header">
       <div><div class="card-title">${g.title}</div><div class="card-org">${g.org}</div></div>
@@ -910,6 +951,7 @@ function cardHTML(g) {
       <span class="meta-chip amount">💰 ${g.amount}</span>${tagHTML}<span class="meta-chip">📅 ${g.deadline}${liveTag}</span>
     </div>
     <div class="reasons">${rHTML}</div>
+    ${winnersHTML}
   </div>`;
 }
 
@@ -992,15 +1034,45 @@ function evaluate() {
   const d = collectData();
   if (!Object.values(d).some(v=>v&&v!=='')) {
     document.getElementById('resultsPanel').innerHTML = `<div class="empty-state"><div class="icon">🔍</div><p>Fill in the form to see matching grants and eligibility rationale.</p></div>`;
+    history.replaceState(null, '', location.pathname);
     return;
   }
   // Apply live data overlay before rendering
   const grants = getGrants(d).map(applyLiveData);
   renderResults(grants);
+  // Update URL hash so current assessment is shareable
+  const params = new URLSearchParams();
+  Object.entries(d).forEach(([k,v]) => { if (v && v !== '') params.set(k, v); });
+  const hash = params.toString();
+  if (hash) history.replaceState(null, '', '#' + hash);
 }
 
-// Load live data when page opens
-window.addEventListener('DOMContentLoaded', loadLiveData);
+// Load live data, restore tracker, and restore form from URL hash
+window.addEventListener('DOMContentLoaded', () => {
+  // Restore pursuing tracker from localStorage
+  try {
+    const saved = localStorage.getItem('jhtv_pursuing');
+    if (saved) JSON.parse(saved).forEach(id => pursuing.add(id));
+  } catch {}
+
+  // Restore form state from URL hash if present
+  if (location.hash && location.hash.length > 1) {
+    const params = new URLSearchParams(location.hash.slice(1));
+    params.forEach((val, key) => {
+      const sel = document.getElementById(key);
+      if (sel && sel.tagName === 'SELECT') { sel.value = val; return; }
+      const radio = document.querySelector(`input[name="${key}"][value="${val}"]`);
+      if (radio) {
+        radio.checked = true;
+        radio.closest('.radio-option')?.classList.add('selected');
+        if (key === 'siteMiner') document.getElementById('siteMinerDaysField').style.display = val === 'yes' ? 'block' : 'none';
+      }
+    });
+    evaluate();
+  }
+
+  loadLiveData();
+});
 </script>
 </body>
 </html>
