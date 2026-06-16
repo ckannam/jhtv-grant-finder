@@ -305,12 +305,23 @@
       <div class="section-title"><span class="num">3</span> Location, Team &amp; Funding</div>
       <div class="field">
         <label>Maryland Presence</label>
-        <select id="marylandBased" onchange="evaluate()">
+        <select id="marylandBased" onchange="evaluate();updateBaltimoreVisibility()">
           <option value="">— Select —</option>
           <option value="yes">Yes — principal place of business in Maryland</option>
           <option value="planning">Planning to establish Maryland presence</option>
           <option value="no">No — outside Maryland</option>
         </select>
+      </div>
+      <div class="field" id="baltimoreAreaWrap" style="display:none">
+        <label>Baltimore City / County? <span class="hint">(for BII eligibility)</span></label>
+        <div class="radio-group">
+          <label class="radio-option" onclick="selectRadio('baltimoreArea','yes',this)">
+            <input type="radio" name="baltimoreArea" value="yes"> Yes — Baltimore City or Baltimore County
+          </label>
+          <label class="radio-option" onclick="selectRadio('baltimoreArea','no',this)">
+            <input type="radio" name="baltimoreArea" value="no"> No — elsewhere in Maryland
+          </label>
+        </div>
       </div>
       <div class="field">
         <label>Team Size <span class="hint">(founders + W-2 employees)</span></label>
@@ -388,6 +399,21 @@
           <option value="global">Global Health / LMIC-relevant</option>
           <option value="other">Other / General Biotech</option>
         </select>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="section-title"><span class="num">5</span> Federal Funding History</div>
+      <div class="field">
+        <label>Active SBIR / STTR Phase I Award?</label>
+        <div class="radio-group">
+          <label class="radio-option" onclick="selectRadio('hasSbirPhaseI','yes',this)">
+            <input type="radio" name="hasSbirPhaseI" value="yes"> Yes — currently have a federal SBIR/STTR Phase I award
+          </label>
+          <label class="radio-option" onclick="selectRadio('hasSbirPhaseI','no',this)">
+            <input type="radio" name="hasSbirPhaseI" value="no"> No
+          </label>
+        </div>
       </div>
     </div>
 
@@ -471,7 +497,13 @@ function selectRadio(name, value, labelEl) {
   document.querySelectorAll(`input[name="${name}"]`).forEach(r => r.closest('.radio-option').classList.remove('selected'));
   labelEl.classList.add('selected');
   if (name === 'siteMiner') document.getElementById('siteMinerDaysField').style.display = value === 'yes' ? 'block' : 'none';
+  if (name === 'baltimoreArea') { /* visibility handled by updateBaltimoreVisibility */ }
   evaluate();
+}
+
+function updateBaltimoreVisibility() {
+  const val = document.getElementById('marylandBased')?.value;
+  document.getElementById('baltimoreAreaWrap').style.display = val === 'yes' ? 'block' : 'none';
 }
 
 function collectData() {
@@ -492,6 +524,8 @@ function collectData() {
     stemCells:       getRadio('stemCells'),
     diseaseArea:     getVal('diseaseArea'),
     coInvestorType:  getVal('coInvestorType'), // collected for UX context; not yet used in getGrants() eligibility logic
+    baltimoreArea:   getRadio('baltimoreArea'),
+    hasSbirPhaseI:   getRadio('hasSbirPhaseI'),
   };
 }
 
@@ -513,6 +547,8 @@ function getGrants(d) {
   const hasFTE        = d.teamSize && d.teamSize !== 'founders_only';
   const smallTeam     = !d.teamSize || ['founders_only','1_5','6_15'].includes(d.teamSize);
   const isEarlyStage  = !d.ventureStage || ['ideation','forming','pre_seed','seed'].includes(d.ventureStage);
+  const isBaltimore   = d.baltimoreArea === 'yes';
+  const hasSbirAward  = d.hasSbirPhaseI === 'yes';
 
   // ── 1. MII ─────────────────────────────────────────────────────────────
   {
@@ -532,7 +568,81 @@ function getGrants(d) {
       r.push({t:'warn', x:'Contact a TEDCO Site Miner before applying — required step for MII'});
       if(s==='eligible') s='conditional';
     }
-    grants.push({ id:'mii', title:'Maryland Innovation Initiative (MII)', org:'TEDCO / JHTV', cat:'Maryland', s, amount:'$130K (JHU) · $180K (joint USM)', deadline:'Quarterly: Jan 15 · Apr 15 · Jul 15 · Oct 15', tags:['tag-md','tag-jhu'], r });
+    grants.push({ id:'mii', title:'Maryland Innovation Initiative (MII)', org:'TEDCO / JHTV', cat:'Maryland', s, amount:'Up to $130K (JHU tech assessment)', deadline:'Quarterly: Jan 15 · Apr 15 · Jul 15 · Oct 15', tags:['tag-md','tag-jhu'], r });
+  }
+
+  // ── 1b. MII Joint ──────────────────────────────────────────────────────
+  {
+    const r = []; let s = 'eligible';
+    if (hasJHU) r.push({t:'pass', x:'JHU school affiliation confirmed'});
+    else { r.push({t:'fail', x:'Requires JHU institutional connection'}); s='ineligible'; }
+    if (hasDisclosure) r.push({t:'pass', x:'JHTV invention disclosure filed — case number required'});
+    else { r.push({t:'fail', x:'Technology must be formally disclosed to JHTV with a case number'}); s='ineligible'; }
+    if (isMD) r.push({t:'pass', x:'Maryland principal place of business confirmed'});
+    else if (d.marylandBased === 'planning') { r.push({t:'warn', x:'Maryland presence required — ensure principal office is established before applying'}); if(s==='eligible') s='conditional'; }
+    else if (d.marylandBased === 'no') { r.push({t:'warn', x:'Maryland nexus required for MII — company must be based in Maryland'}); if(s==='eligible') s='conditional'; }
+    if (d.siteMiner === 'yes') {
+      const days = parseInt(d.siteMinerDays) || 0;
+      if (days >= 30) r.push({t:'pass', x:`Site Miner engaged ${days} days ago — application window open`});
+      else r.push({t:'warn', x:`Site Miner engaged ${days} days ago — 30-day engagement window recommended before submitting`});
+    } else if (d.siteMiner === 'no') {
+      r.push({t:'warn', x:'Contact a TEDCO Site Miner before applying — required step for MII'});
+      if(s==='eligible') s='conditional';
+    }
+    r.push({t:'warn', x:'Requires a co-applicant from another USM institution — confirm you have an identified USM partner'});
+    if(s==='eligible') s='conditional';
+    grants.push({ id:'mii_joint', title:'MII – Tech Assessment (Joint)', org:'TEDCO / JHTV', cat:'Maryland', s, amount:'Up to $180K', deadline:'Quarterly: Jan 15 · Apr 15 · Jul 15 · Oct 15', tags:['tag-md','tag-jhu'], r });
+  }
+
+  // ── 1c. MII Company Formation ──────────────────────────────────────────
+  {
+    const r = []; let s = 'eligible';
+    if (hasJHU) r.push({t:'pass', x:'JHU school affiliation confirmed'});
+    else { r.push({t:'fail', x:'Requires JHU institutional connection'}); s='ineligible'; }
+    if (hasDisclosure) r.push({t:'pass', x:'JHTV invention disclosure filed — case number required'});
+    else { r.push({t:'fail', x:'Technology must be formally disclosed to JHTV with a case number'}); s='ineligible'; }
+    if (isMD) r.push({t:'pass', x:'Maryland principal place of business confirmed'});
+    else if (d.marylandBased === 'planning') { r.push({t:'warn', x:'Maryland presence required — ensure principal office is established before applying'}); if(s==='eligible') s='conditional'; }
+    else if (d.marylandBased === 'no') { r.push({t:'warn', x:'Maryland nexus required for MII — company must be based in Maryland'}); if(s==='eligible') s='conditional'; }
+    if (d.siteMiner === 'yes') {
+      const days = parseInt(d.siteMinerDays) || 0;
+      if (days >= 30) r.push({t:'pass', x:`Site Miner engaged ${days} days ago — application window open`});
+      else r.push({t:'warn', x:`Site Miner engaged ${days} days ago — 30-day engagement window recommended before submitting`});
+    } else if (d.siteMiner === 'no') {
+      r.push({t:'warn', x:'Contact a TEDCO Site Miner before applying — required step for MII'});
+      if(s==='eligible') s='conditional';
+    }
+    if (d.entityType === 'llc_corp') r.push({t:'pass', x:'Company incorporated — eligible for Company Formation award track'});
+    else if (notYetFormed) { r.push({t:'warn', x:'Company Formation award requires active entity formation — begin incorporation process'}); if(s==='eligible') s='conditional'; }
+    else { r.push({t:'warn', x:'Confirm your entity structure qualifies for the Company Formation track'}); if(s==='eligible') s='conditional'; }
+    grants.push({ id:'mii_cf', title:'MII – Company Formation', org:'TEDCO / JHTV', cat:'Maryland', s, amount:'Up to $300K', deadline:'Quarterly: Jan 15 · Apr 15 · Jul 15 · Oct 15', tags:['tag-md','tag-jhu'], r });
+  }
+
+  // ── 1d. Baltimore Innovation Initiative ───────────────────────────────
+  {
+    const r = []; let s = 'eligible';
+    if (isMD) {
+      if (isBaltimore) r.push({t:'pass', x:'Baltimore City / County location confirmed — core BII requirement met'});
+      else if (d.baltimoreArea === 'no') { r.push({t:'fail', x:'BII requires principal office in Baltimore City or Baltimore County'}); s='ineligible'; }
+      else { r.push({t:'warn', x:'Confirm your company is located in Baltimore City or Baltimore County'}); if(s==='eligible') s='conditional'; }
+    } else if (d.marylandBased === 'planning') {
+      r.push({t:'warn', x:'Maryland presence required — company must be Baltimore City/County based for BII'}); if(s==='eligible') s='conditional';
+    } else {
+      r.push({t:'fail', x:'BII requires a Maryland-based company in Baltimore City or County'}); s='ineligible';
+    }
+    grants.push({ id:'bii', title:'Baltimore Innovation Initiative (BII)', org:'TEDCO', cat:'Maryland', s, amount:'~$50K average award', deadline:'Varies — check current BII RFA cycle', tags:['tag-md'], r });
+  }
+
+  // ── 1e. TEDCO SBIR/STTR Matching Funds ────────────────────────────────
+  {
+    const r = []; let s = 'eligible';
+    if (isMD) r.push({t:'pass', x:'Maryland-based company — eligible for TEDCO state match'});
+    else if (d.marylandBased === 'planning') { r.push({t:'warn', x:'Maryland presence required for TEDCO SBIR/STTR Match'}); if(s==='eligible') s='conditional'; }
+    else { r.push({t:'fail', x:'Requires Maryland principal place of business'}); s='ineligible'; }
+    if (hasSbirAward) r.push({t:'pass', x:'Active SBIR/STTR Phase I award confirmed — eligible for TEDCO match'});
+    else if (d.hasSbirPhaseI === 'no') { r.push({t:'fail', x:'Requires an active federal SBIR/STTR Phase I award'}); s='ineligible'; }
+    else { r.push({t:'warn', x:'Must have an active federal SBIR/STTR Phase I award — confirm award status before applying'}); if(s==='eligible') s='conditional'; }
+    grants.push({ id:'sbir_match', title:'TEDCO SBIR/STTR Matching Funds', org:'TEDCO', cat:'Maryland', s, amount:'$25K–$75K match', deadline:'Quarterly windows — check TEDCO site', tags:['tag-md'], r });
   }
 
   // ── 2. MSCRF ───────────────────────────────────────────────────────────

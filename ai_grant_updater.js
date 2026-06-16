@@ -28,7 +28,11 @@ const outPath = path.join(__dirname, 'grants_live.json');
 
 // ── Grant list (mirrors SKILL.md) ─────────────────────────────────────────────
 const GRANTS = [
-  { id: 'mii',      name: 'TEDCO Maryland Innovation Initiative',       url: 'https://www.tedco.md/program/maryland-innovation-initiative/',            hint: 'Quarterly deadlines: Jan 15, Apr 15, Jul 15, Oct 15 — confirm still current' },
+  { id: 'mii',       name: 'TEDCO Maryland Innovation Initiative',       url: 'https://www.tedco.md/program/maryland-innovation-initiative/',            hint: 'Quarterly deadlines: Jan 15, Apr 15, Jul 15, Oct 15 — confirm still current' },
+  { id: 'mii_joint',name: 'MII – Tech Assessment (Joint)',             url: 'https://www.tedco.md/program/maryland-innovation-initiative/',            hint: 'Same quarterly deadlines as MII (Jan 15, Apr 15, Jul 15, Oct 15) — confirm for joint USM track' },
+  { id: 'mii_cf',   name: 'MII – Company Formation',                   url: 'https://www.tedco.md/program/maryland-innovation-initiative/',            hint: 'Same quarterly deadlines as MII (Jan 15, Apr 15, Jul 15, Oct 15) — confirm for company formation track' },
+  { id: 'bii',      name: 'Baltimore Innovation Initiative (BII)',     url: 'https://www.tedco.md/program/baltimore-innovation-initiative/',           hint: 'BII has its own RFA timeline, not quarterly — check for current open cycle and LOI/application deadline' },
+  { id: 'sbir_match',name: 'TEDCO SBIR/STTR Matching Funds',          url: 'https://www.tedco.md/program/maryland-sbir-sttr-incentive-program/',      hint: 'Own quarterly application windows — look for current open window dates on TEDCO site' },
   { id: 'mscrf',    name: 'Maryland Stem Cell Research Fund',            url: 'https://www.mscrf.org/funding-opportunities',                            hint: 'Current funding cycle, LOI or application deadline' },
   { id: 'builder',  name: 'TEDCO Pre-Seed Builder Fund',                 url: 'https://www.tedco.md/program/social-impact-funds/',                       hint: 'Rolling equity — confirm program still active' },
   { id: 'inclusion',name: 'TEDCO Inclusion Fund',                        url: 'https://www.tedco.md/program/social-impact-funds/',                       hint: 'Rolling equity — confirm program still active' },

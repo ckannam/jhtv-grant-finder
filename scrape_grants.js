@@ -579,9 +579,81 @@ async function scrapeCoulter() {
   return buildResult('coulter', { status: 'unknown', urls, notes: 'See cbid.bme.jhu.edu for annual cycle dates' });
 }
 
+async function scrapeMII_Joint() {
+  const url = 'https://www.tedco.md/program/maryland-innovation-initiative/';
+  console.log(`  GET ${url}`);
+  const res = await fetchPage(url);
+  if (!res.ok) return buildResult('mii_joint', { status: 'unknown', urls: [url], notes: 'Fetch failed — quarterly: Jan 15, Apr 15, Jul 15, Oct 15 (same cycle as MII)' });
+  const text = stripHtml(res.html);
+  const status = inferStatus(text);
+  const raw    = findNearbyDate(text);
+  return buildResult('mii_joint', {
+    status: status === 'unknown' ? 'open' : status,
+    deadlineRaw: raw,
+    notes: raw ? null : 'Quarterly: Jan 15 · Apr 15 · Jul 15 · Oct 15 — same RFA cycle as MII',
+    source: url,
+    urls: [url],
+  });
+}
+
+async function scrapeMII_CF() {
+  const url = 'https://www.tedco.md/program/maryland-innovation-initiative/';
+  console.log(`  GET ${url}`);
+  const res = await fetchPage(url);
+  if (!res.ok) return buildResult('mii_cf', { status: 'unknown', urls: [url], notes: 'Fetch failed — quarterly: Jan 15, Apr 15, Jul 15, Oct 15 (same cycle as MII)' });
+  const text = stripHtml(res.html);
+  const status = inferStatus(text);
+  const raw    = findNearbyDate(text);
+  return buildResult('mii_cf', {
+    status: status === 'unknown' ? 'open' : status,
+    deadlineRaw: raw,
+    notes: raw ? null : 'Quarterly: Jan 15 · Apr 15 · Jul 15 · Oct 15 — same RFA cycle as MII',
+    source: url,
+    urls: [url],
+  });
+}
+
+async function scrapeBII() {
+  const url = 'https://www.tedco.md/program/baltimore-innovation-initiative/';
+  console.log(`  GET ${url}`);
+  const res = await fetchPage(url);
+  if (!res.ok) return buildResult('bii', { status: 'unknown', urls: [url], notes: 'Fetch failed — BII RFA timeline varies, check TEDCO site for current cycle' });
+  const text = stripHtml(res.html);
+  const status = inferStatus(text);
+  const raw    = findNearbyDate(text);
+  return buildResult('bii', {
+    status: status === 'unknown' ? 'open' : status,
+    deadlineRaw: raw,
+    notes: raw ? null : 'BII RFA timeline varies — check tedco.md for current open cycle',
+    source: url,
+    urls: [url],
+  });
+}
+
+async function scrapeSBIR_Match() {
+  const url = 'https://www.tedco.md/program/maryland-sbir-sttr-incentive-program/';
+  console.log(`  GET ${url}`);
+  const res = await fetchPage(url);
+  if (!res.ok) return buildResult('sbir_match', { status: 'unknown', urls: [url], notes: 'Fetch failed — check TEDCO site for current SBIR/STTR Matching application window' });
+  const text = stripHtml(res.html);
+  const status = inferStatus(text);
+  const raw    = findNearbyDate(text);
+  return buildResult('sbir_match', {
+    status: status === 'unknown' ? 'open' : status,
+    deadlineRaw: raw,
+    notes: raw ? null : 'Own quarterly application windows — check tedco.md for current open window',
+    source: url,
+    urls: [url],
+  });
+}
+
 // ── Grant registry ────────────────────────────────────────────────────────────
 const SCRAPERS = [
   { id: 'mii',       label: 'TEDCO MII',                  fn: scrapeTEDCO_MII    },
+  { id: 'mii_joint', label: 'MII Joint (USM)',            fn: scrapeMII_Joint    },
+  { id: 'mii_cf',    label: 'MII Company Formation',      fn: scrapeMII_CF       },
+  { id: 'bii',       label: 'Baltimore Innovation Init.', fn: scrapeBII          },
+  { id: 'sbir_match',label: 'TEDCO SBIR/STTR Match',      fn: scrapeSBIR_Match   },
   { id: 'mscrf',     label: 'MSCRF',                      fn: scrapeMSCRF        },
   { id: 'builder',   label: 'TEDCO Builder Fund',         fn: scrapeTEDCO_Builder },
   { id: 'inclusion', label: 'TEDCO Inclusion Fund',       fn: scrapeTEDCO_Inclusion },

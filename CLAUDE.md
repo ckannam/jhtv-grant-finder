@@ -37,7 +37,7 @@ One npm dependency: `@anthropic-ai/sdk` (used only by `ai_grant_updater.js`). Al
 - `loadLiveData()` / `applyLiveData()` — fetches `grants_live.json` on page load and overlays live deadline/status onto grants
 - `selectStage()` / `showLanding()` / `updateFormForStage()` — stage-gate landing screen logic (Pre-Co vs Co-Investment mode)
 - `collectData()` — reads all form fields into a plain object `d`
-- `getGrants(d)` — the core eligibility engine; takes the form data object, returns an array of 24 grant objects each with `{id, title, org, cat, s, amount, deadline, tags, r[]}` where `s` is `eligible | conditional | ineligible` and `r` is the array of pass/warn/fail reasons
+- `getGrants(d)` — the core eligibility engine; takes the form data object, returns an array of 28 grant objects each with `{id, title, org, cat, s, amount, deadline, tags, r[]}` where `s` is `eligible | conditional | ineligible` and `r` is the array of pass/warn/fail reasons
 - `renderResults(grants, browseMode)` — renders the results panel; in browse mode (empty form) shows all grants as a catalog without eligibility scoring; otherwise groups by eligible/conditional/ineligible. Stage filtering (PRE_CO_HIDE) applies in both modes. Never filter grants in `getGrants()`.
 - `cardHTML(g, browseMode)` — renders a single grant card; in browse mode hides status pill, reasons list, and conflict badges so cards show as neutral catalog entries
 - `getConflicts(pursuing, allGrants)` — conflict detection across 7 rules (pick-one, equivalent-work, sequential, disclose)
@@ -75,6 +75,8 @@ The `stage` global (`'pre_co'` or `'co'`) controls two things:
 `CO_FIT = ['barda','carbx','darpa','arpah']` — these get a "Co-stage fit" badge in co mode.
 
 **Never filter grants inside `getGrants()`** — filtering belongs in `renderResults()` so `stress_test.js` still sees all grants.
+
+Two form fields drive Maryland-specific grants beyond `marylandBased`: `baltimoreArea` (yes/no, shown when `marylandBased='yes'`) controls BII eligibility; `hasSbirPhaseI` (yes/no) controls TEDCO SBIR/STTR Match eligibility.
 
 ## Updating grant deadline data manually
 
