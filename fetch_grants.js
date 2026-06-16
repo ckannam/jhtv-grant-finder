@@ -191,9 +191,13 @@ async function main() {
   console.log('🔄 JHTV Grant Live Data Fetcher');
   console.log('   Started:', new Date().toISOString(), '\n');
 
+  const outPath = path.join(__dirname, 'grants_live.json');
+  let existing = { grants: {} };
+  try { existing = JSON.parse(fs.readFileSync(outPath, 'utf8')); } catch {}
+
   const live = {
     lastUpdated: new Date().toISOString(),
-    grants: {},
+    grants: { ...existing.grants },
   };
 
   // ── Step 1: grants.gov — open SBIR/STTR solicitations ─────────────────────
@@ -316,7 +320,6 @@ async function main() {
   }
 
   // ── Write output ───────────────────────────────────────────────────────────
-  const outPath = path.join(__dirname, 'grants_live.json');
   fs.writeFileSync(outPath, JSON.stringify(live, null, 2));
 
   const count = Object.keys(live.grants).length;

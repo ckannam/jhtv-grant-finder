@@ -1,15 +1,15 @@
 {
-  "lastUpdated": "2026-06-08T15:14:51.604Z",
+  "lastUpdated": "2026-06-16T01:29:13.236Z",
   "grants": {
     "nih_sbir": {
       "status": "open",
       "nextDeadline": "Apr 5, 2027",
-      "daysUntil": 301,
+      "daysUntil": 294,
       "openTopics": 3,
       "deadlineLabel": "Apr 5, 2027 · 3 open solicitations",
       "source": "grants.gov",
       "recentAwardCount": 38,
-      "avgAwardAmount": 689788,
+      "avgAwardAmount": 694588,
       "winnerData": {
         "totalRecentAwards": 38,
         "recentProjects": [
@@ -44,15 +44,15 @@
           {
             "company": "KALOCYTE, INC.",
             "title": "ErythroMer: Nanoscale BioSynthetic Red Cell Substitute",
-            "amount": 997590,
-            "year": 2024,
+            "amount": 995470,
+            "year": 2025,
             "mechanism": "R44"
           },
           {
             "company": "KALOCYTE, INC.",
             "title": "ErythroMer: Nanoscale BioSynthetic Red Cell Substitute",
-            "amount": 995470,
-            "year": 2025,
+            "amount": 997590,
+            "year": 2024,
             "mechanism": "R44"
           }
         ],
@@ -67,7 +67,7 @@
       "deadlineLabel": "Rolling · 1 open solicitation",
       "source": "grants.gov",
       "recentAwardCount": 25,
-      "avgAwardAmount": 567448,
+      "avgAwardAmount": 567375,
       "nsfWinners": [
         {
           "org": "SAMARA AEROSPACE, INC.",
@@ -76,15 +76,15 @@
           "state": "CA"
         },
         {
-          "org": "NEURALTRAK, INC",
-          "title": "SBIR Phase II: AI-Powered Low-dose, Low-cost, High-Quality Computed Tomography (CT) Imaging",
-          "amount": 1250000,
-          "state": "CA"
-        },
-        {
           "org": "REFIBERED, INC.",
           "title": "SBIR Phase II: Automated Textile Sorting Systems for Precision Resale and Closed-Loop Material Flow",
           "amount": 1248225,
+          "state": "CA"
+        },
+        {
+          "org": "NEURALTRAK, INC",
+          "title": "SBIR Phase II: AI-Powered Low-dose, Low-cost, High-Quality Computed Tomography (CT) Imaging",
+          "amount": 1250000,
           "state": "CA"
         },
         {
@@ -104,7 +104,7 @@
     "nih_sttr": {
       "status": "open",
       "nextDeadline": "Apr 5, 2027",
-      "daysUntil": 301,
+      "daysUntil": 294,
       "openTopics": 1,
       "deadlineLabel": "Apr 5, 2027 · 1 open solicitation",
       "source": "grants.gov",
@@ -162,7 +162,7 @@
     "dod_sbir": {
       "status": "open",
       "nextDeadline": "Jun 22, 2026",
-      "daysUntil": 14,
+      "daysUntil": 7,
       "openTopics": 7,
       "deadlineLabel": "Jun 22, 2026 · 7 open solicitations",
       "source": "grants.gov"
@@ -170,7 +170,7 @@
     "darpa": {
       "status": "open",
       "nextDeadline": "Sep 30, 2026",
-      "daysUntil": 114,
+      "daysUntil": 107,
       "openTopics": 1,
       "deadlineLabel": "Sep 30, 2026 · 1 open solicitation",
       "source": "grants.gov"
@@ -178,7 +178,7 @@
     "doe_sbir": {
       "status": "open",
       "nextDeadline": "Sep 30, 2026",
-      "daysUntil": 114,
+      "daysUntil": 107,
       "openTopics": 1,
       "deadlineLabel": "Sep 30, 2026 · 1 open solicitation",
       "source": "grants.gov"
