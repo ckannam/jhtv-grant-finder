@@ -1,0 +1,15 @@
+{
+  "name": "jhtv-grant-finder",
+  "version": "1.0.0",
+  "description": "JHTV Grant Eligibility Tool — automated data pipeline",
+  "private": true,
+  "scripts": {
+    "test": "node stress_test.js",
+    "fetch": "node fetch_grants.js",
+    "scrape": "node scrape_grants.js",
+    "ai-update": "node ai_grant_updater.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.104.2"
+  }
+}

@@ -9,20 +9,26 @@ A single-page grant eligibility diagnostic tool for Johns Hopkins Technology Ven
 ## Running things
 
 ```bash
-# Run the eligibility logic stress test (12 personas, pass/fail report)
-node stress_test.js
+# Install npm dependency (only needed once, or after cloning)
+npm install
+
+# Run the eligibility logic stress test (8 personas, 192 checks)
+node stress_test.js          # or: npm test
 
 # Fetch live data for the 6 API-sourced federal grants (writes grants_live.json)
-node fetch_grants.js
+node fetch_grants.js         # or: npm run fetch
 
 # Scrape deadlines for the 18 non-API grant websites (merges into grants_live.json)
-node scrape_grants.js
+node scrape_grants.js        # or: npm run scrape
+
+# AI-powered grant deadline updater (requires ANTHROPIC_API_KEY env var)
+node ai_grant_updater.js     # or: npm run ai-update
 
 # Open the tool locally
 open jhtv_grant_eligibility.html
 ```
 
-No build step, no dependencies, no `package.json`. Everything runs in Node.js (built-ins only) or directly in the browser.
+One npm dependency: `@anthropic-ai/sdk` (used only by `ai_grant_updater.js`). All other scripts use Node.js built-ins only.
 
 ## Architecture
 
@@ -43,16 +49,21 @@ No build step, no dependencies, no `package.json`. Everything runs in Node.js (b
 
 **`scrape_grants.js`** — scrapes 18 grant websites that have no API (Maryland programs, disease foundations, private foundations). Also merges into existing `grants_live.json`.
 
-**`stress_test.js`** — standalone Node script that duplicates the `getGrants()` logic and runs 12 founder personas to verify eligibility outcomes. Run this after any change to grant logic in the HTML to catch regressions. Note: this file has its own copy of the grant logic — if you change eligibility rules in `jhtv_grant_eligibility.html`, you must manually sync those changes to `stress_test.js`.
+**`ai_grant_updater.js`** — uses the Claude API (`claude-haiku-4-5-20251001`) with a `web_fetch` tool to visit the same 18 grant websites and extract deadline/status data via AI inference rather than code parsing. More accurate than `scrape_grants.js` for sites with dynamic content. Requires `ANTHROPIC_API_KEY` env var. Runs on a quarterly schedule in CI; can also be triggered manually.
+
+**`stress_test.js`** — runs 8 founder personas against `getGrants()` and verifies 192 expected outcomes. Extracts `getGrants()` directly from `jhtv_grant_eligibility.html` at runtime using `new Function()`, so it always stays in sync with the HTML — no manual code duplication needed.
 
 ## GitHub Actions
 
-Two automated workflows in `.github/workflows/`:
+Three automated workflows in `.github/workflows/`:
 
-- **`refresh_grants.yml`** — runs every Tuesday at 8 AM ET; executes `fetch_grants.js` and commits updated `grants_live.json`
-- **`scrape_grants.yml`** — runs on the 1st of each month at 8 AM ET; executes `scrape_grants.js` and commits updated `grants_live.json`
+| Workflow | Schedule | Script | Covers |
+|---|---|---|---|
+| `refresh_grants.yml` | Every Tuesday 8 AM ET | `fetch_grants.js` | 6 federal API grants |
+| `scrape_grants.yml` | 1st of month 8 AM ET | `scrape_grants.js` | 18 scraped grants |
+| `ai_deadline_updater.yml` | Jan/Apr/Jul/Oct 1st 8 AM ET | `ai_grant_updater.js` | Same 18 grants, AI-read |
 
-Both use `permissions: contents: write` and native `git push` (no third-party push action).
+All three use `permissions: contents: write` and native `git push`. `ai_deadline_updater.yml` also requires the `ANTHROPIC_API_KEY` repository secret (add via **Settings → Secrets and variables → Actions**).
 
 ## Stage-gate and grant filtering
 
@@ -67,4 +78,4 @@ The `stage` global (`'pre_co'` or `'co'`) controls two things:
 
 ## Updating grant deadline data manually
 
-The `grant-deadline-updater` Claude skill (`grant-deadline-updater.skill`) automates manual scraping when `scrape_grants.js` fails or data is stale. Invoke it via the skill system to visit each grant website and write structured results back to `grants_live.json`.
+The `grant-deadline-updater` Claude Code skill (`grant-deadline-updater/SKILL.md`) visits each grant website interactively when you need a one-off refresh. The automated equivalent is `ai_grant_updater.js`, which the quarterly CI workflow runs headlessly using the same logic.
