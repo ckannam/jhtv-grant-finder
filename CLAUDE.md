@@ -37,11 +37,11 @@ One npm dependency: `@anthropic-ai/sdk` (used only by `ai_grant_updater.js`). Al
 - `loadLiveData()` / `applyLiveData()` — fetches `grants_live.json` on page load and overlays live deadline/status onto grants
 - `selectStage()` / `showLanding()` / `updateFormForStage()` — stage-gate landing screen logic (Pre-Co vs Co-Investment mode)
 - `collectData()` — reads all form fields into a plain object `d`
-- `getGrants(d)` — the core eligibility engine; takes the form data object, returns an array of 26 grant objects each with `{id, title, org, cat, s, amount, deadline, tags, r[]}` where `s` is `eligible | conditional | ineligible` and `r` is the array of pass/warn/fail reasons
-- `renderResults(grants)` — renders the results panel; filters by `stage` global (hides advanced programs in pre-co mode) — this is where display filtering happens, never in `getGrants()`
-- `cardHTML(g)` — renders a single grant card
+- `getGrants(d)` — the core eligibility engine; takes the form data object, returns an array of 24 grant objects each with `{id, title, org, cat, s, amount, deadline, tags, r[]}` where `s` is `eligible | conditional | ineligible` and `r` is the array of pass/warn/fail reasons
+- `renderResults(grants, browseMode)` — renders the results panel; in browse mode (empty form) shows all grants as a catalog without eligibility scoring; otherwise groups by eligible/conditional/ineligible. Stage filtering (PRE_CO_HIDE) applies in both modes. Never filter grants in `getGrants()`.
+- `cardHTML(g, browseMode)` — renders a single grant card; in browse mode hides status pill, reasons list, and conflict badges so cards show as neutral catalog entries
 - `getConflicts(pursuing, allGrants)` — conflict detection across 7 rules (pick-one, equivalent-work, sequential, disclose)
-- `evaluate()` — called on every form change; orchestrates `collectData → getGrants → applyLiveData → renderResults`
+- `evaluate()` — called on every form change; sets `browseMode = !anyFieldFilled`, then orchestrates `getGrants → applyLiveData → renderResults(grants, browseMode)`
 
 **`grants_live.json`** — the data file the HTML reads. Top-level fields: `lastUpdated` (set by `fetch_grants.js`) and `lastScrapedAt` (set by `scrape_grants.js`), plus a `grants` object keyed by grant ID.
 
@@ -63,7 +63,7 @@ Three automated workflows in `.github/workflows/`:
 | `scrape_grants.yml` | 1st of month 8 AM ET | `scrape_grants.js` | 18 scraped grants |
 | `ai_deadline_updater.yml` | Jan/Apr/Jul/Oct 1st 8 AM ET | `ai_grant_updater.js` | Same 18 grants, AI-read |
 
-All three use `permissions: contents: write` and native `git push`. `ai_deadline_updater.yml` also requires the `ANTHROPIC_API_KEY` repository secret (add via **Settings → Secrets and variables → Actions**).
+All three use `permissions: contents: write` and native `git push`. `ai_deadline_updater.yml` requires an Anthropic API key stored as the `PERSONAL_DEV` repository secret (Settings → Secrets and variables → Actions). The workflow maps it to the `ANTHROPIC_API_KEY` env var that the SDK reads.
 
 ## Stage-gate and grant filtering
 
