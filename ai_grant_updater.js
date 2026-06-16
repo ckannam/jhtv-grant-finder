@@ -163,7 +163,12 @@ Use the web_fetch tool to fetch the page, then return the JSON result. Current d
       const text = response.content.find(b => b.type === 'text')?.text || '';
       const jsonMatch = text.match(/\{[\s\S]*\}/);
       if (!jsonMatch) throw new Error(`No JSON in response: ${text.slice(0, 200)}`);
-      const result = JSON.parse(jsonMatch[0]);
+      let result;
+      try {
+        result = JSON.parse(jsonMatch[0]);
+      } catch (parseErr) {
+        throw new Error(`JSON parse failed for ${grant.id}: ${parseErr.message} — raw: ${jsonMatch[0].slice(0, 100)}`);
+      }
       // Ensure daysUntil is computed if nextDeadline is provided
       if (result.nextDeadline && !result.daysUntil) {
         result.daysUntil = daysUntil(result.nextDeadline);

@@ -381,9 +381,9 @@ async function scrapeFDA_CDC() {
   console.log(`  GET ${url}`);
   const res = await fetchPage(url);
   if (!res.ok) return buildResult('fda_cdc', {
-    status: 'open',
+    status: 'unknown',
     urls: [url],
-    notes: 'Check seed.nih.gov for current FDA/CDC SBIR joint NOFOs',
+    notes: 'Fetch failed — check seed.nih.gov for current FDA/CDC SBIR joint NOFOs',
   });
   const text = stripHtml(res.html);
   const status = inferStatus(text);
@@ -401,9 +401,9 @@ async function scrapeVA_SBIR() {
   console.log(`  GET ${url}`);
   const res = await fetchPage(url);
   if (!res.ok) return buildResult('va_sbir', {
-    status: 'open',
+    status: 'unknown',
     urls: [url, 'https://sbir.gov/agencies/VA'],
-    notes: 'Check sbir.gov/agencies/VA for open VA solicitations',
+    notes: 'Fetch failed — check sbir.gov/agencies/VA for open VA solicitations',
   });
   const text = stripHtml(res.html);
   const status = inferStatus(text);

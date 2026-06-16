@@ -71,6 +71,8 @@
   .grant-card.eligible { border-left-color: var(--green); }
   .grant-card.conditional { border-left-color: #e6a817; }
   .grant-card.ineligible { border-left-color: #dc2626; opacity: 0.55; }
+  .grant-card.browse { border-left-color: var(--border); }
+  .browse-banner { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
 
   .card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; margin-bottom: 7px; }
   .card-title { font-size: 13px; font-weight: 700; line-height: 1.3; }
@@ -1015,7 +1017,7 @@ function updateFormForStage() {
 // ── Rendering ──────────────────────────────────────────────────────────────
 function setFilter(f) { activeFilter = f; renderResults(getGrants(collectData())); }
 
-function cardHTML(g) {
+function cardHTML(g, browseMode = false) {
   const pillLabel = g.s === 'eligible' ? '✓ Eligible' : g.s === 'conditional' ? '◐ Conditions' : '✗ Not Eligible';
   const tagLabel = { 'tag-md':'🏛 Maryland', 'tag-fed':'🇺🇸 Federal', 'tag-jhu':'🎓 JHU/Private', 'tag-priv':'🏦 Foundation', 'tag-disease':'🩺 Disease Fdn' };
   const tagHTML = g.tags.map(t => `<span class="meta-chip ${t}">${tagLabel[t]||t}</span>`).join('');
@@ -1027,7 +1029,7 @@ function cardHTML(g) {
     ? `<span class="co-fit-badge">✦ Co-stage fit</span>`
     : '';
   const isTracked = pursuing.has(g.id);
-  const canTrack = g.s !== 'ineligible';
+  const canTrack = browseMode || g.s !== 'ineligible';
   const trackBtn = canTrack
     ? `<button class="track-btn ${isTracked?'tracked':''}" onclick="event.stopPropagation();togglePursuing('${g.id}')">${isTracked ? '★ Pursuing' : '☆ Track'}</button>`
     : '';
@@ -1035,7 +1037,7 @@ function cardHTML(g) {
   const allGrants = getGrants(collectData());
   const activeConflicts = getConflicts(pursuing, allGrants);
   const myConflicts = activeConflicts.filter(c => c.grants.includes(g.id) && pursuing.has(g.id));
-  const conflictBadge = myConflicts.length
+  const conflictBadge = (!browseMode && myConflicts.length)
     ? `<div class="conflict-badge-inline">${myConflicts.map(c => {
         const cfg = CONFLICT_CONFIG[c.type];
         return `<span style="background:${cfg.bg};color:${cfg.color};font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;margin-right:4px">${cfg.icon} ${cfg.label}</span>`;
@@ -1077,11 +1079,12 @@ function cardHTML(g) {
     }
   }
 
-  return `<div class="grant-card ${g.s} ${isTracked?'tracked':''}">
+  const cardStatus = browseMode ? 'browse' : g.s;
+  return `<div class="grant-card ${cardStatus} ${isTracked?'tracked':''}">
     <div class="card-header">
       <div><div class="card-title">${g.title}${coFitBadge}</div><div class="card-org">${g.org}</div></div>
       <div style="display:flex;flex-direction:column;align-items:flex-end;gap:5px;flex-shrink:0">
-        <span class="status-pill ${g.s}">${pillLabel}</span>
+        ${browseMode ? '' : `<span class="status-pill ${g.s}">${pillLabel}</span>`}
         ${trackBtn}
       </div>
     </div>
@@ -1089,7 +1092,7 @@ function cardHTML(g) {
     <div class="card-meta">
       <span class="meta-chip amount">💰 ${g.amount}</span>${tagHTML}<span class="meta-chip">📅 ${g.deadline}${liveTag}</span>
     </div>
-    <div class="reasons">${rHTML}</div>
+    ${browseMode ? '' : `<div class="reasons">${rHTML}</div>`}
     ${winnersHTML}
   </div>`;
 }
@@ -1133,7 +1136,7 @@ function pursuingPanelHTML(allGrants) {
   </div>`;
 }
 
-function renderResults(grants) {
+function renderResults(grants, browseMode = false) {
   const panel = document.getElementById('resultsPanel');
 
   let visible  = grants;
@@ -1155,9 +1158,13 @@ function renderResults(grants) {
   }).join('');
 
   let body = '';
-  if (elig.length) { body += `<div class="divider-label" style="color:var(--green)">✓ Eligible — ${elig.length}</div>${elig.map(cardHTML).join('')}`; }
-  if (cond.length) { body += `<div class="divider-label" style="color:var(--yellow)">◐ Check Conditions — ${cond.length}</div>${cond.map(cardHTML).join('')}`; }
-  if (inel.length) { body += `<div class="divider-label" style="color:var(--red)">✗ Not Eligible — ${inel.length}</div>${inel.map(cardHTML).join('')}`; }
+  if (browseMode) {
+    body = filtered.map(g => cardHTML(g, true)).join('');
+  } else {
+    if (elig.length) { body += `<div class="divider-label" style="color:var(--green)">✓ Eligible — ${elig.length}</div>${elig.map(g => cardHTML(g)).join('')}`; }
+    if (cond.length) { body += `<div class="divider-label" style="color:var(--yellow)">◐ Check Conditions — ${cond.length}</div>${cond.map(g => cardHTML(g)).join('')}`; }
+    if (inel.length) { body += `<div class="divider-label" style="color:var(--red)">✗ Not Eligible — ${inel.length}</div>${inel.map(g => cardHTML(g)).join('')}`; }
+  }
 
   let advancedHTML = '';
   if (advanced.length) {
@@ -1167,7 +1174,7 @@ function renderResults(grants) {
           ▸ Advanced Programs (${advanced.length})
           <span style="font-weight:400"> — typically require later-stage assets or co-investment traction. Switch to Co-Investment mode to see full eligibility details.</span>
         </summary>
-        <div style="opacity:0.65;margin-top:10px;pointer-events:none">${advanced.map(cardHTML).join('')}</div>
+        <div style="opacity:0.65;margin-top:10px;pointer-events:none">${advanced.map(g => cardHTML(g, browseMode)).join('')}</div>
       </details>`;
   }
 
@@ -1175,14 +1182,18 @@ function renderResults(grants) {
   const totalC = visible.filter(g=>g.s==='conditional').length;
   const totalI = visible.filter(g=>g.s==='ineligible').length;
 
-  panel.innerHTML = `
-    <div class="results-header">
-      <h2>Grant Matches <span style="font-weight:400;font-size:12px;color:var(--text-muted)">(${visible.length} indexed)</span></h2>
-      <div class="score-row">
+  const headerRight = browseMode
+    ? `<div class="browse-banner">Fill in the form to see your eligibility for each grant</div>`
+    : `<div class="score-row">
         <span class="score-chip e">✓ ${totalE}</span>
         <span class="score-chip c">◐ ${totalC}</span>
         <span class="score-chip i">✗ ${totalI}</span>
-      </div>
+      </div>`;
+
+  panel.innerHTML = `
+    <div class="results-header">
+      <h2>${browseMode ? 'Grant Catalog' : 'Grant Matches'} <span style="font-weight:400;font-size:12px;color:var(--text-muted)">(${visible.length} indexed)</span></h2>
+      ${headerRight}
     </div>
     ${pursuingPanelHTML(grants)}
     <div class="filter-tabs">${tabsHTML}</div>
@@ -1192,19 +1203,17 @@ function renderResults(grants) {
 
 function evaluate() {
   const d = collectData();
-  if (!Object.values(d).some(v=>v&&v!=='')) {
-    document.getElementById('resultsPanel').innerHTML = `<div class="empty-state"><div class="icon">🔍</div><p>Fill in the form to see matching grants and eligibility rationale.</p></div>`;
-    history.replaceState(null, '', location.pathname);
-    return;
-  }
-  // Apply live data overlay before rendering
+  const browseMode = !Object.values(d).some(v => v && v !== '');
   const grants = getGrants(d).map(applyLiveData);
-  renderResults(grants);
-  // Update URL hash so current assessment is shareable
-  const params = new URLSearchParams();
-  Object.entries(d).forEach(([k,v]) => { if (v && v !== '') params.set(k, v); });
-  const hash = params.toString();
-  if (hash) history.replaceState(null, '', '#' + hash);
+  renderResults(grants, browseMode);
+  if (browseMode) {
+    history.replaceState(null, '', location.pathname);
+  } else {
+    const params = new URLSearchParams();
+    Object.entries(d).forEach(([k,v]) => { if (v && v !== '') params.set(k, v); });
+    const hash = params.toString();
+    if (hash) history.replaceState(null, '', '#' + hash);
+  }
 }
 
 // Load live data, restore tracker, and restore form from URL hash

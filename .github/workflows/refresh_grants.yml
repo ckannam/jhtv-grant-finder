@@ -1,7 +1,7 @@
 name: Refresh Grant Live Data
 
 on:
-  # Run every Monday at 7am ET (12:00 UTC)
+  # Run every Tuesday at 8am ET (12:00 UTC)
   schedule:
     - cron: '0 12 * * 2'
   # Also allow manual trigger from GitHub Actions tab
