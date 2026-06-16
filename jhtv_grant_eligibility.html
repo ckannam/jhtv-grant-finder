@@ -122,6 +122,45 @@
   .conflict-item-title { font-size: 12px; font-weight: 700; flex: 1; }
   .conflict-type-pill { font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 10px; flex-shrink: 0; }
   .conflict-item-msg { font-size: 11.5px; color: var(--text); line-height: 1.55; opacity: 0.85; }
+
+  /* Stage-gate landing screen */
+  #landingScreen {
+    position: fixed; inset: 0; background: var(--bg);
+    display: flex; flex-direction: column;
+    opacity: 1; transition: opacity 0.2s ease; z-index: 100;
+  }
+  .landing-body {
+    flex: 1; display: flex; align-items: center; justify-content: center; padding: 40px 24px;
+  }
+  .landing-card { max-width: 720px; width: 100%; text-align: center; }
+  .landing-card h2 { font-size: 22px; font-weight: 700; color: var(--text); margin-bottom: 28px; }
+  .stage-options { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .stage-card {
+    border: 2px solid var(--border); border-radius: 10px; padding: 24px 20px;
+    background: white; cursor: pointer; text-align: left;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .stage-card:hover { border-color: var(--blue-mid); box-shadow: 0 4px 16px rgba(0,45,114,0.12); }
+  .stage-card-title { font-size: 16px; font-weight: 700; color: var(--blue); margin-bottom: 10px; }
+  .stage-card-desc { font-size: 13px; color: var(--text-muted); line-height: 1.55; }
+
+  /* Main layout fade */
+  #mainLayout { opacity: 0; transition: opacity 0.2s ease; }
+
+  /* Co-stage fit badge on grant cards */
+  .co-fit-badge {
+    font-size: 10px; font-weight: 700;
+    background: var(--green-light); color: var(--green);
+    padding: 2px 8px; border-radius: 12px; margin-left: 6px;
+    vertical-align: middle;
+  }
+
+  /* Pre-co dilutive note */
+  #dilutiveNote {
+    display: none; font-size: 12px; color: var(--text-muted);
+    background: var(--blue-light); border-radius: 6px;
+    padding: 10px 12px; margin-bottom: 12px; line-height: 1.5;
+  }
 </style>
 </head>
 <body>
@@ -133,9 +172,34 @@
   </div>
   <div class="badge">24 Grants Indexed</div>
   <div id="liveDataBadge" style="display:none;font-size:11px;background:rgba(255,255,255,0.12);padding:3px 10px;border-radius:20px;margin-left:8px"></div>
+  <span id="stageBadge" style="display:none;font-size:11px;background:rgba(255,255,255,0.12);padding:3px 10px;border-radius:20px;margin-left:8px;color:white"></span>
 </header>
 
-<div class="layout">
+<div id="landingScreen">
+  <header style="flex-shrink:0">
+    <div>
+      <div class="logo">JHT<span>V</span> Grant Diagnostic</div>
+      <div class="subtitle">Translational Funding Eligibility Engine · Johns Hopkins Technology Ventures</div>
+    </div>
+  </header>
+  <div class="landing-body">
+    <div class="landing-card">
+      <h2>Where is your venture in the funding journey?</h2>
+      <div class="stage-options">
+        <div class="stage-card" onclick="selectStage('pre_co')">
+          <div class="stage-card-title">Pre-Co-Investment</div>
+          <div class="stage-card-desc">You have not yet secured an outside co-investor. Your venture is being funded through grants, internal university resources, or founder capital, and you are working to de-risk the technology enough to attract private capital.</div>
+        </div>
+        <div class="stage-card" onclick="selectStage('co')">
+          <div class="stage-card-title">Co-Investment</div>
+          <div class="stage-card-desc">An outside investor (VC, angel, or institutional) has co-invested alongside university or grant funding. Your venture has outside capital validation and is working toward scale.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="layout" id="mainLayout" style="display:none">
   <div class="form-panel">
 
     <div class="form-section">
@@ -257,15 +321,29 @@
           <option value="over_50">50+ employees</option>
         </select>
       </div>
-      <div class="field">
-        <label>Aggregate Dilutive Funding <span class="hint">(VC, Angel, SAFEs; excl. grants)</span></label>
-        <select id="dilutive" onchange="evaluate()">
+      <div id="dilutiveFieldWrap">
+        <div class="field">
+          <label id="dilutiveLabel">Aggregate Dilutive Funding <span class="hint">(VC, Angel, SAFEs; excl. grants)</span></label>
+          <select id="dilutive" onchange="evaluate()">
+            <option value="">— Select —</option>
+            <option value="0">$0 — none raised</option>
+            <option value="lt500k">Under $500,000</option>
+            <option value="lt2m">$500,001 – $2,000,000</option>
+            <option value="lt5m">$2,000,001 – $5,000,000</option>
+            <option value="gt5m">Over $5,000,000</option>
+          </select>
+        </div>
+      </div>
+      <div id="dilutiveNote">Pre-co ventures typically have not raised significant dilutive capital — if this has changed, switch to Co-Investment mode above.</div>
+      <div id="coInvestorField" class="field" style="display:none">
+        <label>Co-Investor Type</label>
+        <select id="coInvestorType" onchange="evaluate()">
           <option value="">— Select —</option>
-          <option value="0">$0 — none raised</option>
-          <option value="lt500k">Under $500,000</option>
-          <option value="lt2m">$500,001 – $2,000,000</option>
-          <option value="lt5m">$2,000,001 – $5,000,000</option>
-          <option value="gt5m">Over $5,000,000</option>
+          <option value="angel">Angel / individual investor</option>
+          <option value="vc">Institutional VC</option>
+          <option value="corporate">Corporate / strategic investor</option>
+          <option value="family_office">Family office / non-institutional</option>
+          <option value="multiple">Multiple types</option>
         </select>
       </div>
       <div class="field">
@@ -326,6 +404,11 @@
 // Populated by fetch_grants.js → grants_live.json, fetched on page load.
 // Each entry overrides the static deadline/amount/status in the matching grant.
 let LIVE_DATA = {};
+
+// ── Stage gate ────────────────────────────────────────────────────────────────
+let stage = null;
+const PRE_CO_HIDE = new Set(['barda','carbx','darpa','arpah','fda_cdc','va_sbir']);
+const CO_FIT      = new Set(['barda','carbx','darpa','arpah']);
 
 function loadLiveData() {
   fetch('./grants_live.json?v=' + Date.now())
@@ -404,8 +487,9 @@ function collectData() {
     teamSize:       getVal('teamSize'),
     dilutive:       getVal('dilutive'),
     sedi:           getVal('sedi'),
-    stemCells:      getRadio('stemCells'),
-    diseaseArea:    getVal('diseaseArea'),
+    stemCells:       getRadio('stemCells'),
+    diseaseArea:     getVal('diseaseArea'),
+    coInvestorType:  getVal('coInvestorType'),
   };
 }
 
@@ -876,6 +960,58 @@ const CONFLICT_CONFIG = {
   disclose:        { color: '#2244aa', bg: '#e8eef8', icon: 'ℹ️', label: 'Must Disclose' },
 };
 
+// ── Stage gate ────────────────────────────────────────────────────────────────
+function selectStage(s) {
+  stage = s;
+  const label = s === 'pre_co' ? 'Pre-Co' : 'Co-Investment';
+  const badge = document.getElementById('stageBadge');
+  badge.innerHTML = `Stage: ${label} <a href="#" onclick="event.preventDefault();showLanding()" style="color:inherit;opacity:0.7;margin-left:6px;font-size:10px;text-decoration:underline">change</a>`;
+  badge.style.display = 'inline-block';
+
+  const landing = document.getElementById('landingScreen');
+  const main    = document.getElementById('mainLayout');
+  landing.style.opacity = '0';
+  setTimeout(() => {
+    landing.style.display = 'none';
+    main.style.display    = 'grid';
+    requestAnimationFrame(() => { main.style.opacity = '1'; });
+  }, 200);
+
+  updateFormForStage();
+  evaluate();
+}
+
+function showLanding() {
+  stage = null;
+  document.getElementById('stageBadge').style.display = 'none';
+  const landing = document.getElementById('landingScreen');
+  const main    = document.getElementById('mainLayout');
+  main.style.opacity = '0';
+  setTimeout(() => {
+    main.style.display    = 'none';
+    landing.style.display = 'flex';
+    requestAnimationFrame(() => { landing.style.opacity = '1'; });
+  }, 200);
+}
+
+function updateFormForStage() {
+  const dilutiveWrap  = document.getElementById('dilutiveFieldWrap');
+  const dilutiveNote  = document.getElementById('dilutiveNote');
+  const dilutiveLabel = document.getElementById('dilutiveLabel');
+  const coInvField    = document.getElementById('coInvestorField');
+
+  if (stage === 'pre_co') {
+    dilutiveWrap.style.display = 'none';
+    dilutiveNote.style.display = 'block';
+    coInvField.style.display   = 'none';
+  } else {
+    dilutiveWrap.style.display = 'block';
+    dilutiveNote.style.display = 'none';
+    dilutiveLabel.innerHTML    = 'Amount Raised (Dilutive) <span class="hint">(VC, Angel, SAFEs; excl. grants)</span>';
+    coInvField.style.display   = 'block';
+  }
+}
+
 // ── Rendering ──────────────────────────────────────────────────────────────
 function setFilter(f) { activeFilter = f; renderResults(getGrants(collectData())); }
 
@@ -886,6 +1022,9 @@ function cardHTML(g) {
   const rHTML = g.r.map(r => `<div class="reason-item ${r.t}"><span class="icon">${r.t==='pass'?'✓':r.t==='warn'?'⚠':'✗'}</span><span>${r.x}</span></div>`).join('');
   const liveTag = g._live
     ? `<span style="font-size:9px;font-weight:700;background:#e8f5ee;color:#1a7a4a;padding:1px 6px;border-radius:3px;margin-left:5px" title="Deadline verified from ${g._live.source}">🟢 LIVE</span>`
+    : '';
+  const coFitBadge = (stage === 'co' && CO_FIT.has(g.id))
+    ? `<span class="co-fit-badge">✦ Co-stage fit</span>`
     : '';
   const isTracked = pursuing.has(g.id);
   const canTrack = g.s !== 'ineligible';
@@ -940,7 +1079,7 @@ function cardHTML(g) {
 
   return `<div class="grant-card ${g.s} ${isTracked?'tracked':''}">
     <div class="card-header">
-      <div><div class="card-title">${g.title}</div><div class="card-org">${g.org}</div></div>
+      <div><div class="card-title">${g.title}${coFitBadge}</div><div class="card-org">${g.org}</div></div>
       <div style="display:flex;flex-direction:column;align-items:flex-end;gap:5px;flex-shrink:0">
         <span class="status-pill ${g.s}">${pillLabel}</span>
         ${trackBtn}
@@ -996,14 +1135,22 @@ function pursuingPanelHTML(allGrants) {
 
 function renderResults(grants) {
   const panel = document.getElementById('resultsPanel');
+
+  let visible  = grants;
+  let advanced = [];
+  if (stage === 'pre_co') {
+    visible  = grants.filter(g => !PRE_CO_HIDE.has(g.id));
+    advanced = grants.filter(g =>  PRE_CO_HIDE.has(g.id));
+  }
+
   const cats = ['All','Maryland','Federal','JHU/Private','Disease Foundation','Private Foundation'];
-  const filtered = activeFilter === 'All' ? grants : grants.filter(g => g.cat === activeFilter);
+  const filtered = activeFilter === 'All' ? visible : visible.filter(g => g.cat === activeFilter);
   const elig = filtered.filter(g=>g.s==='eligible');
   const cond = filtered.filter(g=>g.s==='conditional');
   const inel = filtered.filter(g=>g.s==='ineligible');
 
   const tabsHTML = cats.map(c => {
-    const cnt = c==='All' ? grants.length : grants.filter(g=>g.cat===c).length;
+    const cnt = c==='All' ? visible.length : visible.filter(g=>g.cat===c).length;
     return `<div class="filter-tab ${activeFilter===c?'active':''}" onclick="setFilter('${c}')">${c} <span style="opacity:0.55">${cnt}</span></div>`;
   }).join('');
 
@@ -1012,13 +1159,25 @@ function renderResults(grants) {
   if (cond.length) { body += `<div class="divider-label" style="color:var(--yellow)">◐ Check Conditions — ${cond.length}</div>${cond.map(cardHTML).join('')}`; }
   if (inel.length) { body += `<div class="divider-label" style="color:var(--red)">✗ Not Eligible — ${inel.length}</div>${inel.map(cardHTML).join('')}`; }
 
-  const totalE = grants.filter(g=>g.s==='eligible').length;
-  const totalC = grants.filter(g=>g.s==='conditional').length;
-  const totalI = grants.filter(g=>g.s==='ineligible').length;
+  let advancedHTML = '';
+  if (advanced.length) {
+    advancedHTML = `
+      <details style="margin-top:20px;border:1px solid var(--border);border-radius:8px;padding:12px 16px">
+        <summary style="cursor:pointer;font-size:12px;font-weight:600;color:var(--text-muted);list-style:none;display:flex;align-items:center;gap:6px">
+          ▸ Advanced Programs (${advanced.length})
+          <span style="font-weight:400"> — typically require later-stage assets or co-investment traction. Switch to Co-Investment mode to see full eligibility details.</span>
+        </summary>
+        <div style="opacity:0.65;margin-top:10px;pointer-events:none">${advanced.map(cardHTML).join('')}</div>
+      </details>`;
+  }
+
+  const totalE = visible.filter(g=>g.s==='eligible').length;
+  const totalC = visible.filter(g=>g.s==='conditional').length;
+  const totalI = visible.filter(g=>g.s==='ineligible').length;
 
   panel.innerHTML = `
     <div class="results-header">
-      <h2>Grant Matches <span style="font-weight:400;font-size:12px;color:var(--text-muted)">(${grants.length} indexed)</span></h2>
+      <h2>Grant Matches <span style="font-weight:400;font-size:12px;color:var(--text-muted)">(${visible.length} indexed)</span></h2>
       <div class="score-row">
         <span class="score-chip e">✓ ${totalE}</span>
         <span class="score-chip c">◐ ${totalC}</span>
@@ -1027,7 +1186,8 @@ function renderResults(grants) {
     </div>
     ${pursuingPanelHTML(grants)}
     <div class="filter-tabs">${tabsHTML}</div>
-    ${body}`;
+    ${body}
+    ${advancedHTML}`;
 }
 
 function evaluate() {
