@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-16T01:40:19.936Z",
+  "lastUpdated": "2026-06-16T16:40:54.456Z",
   "grants": {
     "nih_sbir": {
       "status": "open",
@@ -44,15 +44,15 @@
           {
             "company": "KALOCYTE, INC.",
             "title": "ErythroMer: Nanoscale BioSynthetic Red Cell Substitute",
-            "amount": 995470,
-            "year": 2025,
+            "amount": 997590,
+            "year": 2024,
             "mechanism": "R44"
           },
           {
             "company": "KALOCYTE, INC.",
             "title": "ErythroMer: Nanoscale BioSynthetic Red Cell Substitute",
-            "amount": 997590,
-            "year": 2024,
+            "amount": 995470,
+            "year": 2025,
             "mechanism": "R44"
           }
         ],
@@ -67,7 +67,7 @@
       "deadlineLabel": "Rolling · 1 open solicitation",
       "source": "grants.gov",
       "recentAwardCount": 25,
-      "avgAwardAmount": 567375,
+      "avgAwardAmount": 567270,
       "nsfWinners": [
         {
           "org": "SAMARA AEROSPACE, INC.",
@@ -76,15 +76,15 @@
           "state": "CA"
         },
         {
-          "org": "REFIBERED, INC.",
-          "title": "SBIR Phase II: Automated Textile Sorting Systems for Precision Resale and Closed-Loop Material Flow",
-          "amount": 1248225,
-          "state": "CA"
-        },
-        {
           "org": "NEURALTRAK, INC",
           "title": "SBIR Phase II: AI-Powered Low-dose, Low-cost, High-Quality Computed Tomography (CT) Imaging",
           "amount": 1250000,
+          "state": "CA"
+        },
+        {
+          "org": "REFIBERED, INC.",
+          "title": "SBIR Phase II: Automated Textile Sorting Systems for Precision Resale and Closed-Loop Material Flow",
+          "amount": 1248225,
           "state": "CA"
         },
         {
