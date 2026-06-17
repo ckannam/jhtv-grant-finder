@@ -28,7 +28,7 @@ node ai_grant_updater.js     # or: npm run ai-update
 open jhtv_grant_eligibility.html
 ```
 
-One npm dependency: `@anthropic-ai/sdk` (used only by `ai_grant_updater.js`). All other scripts use Node.js built-ins only.
+One npm dependency: `@anthropic-ai/sdk` (used only by `ai_grant_updater.js`). All other scripts use Node.js built-ins only. `index.html` is a meta-refresh redirect to `jhtv_grant_eligibility.html`.
 
 ## Architecture
 
@@ -53,6 +53,51 @@ One npm dependency: `@anthropic-ai/sdk` (used only by `ai_grant_updater.js`). Al
 
 **`stress_test.js`** — runs 8 founder personas against `getGrants()` and verifies 192 expected outcomes. Extracts `getGrants()` directly from `jhtv_grant_eligibility.html` at runtime using `new Function()`, so it always stays in sync with the HTML — no manual code duplication needed.
 
+> **Critical:** `stress_test.js` extracts `getGrants()` by scanning for the exact strings `'\nfunction getGrants(d) {'` and `'\n// ── Pursuing Tracker'` as start/end boundaries. Renaming either comment marker in the HTML will silently break the test (it exits with an error before running any checks).
+
+## All grant IDs
+
+These are the 28 IDs used as keys in `getGrants()`, `grants_live.json`, and stress test expectations:
+
+| ID | Program | Category |
+|---|---|---|
+| `mii` | MII – Validation | Maryland / TEDCO |
+| `mii_joint` | MII – Joint | Maryland / TEDCO |
+| `mii_cf` | MII – Company Formation | Maryland / TEDCO |
+| `bii` | Baltimore Innovation Initiative | Maryland / TEDCO |
+| `sbir_match` | TEDCO SBIR/STTR Matching Funds | Maryland / TEDCO |
+| `mscrf` | Maryland Stem Cell Research Fund | Maryland / TEDCO |
+| `builder` | TEDCO Pre-Seed Builder Fund | Maryland / TEDCO |
+| `inclusion` | TEDCO Inclusion Fund | Maryland / TEDCO |
+| `rbii` | TEDCO Rural Business Innovation Initiative | Maryland / TEDCO |
+| `nih_sbir` | NIH SBIR Phase I (R43) | Federal |
+| `nih_sttr` | NIH STTR Phase I (R41) | Federal |
+| `nsf_sbir` | NSF SBIR / STTR Phase I | Federal |
+| `arpah` | ARPA-H SBIR / STTR | Federal |
+| `dod_sbir` | DOD SBIR / STTR | Federal |
+| `darpa` | DARPA BTO SBIR | Federal |
+| `fda_cdc` | FDA / CDC Joint SBIR | Federal |
+| `doe_sbir` | DOE SBIR / STTR | Federal |
+| `barda` | BARDA DRIVe SBIR | Federal |
+| `carbx` | CARB-X | Private |
+| `va_sbir` | VA SBIR / STTR | Federal |
+| `coulter` | Coulter Translational Partnership | JHU |
+| `mmf` | Maryland Medical / MEDAAF | Maryland |
+| `aha` | American Heart Association | Disease Foundation |
+| `alz` | Alzheimer's Association | Disease Foundation |
+| `mjff` | Michael J. Fox Foundation | Disease Foundation |
+| `cfft` | Cystic Fibrosis Foundation | Disease Foundation |
+| `wellcome` | Wellcome Leap | Private |
+| `bwf` | Burroughs Wellcome Fund | Private |
+
+## Adding a new grant
+
+1. Add a new block inside `getGrants(d)` in `jhtv_grant_eligibility.html` using the same `{id, title, org, cat, s, amount, deadline, tags, r[]}` shape. Follow the existing section comment style (`// ── N. Grant Name ───`).
+2. Add the new grant ID to all 8 persona `expected` objects in `stress_test.js`. Every persona must have an expected outcome for every grant — a missing key will silently pass as if the grant doesn't exist.
+3. If the grant should be hidden in pre-co mode, add its ID to `PRE_CO_HIDE`. If it gets a co-stage fit badge, add it to `CO_FIT`.
+4. If live deadline data is needed, add a fetch/scrape entry in `fetch_grants.js` or `scrape_grants.js`.
+5. Run `npm test` to verify all expectations before committing.
+
 ## GitHub Actions
 
 Three automated workflows in `.github/workflows/`:
@@ -63,7 +108,7 @@ Three automated workflows in `.github/workflows/`:
 | `scrape_grants.yml` | 1st of month 8 AM ET | `scrape_grants.js` | 18 scraped grants |
 | `ai_deadline_updater.yml` | Jan/Apr/Jul/Oct 1st 8 AM ET | `ai_grant_updater.js` | Same 18 grants, AI-read |
 
-All three use `permissions: contents: write` and native `git push`. `ai_deadline_updater.yml` requires an Anthropic API key stored as the `PERSONAL_DEV` repository secret (Settings → Secrets and variables → Actions). The workflow maps it to the `ANTHROPIC_API_KEY` env var that the SDK reads.
+All three use `actions/checkout@v5`, `actions/setup-node@v5` (Node.js 24), `permissions: contents: write`, and native `git push`. `ai_deadline_updater.yml` requires an Anthropic API key stored as the `PERSONAL_DEV` repository secret (Settings → Secrets and variables → Actions). The workflow maps it to the `ANTHROPIC_API_KEY` env var that the SDK reads.
 
 ## Stage-gate and grant filtering
 
