@@ -13,7 +13,7 @@ A single-page grant eligibility diagnostic tool for Johns Hopkins Technology Ven
 npm install
 
 # Run the eligibility logic stress test (8 personas, 192 checks)
-node stress_test.js          # or: npm test
+node stress_test.js          # or: npm test  (8 personas, 224 checks)
 
 # Fetch live data for the 6 API-sourced federal grants (writes grants_live.json)
 node fetch_grants.js         # or: npm run fetch
