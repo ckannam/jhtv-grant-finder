@@ -1087,7 +1087,7 @@ function getGrants(d) {
       r.push({t:'warn', x:'Contact a TEDCO Site Miner before applying — required step for MII'});
       if(s==='eligible') s='conditional';
     }
-    grants.push({ id:'mii', title:'Maryland Innovation Initiative (MII)', org:'TEDCO / JHTV', cat:'Maryland', s, amount:'Up to $130K (JHU tech assessment)', deadline:'Quarterly: Jan 15 · Apr 15 · Jul 15 · Oct 15', tags:['tag-md','tag-jhu'], applyUrl:'https://tedcomd.com/funding/mii', r });
+    grants.push({ id:'mii', title:'Maryland Innovation Initiative (MII)', org:'TEDCO / JHTV', cat:'Maryland', s, amount:'Up to $130K (JHU tech assessment)', deadline:'Quarterly: Jan 15 · Apr 15 · Jul 15 · Oct 15', tags:['tag-md','tag-jhu'], applyUrl:'https://www.tedcomd.com/funding/maryland-innovation-initiative', r });
   }
 
   // ── 1b. MII Joint ──────────────────────────────────────────────────────
@@ -1110,7 +1110,7 @@ function getGrants(d) {
     }
     r.push({t:'warn', x:'Requires a co-applicant from another USM institution — confirm you have an identified USM partner'});
     if(s==='eligible') s='conditional';
-    grants.push({ id:'mii_joint', title:'MII – Tech Assessment (Joint)', org:'TEDCO / JHTV', cat:'Maryland', s, amount:'Up to $180K', deadline:'Quarterly: Jan 15 · Apr 15 · Jul 15 · Oct 15', tags:['tag-md','tag-jhu'], applyUrl:'https://tedcomd.com/funding/mii', r });
+    grants.push({ id:'mii_joint', title:'MII – Tech Assessment (Joint)', org:'TEDCO / JHTV', cat:'Maryland', s, amount:'Up to $180K', deadline:'Quarterly: Jan 15 · Apr 15 · Jul 15 · Oct 15', tags:['tag-md','tag-jhu'], applyUrl:'https://www.tedcomd.com/funding/maryland-innovation-initiative', r });
   }
 
   // ── 1c. MII Company Formation ──────────────────────────────────────────
@@ -1134,7 +1134,7 @@ function getGrants(d) {
     if (d.entityType === 'llc_corp') r.push({t:'pass', x:'Company incorporated — eligible for Company Formation award track'});
     else if (notYetFormed) { r.push({t:'warn', x:'Company Formation award requires active entity formation — begin incorporation process'}); if(s==='eligible') s='conditional'; }
     else { r.push({t:'warn', x:'Confirm your entity structure qualifies for the Company Formation track'}); if(s==='eligible') s='conditional'; }
-    grants.push({ id:'mii_cf', title:'MII – Company Formation', org:'TEDCO / JHTV', cat:'Maryland', s, amount:'Up to $300K', deadline:'Quarterly: Jan 15 · Apr 15 · Jul 15 · Oct 15', tags:['tag-md','tag-jhu'], applyUrl:'https://tedcomd.com/funding/mii', r });
+    grants.push({ id:'mii_cf', title:'MII – Company Formation', org:'TEDCO / JHTV', cat:'Maryland', s, amount:'Up to $300K', deadline:'Quarterly: Jan 15 · Apr 15 · Jul 15 · Oct 15', tags:['tag-md','tag-jhu'], applyUrl:'https://www.tedcomd.com/funding/maryland-innovation-initiative', r });
   }
 
   // ── 1d. Baltimore Innovation Initiative ───────────────────────────────
@@ -1149,7 +1149,7 @@ function getGrants(d) {
     } else {
       r.push({t:'fail', x:'BII requires a Maryland-based company in Baltimore City or County'}); s='ineligible';
     }
-    grants.push({ id:'bii', title:'Baltimore Innovation Initiative (BII)', org:'TEDCO', cat:'Maryland', s, amount:'~$50K average award', deadline:'Varies — check current BII RFA cycle', tags:['tag-md'], applyUrl:'https://tedcomd.com/funding/bii', r });
+    grants.push({ id:'bii', title:'Baltimore Innovation Initiative (BII)', org:'TEDCO', cat:'Maryland', s, amount:'~$50K average award', deadline:'Varies — check current BII RFA cycle', tags:['tag-md'], applyUrl:'https://www.tedcomd.com/funding/maryland-innovation-initiative/baltimore-innovation-initiative-bii', r });
   }
 
   // ── 1e. TEDCO SBIR/STTR Matching Funds ────────────────────────────────
@@ -1161,7 +1161,7 @@ function getGrants(d) {
     if (hasSbirAward) r.push({t:'pass', x:'Active SBIR/STTR Phase I award confirmed — eligible for TEDCO match'});
     else if (d.hasSbirPhaseI === 'no') { r.push({t:'fail', x:'Requires an active federal SBIR/STTR Phase I award'}); s='ineligible'; }
     else { r.push({t:'warn', x:'Must have an active federal SBIR/STTR Phase I award — confirm award status before applying'}); if(s==='eligible') s='conditional'; }
-    grants.push({ id:'sbir_match', title:'TEDCO SBIR/STTR Matching Funds', org:'TEDCO', cat:'Maryland', s, amount:'$25K–$75K match', deadline:'Quarterly windows — check TEDCO site', tags:['tag-md'], applyUrl:'https://tedcomd.com/funding/sbir-sttr-matching-funds', r });
+    grants.push({ id:'sbir_match', title:'TEDCO SBIR/STTR Matching Funds', org:'TEDCO', cat:'Maryland', s, amount:'$25K–$75K match', deadline:'Quarterly windows — check TEDCO site', tags:['tag-md'], applyUrl:'https://www.tedcomd.com/funding/federal-programs/sbirsttr-matching-funds', r });
   }
 
   // ── 2. MSCRF ───────────────────────────────────────────────────────────
@@ -1173,7 +1173,7 @@ function getGrants(d) {
     if (hasJHU) r.push({t:'pass', x:'JHU affiliation eligible under Validation / Commercialization tracks'});
     else r.push({t:'pass', x:'Maryland-based company or institution is eligible'});
     if (isTherapeutic) r.push({t:'pass', x:'Therapeutic pipeline present — MSCRF Clinical track available (requires 1:1 non-state match for clinical studies)'});
-    grants.push({ id:'mscrf', title:'Maryland Stem Cell Research Fund (MSCRF)', org:'TEDCO / MD Stem Cell Research Commission', cat:'Maryland', s, amount:'Up to $4.7M/cycle across 7 program tracks', deadline:'FY26 Cycle 2 open · mscrf.org', tags:['tag-md'], applyUrl:'https://mscrf.org', r });
+    grants.push({ id:'mscrf', title:'Maryland Stem Cell Research Fund (MSCRF)', org:'TEDCO / MD Stem Cell Research Commission', cat:'Maryland', s, amount:'Up to $4.7M/cycle across 7 program tracks', deadline:'FY26 Cycle 2 open · mscrf.org', tags:['tag-md'], applyUrl:'https://www.mscrf.org/funding-opportunities', r });
   }
 
   // ── 3. TEDCO Builder Fund ──────────────────────────────────────────────
@@ -1185,7 +1185,7 @@ function getGrants(d) {
     else { r.push({t:'fail', x:'At least 50% of founders must demonstrate social/economic disadvantage'}); s='ineligible'; }
     if (hasFTE) r.push({t:'pass', x:'At least 1 full-time team member confirmed'});
     else { r.push({t:'warn', x:'At least 1 full-time employee required — founders-only teams should hire or commit before applying'}); if(s==='eligible') s='conditional'; }
-    grants.push({ id:'builder', title:'TEDCO Pre-Seed Builder Fund', org:'TEDCO Social Impact Funds', cat:'Maryland', s, amount:'Pre-seed equity investment', deadline:'Rolling · tedcomd.com/builderfund', tags:['tag-md'], applyUrl:'https://tedcomd.com/funding/builder-fund', r });
+    grants.push({ id:'builder', title:'TEDCO Pre-Seed Builder Fund', org:'TEDCO Social Impact Funds', cat:'Maryland', s, amount:'Pre-seed equity investment', deadline:'Rolling · tedcomd.com/builderfund', tags:['tag-md'], applyUrl:'https://www.tedcomd.com/funding/social-impact-funds', r });
   }
 
   // ── 4. TEDCO Inclusion Fund ────────────────────────────────────────────
@@ -1197,7 +1197,7 @@ function getGrants(d) {
     else { r.push({t:'fail', x:'Requires 30%+ ownership and management control by SEDI individuals'}); s='ineligible'; }
     if (['0','lt500k'].includes(d.dilutive)) r.push({t:'pass', x:'Early-stage — targeting pre-seed/seed gap'});
     else if (d.dilutive) r.push({t:'warn', x:'Fund targets early gap — verify stage fit with TEDCO'});
-    grants.push({ id:'inclusion', title:'TEDCO Inclusion Fund', org:'TEDCO Social Impact Funds', cat:'Maryland', s, amount:'Equity investment (early-stage)', deadline:'Rolling · tedcomd.com', tags:['tag-md'], applyUrl:'https://tedcomd.com/funding/inclusion-fund', r });
+    grants.push({ id:'inclusion', title:'TEDCO Inclusion Fund', org:'TEDCO Social Impact Funds', cat:'Maryland', s, amount:'Equity investment (early-stage)', deadline:'Rolling · tedcomd.com', tags:['tag-md'], applyUrl:'https://www.tedcomd.com/funding/social-impact-funds', r });
   }
 
   // ── 5. TEDCO Rural RBII ────────────────────────────────────────────────
@@ -1210,7 +1210,7 @@ function getGrants(d) {
     if (smallTeam) r.push({t:'pass', x:'Team size within 15-employee limit'});
     else if (d.teamSize) { r.push({t:'fail', x:'Exceeds 15-employee limit for RBII'}); s='ineligible'; }
     r.push({t:'warn', x:'Must complete 90 days of RBII mentoring before applying for $25K pre-seed grant'});
-    grants.push({ id:'rbii', title:'TEDCO Rural Business Innovation Initiative (RBII)', org:'TEDCO', cat:'Maryland', s, amount:'$25K pre-seed (after 90-day mentoring)', deadline:'Contact regional RBII mentor first · tedcomd.com', tags:['tag-md'], applyUrl:'https://tedcomd.com/funding/rbii', r });
+    grants.push({ id:'rbii', title:'TEDCO Rural Business Innovation Initiative (RBII)', org:'TEDCO', cat:'Maryland', s, amount:'$25K pre-seed (after 90-day mentoring)', deadline:'Contact regional RBII mentor first · tedcomd.com', tags:['tag-md'], applyUrl:'https://www.tedcomd.com/resources/rural-business-innovation-initiative', r });
   }
 
   // ── 6. NIH SBIR Phase I ────────────────────────────────────────────────
@@ -1225,7 +1225,7 @@ function getGrants(d) {
     else if (d.technologyType === 'synbio') r.push({t:'pass', x:'Biotech / synthetic biology eligible — NIGMS, NCI, and DARPA overlap topics available'});
     else if (d.technologyType === 'non_medical') r.push({t:'warn', x:'Non-medical platforms still eligible — confirm NIH topic alignment (NIGMS, NICHD, etc.)'});
     r.push({t:'pass', x:'✓ SBIR/STTR reauthorized April 13, 2026 — program active'});
-    grants.push({ id:'nih_sbir', title:'NIH SBIR Phase I (R43)', org:'NIH / National Institutes of Health', cat:'Federal', s, amount:'Up to $323K Phase I · up to $2.15M Phase II', deadline:'Multiple IC deadlines · seed.nih.gov', tags:['tag-fed'], applyUrl:'https://seed.nih.gov', r });
+    grants.push({ id:'nih_sbir', title:'NIH SBIR Phase I (R43)', org:'NIH / National Institutes of Health', cat:'Federal', s, amount:'Up to $323K Phase I · up to $2.15M Phase II', deadline:'Multiple IC deadlines · seed.nih.gov', tags:['tag-fed'], applyUrl:'https://grants.nih.gov/funding/activity-codes/R43', r });
   }
 
   // ── 7. NIH STTR Phase I ────────────────────────────────────────────────
@@ -1240,7 +1240,7 @@ function getGrants(d) {
     else if (d.licensing === 'unlicensed') r.push({t:'warn', x:'Complete JHU licensing before submission for cleaner IP ownership'});
     if (isMedical) r.push({t:'pass', x:'Medical technology aligns with NIH STTR focus areas'});
     r.push({t:'pass', x:'✓ SBIR/STTR reauthorized April 13, 2026 — program active'});
-    grants.push({ id:'nih_sttr', title:'NIH STTR Phase I (R41)', org:'NIH / National Institutes of Health', cat:'Federal', s, amount:'Up to $323K Phase I · up to $2.15M Phase II', deadline:'Multiple IC deadlines · seed.nih.gov', tags:['tag-fed'], applyUrl:'https://seed.nih.gov', r });
+    grants.push({ id:'nih_sttr', title:'NIH STTR Phase I (R41)', org:'NIH / National Institutes of Health', cat:'Federal', s, amount:'Up to $323K Phase I · up to $2.15M Phase II', deadline:'Multiple IC deadlines · seed.nih.gov', tags:['tag-fed'], applyUrl:'https://grants.nih.gov/funding/activity-codes/R41', r });
   }
 
   // ── 8. NSF SBIR/STTR ──────────────────────────────────────────────────
@@ -1254,7 +1254,7 @@ function getGrants(d) {
     if (isHealthTech || d.technologyType === 'life_tools' || d.technologyType === 'synbio') r.push({t:'pass', x:'Health, biotech, or life sciences technology — core NSF SBIR topic area'});
     else if (d.technologyType === 'non_medical') r.push({t:'warn', x:'Non-medical platforms are eligible if they have strong commercial potential — confirm topic fit'});
     r.push({t:'pass', x:'Project Pitches open June 2, 2026 · seedfund.nsf.gov'});
-    grants.push({ id:'nsf_sbir', title:'NSF SBIR / STTR Phase I', org:'National Science Foundation', cat:'Federal', s, amount:'Up to $305K Phase I · up to $1.25M Phase II', deadline:'Project Pitch: rolling · seedfund.nsf.gov', tags:['tag-fed'], applyUrl:'https://seedfund.nsf.gov', r });
+    grants.push({ id:'nsf_sbir', title:'NSF SBIR / STTR Phase I', org:'National Science Foundation', cat:'Federal', s, amount:'Up to $305K Phase I · up to $1.25M Phase II', deadline:'Project Pitch: rolling · seedfund.nsf.gov', tags:['tag-fed'], applyUrl:'https://seedfund.nsf.gov/apply/get-started/', r });
   }
 
   // ── 9. ARPA-H SBIR/STTR ───────────────────────────────────────────────
@@ -1281,7 +1281,7 @@ function getGrants(d) {
     if (d.diseaseArea === 'veterans') r.push({t:'pass', x:'Veterans / military medicine focus strongly aligns with DOD priorities'});
     if (d.diseaseArea === 'amr') r.push({t:'pass', x:'AMR / infectious disease is a DOD biodefense priority'});
     r.push({t:'pass', x:'Largest SBIR funder — $1.8B+ annually across Army, Navy, Air Force, DARPA, MDA, SOCOM, DTRA'});
-    grants.push({ id:'dod_sbir', title:'DOD SBIR / STTR', org:'U.S. Department of Defense', cat:'Federal', s, amount:'Up to $275K Phase I · up to $1.5M+ Phase II', deadline:'Component-specific · defensesbirsttr.mil', tags:['tag-fed'], applyUrl:'https://defensesbirsttr.mil', r });
+    grants.push({ id:'dod_sbir', title:'DOD SBIR / STTR', org:'U.S. Department of Defense', cat:'Federal', s, amount:'Up to $275K Phase I · up to $1.5M+ Phase II', deadline:'Component-specific · defensesbirsttr.mil', tags:['tag-fed'], applyUrl:'https://www.dodsbirsttr.mil/', r });
   }
 
   // ── 11. DARPA BTO ─────────────────────────────────────────────────────
@@ -1294,7 +1294,7 @@ function getGrants(d) {
     else { r.push({t:'warn', x:'Check DARPA BTO topic alignment — defense-relevant biological platforms prioritized'}); if(s==='eligible') s='conditional'; }
     r.push({t:'warn', x:'Active topics: SWIFT, BARK (veterinary therapeutics), EXPOSITION, PEPI — defensesbirsttr.mil'});
     r.push({t:'warn', x:'DARPA requires clear defense relevance and breakthrough-level innovation'});
-    grants.push({ id:'darpa', title:'DARPA Biological Technologies Office (BTO) SBIR', org:'DARPA / DOD', cat:'Federal', s, amount:'Variable · often $500K–$2M+ Phase I', deadline:'Topic-specific · defensesbirsttr.mil', tags:['tag-fed'], applyUrl:'https://defensesbirsttr.mil', r });
+    grants.push({ id:'darpa', title:'DARPA Biological Technologies Office (BTO) SBIR', org:'DARPA / DOD', cat:'Federal', s, amount:'Variable · often $500K–$2M+ Phase I', deadline:'Topic-specific · defensesbirsttr.mil', tags:['tag-fed'], applyUrl:'https://www.darpa.mil/work-with-us/communities/small-business/sbir-sttr-topics', r });
   }
 
   // ── 12. FDA/CDC Joint SBIR ────────────────────────────────────────────
@@ -1309,7 +1309,7 @@ function getGrants(d) {
     else { r.push({t:'warn', x:'FDA/CDC SBIR focuses on regulated health products — confirm topic alignment'}); if(s==='eligible') s='conditional'; }
     if (d.diseaseArea === 'amr') r.push({t:'pass', x:'AMR is a CDC/FDA priority area with dedicated SBIR topics'});
     r.push({t:'pass', x:'Joint NIH/CDC/FDA NOFO — single application covers multiple agencies'});
-    grants.push({ id:'fda_cdc', title:'FDA / CDC Joint SBIR (R43/R44)', org:'FDA + CDC (via NIH portal)', cat:'Federal', s, amount:'Up to $323K Phase I · up to $2.15M Phase II', deadline:'seed.nih.gov — check joint NOFO', tags:['tag-fed'], applyUrl:'https://seed.nih.gov', r });
+    grants.push({ id:'fda_cdc', title:'FDA / CDC Joint SBIR (R43/R44)', org:'FDA + CDC (via NIH portal)', cat:'Federal', s, amount:'Up to $323K Phase I · up to $2.15M Phase II', deadline:'seed.nih.gov — check joint NOFO', tags:['tag-fed'], applyUrl:'https://seed.nih.gov/small-business-funding/find-funding/sbir-sttr-funding-opportunities', r });
   }
 
   // ── 13. DOE SBIR ──────────────────────────────────────────────────────
@@ -1324,7 +1324,7 @@ function getGrants(d) {
     else if (isMedical) { r.push({t:'warn', x:'DOE SBIR funds energy-adjacent biotech — medical-only platforms are a weaker fit; check for dual-use or biosensor applications'}); if(s==='eligible') s='conditional'; }
     else { r.push({t:'warn', x:'DOE SBIR funds synthetic biology, biomanufacturing, biosensors, and computational biology — confirm topic alignment'}); }
     r.push({t:'pass', x:'✓ DOE SBIR/STTR reauthorized April 13, 2026 — now managed by DOE Office of Technology Commercialization (OTC)'});
-    grants.push({ id:'doe_sbir', title:'DOE SBIR / STTR', org:'U.S. Department of Energy', cat:'Federal', s, amount:'Up to $323K Phase I', deadline:'science.osti.gov/sbir', tags:['tag-fed'], applyUrl:'https://science.osti.gov/sbir', r });
+    grants.push({ id:'doe_sbir', title:'DOE SBIR / STTR', org:'U.S. Department of Energy', cat:'Federal', s, amount:'Up to $323K Phase I', deadline:'science.osti.gov/sbir', tags:['tag-fed'], applyUrl:'https://www.energy.gov/technologycommercialization/doe-small-business-innovation-research-sbir-and-small-business', r });
   }
 
   // ── 14. BARDA / DRIVe ─────────────────────────────────────────────────
@@ -1336,7 +1336,7 @@ function getGrants(d) {
     if (d.diseaseArea === 'amr') r.push({t:'pass', x:'AMR is a top BARDA priority — strongest fit for this program'});
     r.push({t:'warn', x:'BARDA typically funds Phase 2+ assets; BARDA DRIVe targets earlier innovation stage'});
     r.push({t:'warn', x:'Priority areas: biodefense, pandemic preparedness, CBRN threats, AMR'});
-    grants.push({ id:'barda', title:'BARDA / BARDA DRIVe', org:'Biomedical Advanced Research & Development Authority (HHS)', cat:'Federal', s, amount:'Contracts: $1M–$100M+ (stage-dependent)', deadline:'Rolling BAAs · medicalcountermeasures.gov', tags:['tag-fed'], applyUrl:'https://medicalcountermeasures.gov', r });
+    grants.push({ id:'barda', title:'BARDA / BARDA DRIVe', org:'Biomedical Advanced Research & Development Authority (HHS)', cat:'Federal', s, amount:'Contracts: $1M–$100M+ (stage-dependent)', deadline:'Rolling BAAs · medicalcountermeasures.gov', tags:['tag-fed'], applyUrl:'https://medicalcountermeasures.gov/barda/barda-baa', r });
   }
 
   // ── 15. CARB-X ────────────────────────────────────────────────────────
@@ -1348,7 +1348,7 @@ function getGrants(d) {
     else { r.push({t:'fail', x:'CARB-X exclusively funds antibacterial/antifungal R&D — your indicated disease area is out of scope'}); s='ineligible'; }
     r.push({t:'warn', x:'Priority: first-in-class compounds with novel mechanisms targeting WHO priority pathogens'});
     r.push({t:'warn', x:'Q4 2026 funding round expected · CARB-X Novel Chemistry for AMR Challenge open · carb-x.org'});
-    grants.push({ id:'carbx', title:'CARB-X (AMR Antimicrobial Accelerator)', org:'BARDA + Wellcome + NIAID', cat:'Federal', s, amount:'Up to $2M Phase 1 · up to $10M total portfolio', deadline:'Q4 2026 round expected · carb-x.org', tags:['tag-fed'], applyUrl:'https://carb-x.org', r });
+    grants.push({ id:'carbx', title:'CARB-X (AMR Antimicrobial Accelerator)', org:'BARDA + Wellcome + NIAID', cat:'Federal', s, amount:'Up to $2M Phase 1 · up to $10M total portfolio', deadline:'Q4 2026 round expected · carb-x.org', tags:['tag-fed'], applyUrl:'https://carb-x.org/apply/', r });
   }
 
   // ── 16. VA SBIR ───────────────────────────────────────────────────────
@@ -1360,7 +1360,7 @@ function getGrants(d) {
     if (d.diseaseArea === 'veterans') r.push({t:'pass', x:'Veterans health focus — strongest alignment with VA SBIR priorities (PTSD, TBI, prosthetics, rehabilitation)'});
     else if (isHealthTech) { r.push({t:'warn', x:'VA SBIR focuses on veteran-relevant conditions (PTSD, TBI, mobility, chronic pain) — confirm alignment with VA research priorities'}); if(s==='eligible') s='conditional'; }
     else { r.push({t:'fail', x:'VA SBIR restricted to veteran health-relevant technologies'}); s='ineligible'; }
-    grants.push({ id:'va_sbir', title:'VA SBIR / STTR', org:'U.S. Department of Veterans Affairs', cat:'Federal', s, amount:'Up to $275K Phase I', deadline:'sbir.gov/agencies/VA', tags:['tag-fed'], applyUrl:'https://www.research.va.gov/funding/sbir.cfm', r });
+    grants.push({ id:'va_sbir', title:'VA SBIR / STTR', org:'U.S. Department of Veterans Affairs', cat:'Federal', s, amount:'Up to $275K Phase I', deadline:'sbir.gov/agencies/VA', tags:['tag-fed'], applyUrl:'https://www.sbir.gov', r });
   }
 
   // ── 17. JHU-Coulter Translational Partnership ─────────────────────────
@@ -1375,7 +1375,7 @@ function getGrants(d) {
     else if (isTherapeutic) r.push({t:'warn', x:'Program historically device/diagnostics focused — therapeutics may qualify but verify with program office'});
     else { r.push({t:'warn', x:'Coulter Partnership targets device and diagnostic technologies with a clear clinical translational path'}); if(s==='eligible') s='conditional'; }
     r.push({t:'warn', x:'Requires joint PI team: clinician (SOM) + engineering faculty (WSE/BME) — lone investigator teams ineligible'});
-    grants.push({ id:'coulter', title:'JHU-Coulter Translational Partnership', org:'Wallace H. Coulter Foundation / JHU BME', cat:'JHU/Private', s, amount:'Translational seed grants per project', deadline:'Annual cycle · cbid.bme.jhu.edu', tags:['tag-jhu'], applyUrl:'https://ventures.jhu.edu/programs-services/coulter-program/', r });
+    grants.push({ id:'coulter', title:'JHU-Coulter Translational Partnership', org:'Wallace H. Coulter Foundation / JHU BME', cat:'JHU/Private', s, amount:'Translational seed grants per project', deadline:'Annual cycle · cbid.bme.jhu.edu', tags:['tag-jhu'], applyUrl:'https://cbid.bme.jhu.edu/partners/johns-hopkins-coulter-translational-partnership/', r });
   }
 
   // ── 18. Maryland Momentum Fund ────────────────────────────────────────
@@ -1387,7 +1387,7 @@ function getGrants(d) {
     if (hasJHU) r.push({t:'warn', x:'JHU founders: check if a USM co-inventor, licensed USM technology, or USM research collaboration exists — that may establish eligibility'});
     else r.push({t:'warn', x:'Non-JHU Maryland company: confirm USM institutional connection to establish eligibility'});
     r.push({t:'pass', x:'$150K–$500K equity investment for early-stage tech companies'});
-    grants.push({ id:'mmf', title:'Maryland Momentum Fund (MMF)', org:'University System of Maryland', cat:'Maryland', s, amount:'$150K – $500K equity', deadline:'Rolling · momentum.usmd.edu', tags:['tag-md'], applyUrl:'https://momentum.usmd.edu', r });
+    grants.push({ id:'mmf', title:'Maryland Momentum Fund (MMF)', org:'University System of Maryland', cat:'Maryland', s, amount:'$150K – $500K equity', deadline:'Rolling · momentum.usmd.edu', tags:['tag-md'], applyUrl:'https://momentum.usmd.edu/steps-for-funding/application', r });
   }
 
   // ── 21. American Heart Association ────────────────────────────────────
@@ -1398,7 +1398,7 @@ function getGrants(d) {
     else { r.push({t:'fail', x:'AHA exclusively funds cardiovascular / cerebrovascular science'}); s='ineligible'; }
     if (isMedical) r.push({t:'pass', x:'Therapeutic or device pathway aligns with AHA translational grant priorities'});
     r.push({t:'warn', x:'AHA Transformational Project Award: up to $770K over 4 years. Predoctoral, postdoc, and career development awards also available'});
-    grants.push({ id:'aha', title:'American Heart Association (AHA) Research Grants', org:'American Heart Association', cat:'Disease Foundation', s, amount:'$77K–$770K depending on mechanism', deadline:'Rolling cycles · heart.org/en/professional/research', tags:['tag-disease','tag-priv'], applyUrl:'https://www.heart.org/en/research/apply-for-research-funding', r });
+    grants.push({ id:'aha', title:'American Heart Association (AHA) Research Grants', org:'American Heart Association', cat:'Disease Foundation', s, amount:'$77K–$770K depending on mechanism', deadline:'Rolling cycles · heart.org/en/professional/research', tags:['tag-disease','tag-priv'], applyUrl:'https://professional.heart.org/en/research-programs/aha-funding-opportunities', r });
   }
 
   // ── 22. Alzheimer's Association ───────────────────────────────────────
@@ -1409,7 +1409,7 @@ function getGrants(d) {
     else { r.push({t:'fail', x:'Alzheimer\'s Association restricted to Alzheimer\'s and related dementias'}); s='ineligible'; }
     if (isTherapeutic) r.push({t:'pass', x:'Therapeutic drug / biologics development aligns with AARG and PIA grant mechanisms'});
     r.push({t:'warn', x:'Part the Cloud Translational grants: up to $600K for translational projects targeting disease modification'});
-    grants.push({ id:'alz', title:"Alzheimer's Association Research Grants", org:"Alzheimer's Association", cat:'Disease Foundation', s, amount:'$200K–$600K (mechanism-dependent)', deadline:'Annual cycles · alz.org/research/for_researchers', tags:['tag-disease','tag-priv'], applyUrl:'https://www.alz.org/research/for_researchers/grants_funding', r });
+    grants.push({ id:'alz', title:"Alzheimer's Association Research Grants", org:"Alzheimer's Association", cat:'Disease Foundation', s, amount:'$200K–$600K (mechanism-dependent)', deadline:'Annual cycles · alz.org/research/for_researchers', tags:['tag-disease','tag-priv'], applyUrl:'https://www.alz.org/research/for_researchers/grants', r });
   }
 
   // ── 23. Michael J. Fox Foundation (MJFF) ─────────────────────────────
@@ -1421,7 +1421,7 @@ function getGrants(d) {
     if (isTherapeutic) r.push({t:'pass', x:'Therapeutics Pipeline Program: pre-clinical to early clinical Parkinson\'s assets'});
     r.push({t:'warn', x:'Strong commercialization narrative required alongside scientific rationale'});
     r.push({t:'pass', x:'$250K–$2M+ · rolling pre-proposal deadlines · michaeljfox.org/grants'});
-    grants.push({ id:'mjff', title:'Michael J. Fox Foundation (MJFF) Therapeutics Pipeline', org:'Michael J. Fox Foundation for Parkinson\'s Research', cat:'Disease Foundation', s, amount:'$250K – $2M+', deadline:'Rolling pre-proposals · michaeljfox.org/grants', tags:['tag-disease','tag-priv'], applyUrl:'https://www.michaeljfox.org/grants', r });
+    grants.push({ id:'mjff', title:'Michael J. Fox Foundation (MJFF) Therapeutics Pipeline', org:'Michael J. Fox Foundation for Parkinson\'s Research', cat:'Disease Foundation', s, amount:'$250K – $2M+', deadline:'Rolling pre-proposals · michaeljfox.org/grants', tags:['tag-disease','tag-priv'], applyUrl:'https://www.michaeljfox.org/funding-opportunities', r });
   }
 
   // ── 24. Cystic Fibrosis Foundation Therapeutics (CFFT) ───────────────
@@ -1431,7 +1431,7 @@ function getGrants(d) {
     else { r.push({t:'fail', x:'CFFT restricted to cystic fibrosis therapeutics and related rare airway diseases'}); s='ineligible'; }
     if (isTherapeutic) r.push({t:'pass', x:'Therapeutics development — CFFT funds pre-clinical through Phase 2 assets'});
     r.push({t:'pass', x:'CFFT is one of the most active disease foundation funders — contracts, not grants, with milestone payments'});
-    grants.push({ id:'cfft', title:'Cystic Fibrosis Foundation Therapeutics (CFFT)', org:'Cystic Fibrosis Foundation', cat:'Disease Foundation', s, amount:'$1M–$25M+ (contract milestones)', deadline:'Rolling · cff.org/researchers', tags:['tag-disease','tag-priv'], applyUrl:'https://www.cff.org/research/researcher-resources', r });
+    grants.push({ id:'cfft', title:'Cystic Fibrosis Foundation Therapeutics (CFFT)', org:'Cystic Fibrosis Foundation', cat:'Disease Foundation', s, amount:'$1M–$25M+ (contract milestones)', deadline:'Rolling · cff.org/researchers', tags:['tag-disease','tag-priv'], applyUrl:'https://www.cff.org/researchers/how-we-fund-research', r });
   }
 
   // ── 25. Wellcome Leap ─────────────────────────────────────────────────
