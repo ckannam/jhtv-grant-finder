@@ -1,6 +1,5 @@
 {
-  "lastUpdated": "2026-06-23T13:22:29.935Z",
-  "lastScrapedAt": "2026-06-23T14:10:01.803Z",
+  "lastUpdated": "2026-06-23T14:36:59.872Z",
   "grants": {
     "nih_sbir": {
       "status": "open",
@@ -68,7 +67,7 @@
       "deadlineLabel": "Rolling · 1 open solicitation",
       "source": "grants.gov",
       "recentAwardCount": 25,
-      "avgAwardAmount": 711034,
+      "avgAwardAmount": 697690,
       "nsfWinners": [
         {
           "org": "CULTIMAR TECHNOLOGIES, INC",
@@ -77,10 +76,10 @@
           "state": "PR"
         },
         {
-          "org": "FORM FINDING STUDIO LLC",
-          "title": "SBIR Phase II: Computer-Aided Design Software for Novel Geometric-Inspired Engineering and Manufacturing",
-          "amount": 1250000,
-          "state": "PA"
+          "org": "LABFORINVENTION CORP",
+          "title": "SBIR Phase II: Scalable Manufacturing Technology for Mobile Signal Penetrating Low-Emissivity Windows",
+          "amount": 1248176,
+          "state": "CA"
         },
         {
           "org": "RARE EARTH GENOMICS TEXAS, LLC",
@@ -89,9 +88,9 @@
           "state": "TX"
         },
         {
-          "org": "LUMISTRAIN, INC.",
-          "title": "SBIR Fast-Track: Strain Sensing Smart Skin (S4) for Structural Testing and Health Monitoring",
-          "amount": 1549408,
+          "org": "SINGULAR IMMUNE, INC.",
+          "title": "SBIR Phase I: Novel Protein-Based Platform for In Vivo Chimeric Antigen Receptor (CAR) Generation",
+          "amount": 304909,
           "state": "TX"
         },
         {
