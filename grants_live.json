@@ -1,5 +1,6 @@
 {
   "lastUpdated": "2026-06-23T13:22:29.935Z",
+  "lastScrapedAt": "2026-06-23T14:10:01.803Z",
   "grants": {
     "nih_sbir": {
       "status": "open",
@@ -182,6 +183,40 @@
       "openTopics": 1,
       "deadlineLabel": "Sep 30, 2026 · 1 open solicitation",
       "source": "grants.gov"
+    },
+    "mii": {
+      "status": "rolling",
+      "nextDeadline": "Jul 15, 2026",
+      "daysUntil": 22,
+      "deadlineLabel": "Q3 2026 quarterly deadline - 5:00pm ET on July 15 (or first business day thereafter) for Technology Assessment or Company Formation applications",
+      "notes": "Applications accepted quarterly: Jan 15, Apr 15, Jul 15, Oct 15. Each applicant must engage with a Site Miner at least 30 days before submission and obtain a TEDCO ID. Technology Assessment funds up to $130k-$180k; Company Formation funds up to $300k.",
+      "source": "https://www.tedco.md/funding/maryland-innovation-initiative/",
+      "fetchedAt": "2026-06-23T14:10:01.803Z"
+    },
+    "mii_joint": {
+      "status": "open",
+      "nextDeadline": "Wed Jul 15, 2026",
+      "daysUntil": 22,
+      "deadlineLabel": "Technology Assessment Phase (Joint Track) - Up to $180,000 for joint applications across two Qualifying Universities. Applications due by 5:00pm on July 15, 2026.",
+      "notes": "MII follows strict quarterly deadlines (Jan 15, Apr 15, Jul 15, Oct 15). Joint applications require two Qualifying Universities (JHU, MSU, UMB, UMBC, or UMD-CP). All applicants must engage with a Site Miner at least 30 days before submission and obtain TEDCO ID.",
+      "source": "https://www.tedco.md/funding/maryland-innovation-initiative/",
+      "fetchedAt": "2026-06-23T14:10:11.984Z"
+    },
+    "mii_cf": {
+      "status": "open",
+      "nextDeadline": "Wed Jul 15, 2026",
+      "daysUntil": 22,
+      "deadlineLabel": "Company Formation Phase Application (Quarterly deadline)",
+      "notes": "MII operates on quarterly deadlines: Jan 15, Apr 15, Jul 15, Oct 15. Company Formation track funds up to $300,000 for commercial launch. Requires Site Miner engagement at least 30 days before submission.",
+      "source": "https://www.tedco.md/funding/maryland-innovation-initiative/",
+      "fetchedAt": "2026-06-23T14:10:22.087Z"
+    },
+    "bii": {
+      "status": "closed",
+      "deadlineLabel": "Full Application deadline (RFA) - past deadline",
+      "notes": "Most recent cycle closed May 20, 2026. BII follows annual RFA timeline with Indication of Interest (IOI) stage first. Next cycle expected Spring 2027. Program requires meeting with onsite Project Lead at least 30 days before submission.",
+      "source": "https://www.tedco.md/baltimore-innovation-initiative/",
+      "fetchedAt": "2026-06-23T14:10:38.771Z"
     }
   }
 }
