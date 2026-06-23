@@ -1,10 +1,10 @@
 {
-  "lastUpdated": "2026-06-16T16:40:54.456Z",
+  "lastUpdated": "2026-06-23T13:22:29.935Z",
   "grants": {
     "nih_sbir": {
       "status": "open",
       "nextDeadline": "Apr 5, 2027",
-      "daysUntil": 293,
+      "daysUntil": 286,
       "openTopics": 3,
       "deadlineLabel": "Apr 5, 2027 · 3 open solicitations",
       "source": "grants.gov",
@@ -67,44 +67,44 @@
       "deadlineLabel": "Rolling · 1 open solicitation",
       "source": "grants.gov",
       "recentAwardCount": 25,
-      "avgAwardAmount": 567270,
+      "avgAwardAmount": 711034,
       "nsfWinners": [
         {
-          "org": "SAMARA AEROSPACE, INC.",
-          "title": "SBIR Phase II:  A Reliable and Efficient New Method for Satellite Attitude Control",
-          "amount": 1221382,
-          "state": "CA"
+          "org": "CULTIMAR TECHNOLOGIES, INC",
+          "title": "SBIR Phase I: Introduction of a Novel Chemical Protein Filtration Method for Aquaculture Production",
+          "amount": 304645,
+          "state": "PR"
         },
         {
-          "org": "NEURALTRAK, INC",
-          "title": "SBIR Phase II: AI-Powered Low-dose, Low-cost, High-Quality Computed Tomography (CT) Imaging",
+          "org": "FORM FINDING STUDIO LLC",
+          "title": "SBIR Phase II: Computer-Aided Design Software for Novel Geometric-Inspired Engineering and Manufacturing",
           "amount": 1250000,
+          "state": "PA"
+        },
+        {
+          "org": "RARE EARTH GENOMICS TEXAS, LLC",
+          "title": "SBIR Phase I: Developing 'SAFE' (Smart-Activity-Focused-Eco) Plant Terpenoid Derived Biopesticides",
+          "amount": 305000,
+          "state": "TX"
+        },
+        {
+          "org": "LUMISTRAIN, INC.",
+          "title": "SBIR Fast-Track: Strain Sensing Smart Skin (S4) for Structural Testing and Health Monitoring",
+          "amount": 1549408,
+          "state": "TX"
+        },
+        {
+          "org": "ENDURE BIOTHERAPEUTICS, INC.",
+          "title": "SBIR Phase I: A Novel Precision Microbiome Therapy for Phenylketonuria",
+          "amount": 305000,
           "state": "CA"
-        },
-        {
-          "org": "REFIBERED, INC.",
-          "title": "SBIR Phase II: Automated Textile Sorting Systems for Precision Resale and Closed-Loop Material Flow",
-          "amount": 1248225,
-          "state": "CA"
-        },
-        {
-          "org": "SIT SENSE, INC",
-          "title": "SBIR Fast-Track: Reducing Hospital-Acquired Pressure Injuries and Workforce Strain Through Automated Repositioning Technology",
-          "amount": 1555000,
-          "state": "MI"
-        },
-        {
-          "org": "MATERIALIZE BIO, INC.",
-          "title": "SBIR Phase II: Bioengineered Next-Generation Tympanostomy Tubes to Improve Patient Outcomes",
-          "amount": 1250000,
-          "state": "MA"
         }
       ]
     },
     "nih_sttr": {
       "status": "open",
       "nextDeadline": "Apr 5, 2027",
-      "daysUntil": 293,
+      "daysUntil": 286,
       "openTopics": 1,
       "deadlineLabel": "Apr 5, 2027 · 1 open solicitation",
       "source": "grants.gov",
@@ -137,14 +137,14 @@
           {
             "company": "SIGMOVIR BIOSYSTEMS, INC.",
             "title": "Inducible HMGB1 antagonist for viral-induced acute lung injury.",
-            "amount": 488080,
+            "amount": 62894,
             "year": 2024,
             "mechanism": "R41"
           },
           {
             "company": "SIGMOVIR BIOSYSTEMS, INC.",
             "title": "Inducible HMGB1 antagonist for viral-induced acute lung injury.",
-            "amount": 62894,
+            "amount": 488080,
             "year": 2024,
             "mechanism": "R41"
           },
@@ -161,16 +161,16 @@
     },
     "dod_sbir": {
       "status": "open",
-      "nextDeadline": "Jun 22, 2026",
-      "daysUntil": 6,
+      "nextDeadline": "Nov 16, 2026",
+      "daysUntil": 146,
       "openTopics": 7,
-      "deadlineLabel": "Jun 22, 2026 · 7 open solicitations",
+      "deadlineLabel": "Nov 16, 2026 · 7 open solicitations",
       "source": "grants.gov"
     },
     "darpa": {
       "status": "open",
       "nextDeadline": "Sep 30, 2026",
-      "daysUntil": 106,
+      "daysUntil": 99,
       "openTopics": 1,
       "deadlineLabel": "Sep 30, 2026 · 1 open solicitation",
       "source": "grants.gov"
@@ -178,7 +178,7 @@
     "doe_sbir": {
       "status": "open",
       "nextDeadline": "Sep 30, 2026",
-      "daysUntil": 106,
+      "daysUntil": 99,
       "openTopics": 1,
       "deadlineLabel": "Sep 30, 2026 · 1 open solicitation",
       "source": "grants.gov"
