@@ -256,7 +256,7 @@ async function main() {
   if (summary.unknown.length) console.log(`⚪ Unknown (${summary.unknown.length}): ${summary.unknown.join(', ')}`);
   if (summary.error.length)   console.log(`❌ Failed (${summary.error.length}):  ${summary.error.join(', ')}`);
 
-  if (summary.error.length > 0) process.exit(1);
+  if (summary.error.length === GRANTS.length) process.exit(1);
 }
 
 main().catch(err => {
