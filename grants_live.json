@@ -1,10 +1,10 @@
 {
-  "lastUpdated": "2026-06-23T14:36:59.872Z",
+  "lastUpdated": "2026-06-30T14:07:24.936Z",
   "grants": {
     "nih_sbir": {
       "status": "open",
       "nextDeadline": "Apr 5, 2027",
-      "daysUntil": 286,
+      "daysUntil": 279,
       "openTopics": 3,
       "deadlineLabel": "Apr 5, 2027 · 3 open solicitations",
       "source": "grants.gov",
@@ -67,7 +67,7 @@
       "deadlineLabel": "Rolling · 1 open solicitation",
       "source": "grants.gov",
       "recentAwardCount": 25,
-      "avgAwardAmount": 697690,
+      "avgAwardAmount": 463405,
       "nsfWinners": [
         {
           "org": "CULTIMAR TECHNOLOGIES, INC",
@@ -76,35 +76,35 @@
           "state": "PR"
         },
         {
-          "org": "LABFORINVENTION CORP",
-          "title": "SBIR Phase II: Scalable Manufacturing Technology for Mobile Signal Penetrating Low-Emissivity Windows",
-          "amount": 1248176,
-          "state": "CA"
-        },
-        {
-          "org": "RARE EARTH GENOMICS TEXAS, LLC",
-          "title": "SBIR Phase I: Developing 'SAFE' (Smart-Activity-Focused-Eco) Plant Terpenoid Derived Biopesticides",
+          "org": "HALOGEN POWER, INC",
+          "title": "SBIR Phase I: High-Energy Primary Battery Chemistry Powering Next-Generation Wearable Devices",
           "amount": 305000,
-          "state": "TX"
+          "state": "IL"
         },
         {
-          "org": "SINGULAR IMMUNE, INC.",
-          "title": "SBIR Phase I: Novel Protein-Based Platform for In Vivo Chimeric Antigen Receptor (CAR) Generation",
-          "amount": 304909,
-          "state": "TX"
+          "org": "CALEO BIOTECHNOLOGIES, INC.",
+          "title": "SBIR Phase I: Accelerating Targeted Therapies for Colitis-Associated Cancer Using Patient-Derived Human Tissue Models",
+          "amount": 289435,
+          "state": "MD"
         },
         {
-          "org": "ENDURE BIOTHERAPEUTICS, INC.",
-          "title": "SBIR Phase I: A Novel Precision Microbiome Therapy for Phenylketonuria",
+          "org": "AICONIC BIOSCIENCES LLC",
+          "title": "SBIR Phase I: A Novel Gene Therapy Platform to Overcome AAV Cargo Size Limitations",
           "amount": 305000,
           "state": "CA"
+        },
+        {
+          "org": "PAVEX LLC",
+          "title": "SBIR Phase I: AI-enabled Affordable and Autonomous Road Condition Assessment System",
+          "amount": 305000,
+          "state": "IN"
         }
       ]
     },
     "nih_sttr": {
       "status": "open",
       "nextDeadline": "Apr 5, 2027",
-      "daysUntil": 286,
+      "daysUntil": 279,
       "openTopics": 1,
       "deadlineLabel": "Apr 5, 2027 · 1 open solicitation",
       "source": "grants.gov",
@@ -137,14 +137,14 @@
           {
             "company": "SIGMOVIR BIOSYSTEMS, INC.",
             "title": "Inducible HMGB1 antagonist for viral-induced acute lung injury.",
-            "amount": 62894,
+            "amount": 488080,
             "year": 2024,
             "mechanism": "R41"
           },
           {
             "company": "SIGMOVIR BIOSYSTEMS, INC.",
             "title": "Inducible HMGB1 antagonist for viral-induced acute lung injury.",
-            "amount": 488080,
+            "amount": 62894,
             "year": 2024,
             "mechanism": "R41"
           },
@@ -162,7 +162,7 @@
     "dod_sbir": {
       "status": "open",
       "nextDeadline": "Nov 16, 2026",
-      "daysUntil": 146,
+      "daysUntil": 139,
       "openTopics": 7,
       "deadlineLabel": "Nov 16, 2026 · 7 open solicitations",
       "source": "grants.gov"
@@ -170,7 +170,7 @@
     "darpa": {
       "status": "open",
       "nextDeadline": "Sep 30, 2026",
-      "daysUntil": 99,
+      "daysUntil": 92,
       "openTopics": 1,
       "deadlineLabel": "Sep 30, 2026 · 1 open solicitation",
       "source": "grants.gov"
@@ -178,7 +178,7 @@
     "doe_sbir": {
       "status": "open",
       "nextDeadline": "Sep 30, 2026",
-      "daysUntil": 99,
+      "daysUntil": 92,
       "openTopics": 1,
       "deadlineLabel": "Sep 30, 2026 · 1 open solicitation",
       "source": "grants.gov"
