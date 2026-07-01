@@ -1,5 +1,6 @@
 {
   "lastUpdated": "2026-06-30T14:07:24.936Z",
+  "lastScrapedAt": "2026-07-01T15:34:47.611Z",
   "grants": {
     "nih_sbir": {
       "status": "open",
@@ -184,31 +185,31 @@
       "source": "grants.gov"
     },
     "mii": {
-      "status": "rolling",
-      "nextDeadline": "Jul 15, 2026",
-      "daysUntil": 22,
-      "deadlineLabel": "Q3 2026 quarterly deadline - 5:00pm ET on July 15 (or first business day thereafter) for Technology Assessment or Company Formation applications",
-      "notes": "Applications accepted quarterly: Jan 15, Apr 15, Jul 15, Oct 15. Each applicant must engage with a Site Miner at least 30 days before submission and obtain a TEDCO ID. Technology Assessment funds up to $130k-$180k; Company Formation funds up to $300k.",
+      "status": "open",
+      "nextDeadline": "Wed Oct 15, 2026",
+      "daysUntil": 106,
+      "deadlineLabel": "Quarterly application deadline for Technology Assessment (up to $180K joint/$130K sole) and Company Formation (up to $300K)",
+      "notes": "Deadlines are quarterly: Jan 15, Apr 15, Jul 15, Oct 15. Applications must be submitted by 5:00pm. Two funding phases: Technology Assessment (9 months, up to $130-180K) and Company Formation (9 months, up to $300K). Applicants must engage with a Site Miner at least 30 days before submission.",
       "source": "https://www.tedco.md/funding/maryland-innovation-initiative/",
-      "fetchedAt": "2026-06-23T14:10:01.803Z"
+      "fetchedAt": "2026-07-01T15:34:47.612Z"
     },
     "mii_joint": {
       "status": "open",
-      "nextDeadline": "Wed Jul 15, 2026",
-      "daysUntil": 22,
-      "deadlineLabel": "Technology Assessment Phase (Joint Track) - Up to $180,000 for joint applications across two Qualifying Universities. Applications due by 5:00pm on July 15, 2026.",
-      "notes": "MII follows strict quarterly deadlines (Jan 15, Apr 15, Jul 15, Oct 15). Joint applications require two Qualifying Universities (JHU, MSU, UMB, UMBC, or UMD-CP). All applicants must engage with a Site Miner at least 30 days before submission and obtain TEDCO ID.",
+      "nextDeadline": "Jul 15, 2026",
+      "daysUntil": 14,
+      "deadlineLabel": "Technology Assessment (Joint USM Track) - Quarterly submission deadline",
+      "notes": "MII operates on quarterly deadlines. Joint applications between two Qualifying Universities can receive up to $180,000 for Technology Assessment phase. Site Miner engagement required 30 days before submission.",
       "source": "https://www.tedco.md/funding/maryland-innovation-initiative/",
-      "fetchedAt": "2026-06-23T14:10:11.984Z"
+      "fetchedAt": "2026-07-01T15:35:04.808Z"
     },
     "mii_cf": {
       "status": "open",
-      "nextDeadline": "Wed Jul 15, 2026",
-      "daysUntil": 22,
-      "deadlineLabel": "Company Formation Phase Application (Quarterly deadline)",
-      "notes": "MII operates on quarterly deadlines: Jan 15, Apr 15, Jul 15, Oct 15. Company Formation track funds up to $300,000 for commercial launch. Requires Site Miner engagement at least 30 days before submission.",
+      "nextDeadline": "Fri Oct 15, 2026",
+      "daysUntil": 106,
+      "deadlineLabel": "Q4 Application Deadline - Company Formation track (5:00pm EST)",
+      "notes": "MII follows quarterly submission deadlines (Jan 15, Apr 15, Jul 15, Oct 15). Company Formation phase supports commercial launch for start-ups licensed from Qualifying Universities. Applicants must engage with a Site Miner at least 30 days before submission.",
       "source": "https://www.tedco.md/funding/maryland-innovation-initiative/",
-      "fetchedAt": "2026-06-23T14:10:22.087Z"
+      "fetchedAt": "2026-07-01T15:35:19.681Z"
     },
     "bii": {
       "status": "closed",
@@ -216,6 +217,100 @@
       "notes": "Most recent cycle closed May 20, 2026. BII follows annual RFA timeline with Indication of Interest (IOI) stage first. Next cycle expected Spring 2027. Program requires meeting with onsite Project Lead at least 30 days before submission.",
       "source": "https://www.tedco.md/baltimore-innovation-initiative/",
       "fetchedAt": "2026-06-23T14:10:38.771Z"
+    },
+    "mscrf": {
+      "status": "closed",
+      "nextDeadline": "Mid-July 2026",
+      "deadlineLabel": "Summer 2026 funding cycle submission deadline (passed June 23, 2026). Next cycle expected mid-July 2026 with details TBA.",
+      "notes": "The June 23, 2026 submission deadline has passed as of the current date (July 1, 2026). MSCRF operates multiple funding cycles throughout the year with mid-January and mid-July deadlines for most programs. Specific details for the next cycle are not yet published on the website.",
+      "source": "https://www.mscrf.org/funding-opportunities",
+      "fetchedAt": "2026-07-01T15:36:10.012Z",
+      "daysUntil": 0
+    },
+    "builder": {
+      "status": "rolling",
+      "deadlineLabel": "Rolling admissions - applications accepted on an ongoing basis through online portal",
+      "notes": "Pre-Seed Builder Fund is part of TEDCO's Social Impact Funds. Program is active as of July 2026. Investments typically $100,000 via convertible notes. Requires at least 50% founder economic disadvantage and Maryland operations.",
+      "source": "https://www.tedco.md/funding/social-impact-funds/",
+      "fetchedAt": "2026-07-01T15:36:17.505Z"
+    },
+    "inclusion": {
+      "status": "rolling",
+      "deadlineLabel": "Rolling equity fund — applications assessed on an ongoing basis",
+      "notes": "Inclusion Fund is part of TEDCO's Social Impact Funds portfolio. Supports early-stage technology startups with at least 30% ownership by individuals demonstrating social and economic disadvantage. Applications must be submitted online through TEDCO's website.",
+      "source": "https://www.tedco.md/funding/social-impact-funds/",
+      "fetchedAt": "2026-07-01T15:36:33.783Z"
+    },
+    "rbii": {
+      "status": "unknown",
+      "deadlineLabel": "Rolling program - contact regional mentor",
+      "notes": "Program page (https://www.tedco.md/program/rural-business-innovation-initiative/) returns 404 error. Program is listed on TEDCO main website but current deadline and application details are not accessible. According to grant details provided, this is a rolling program requiring contact with regional mentor.",
+      "source": "https://www.tedco.md/program/rural-business-innovation-initiative/",
+      "fetchedAt": "2026-07-01T15:36:46.930Z"
+    },
+    "mmf": {
+      "status": "unknown",
+      "deadlineLabel": "Could not determine deadline - website access issue",
+      "notes": "Unable to fetch https://www.usmd.edu/momentum/ due to SSL certificate verification error. Could not verify current cycle dates or rolling vs. fixed deadline status.",
+      "source": "https://www.usmd.edu/momentum/",
+      "fetchedAt": "2026-07-01T15:37:00.321Z"
+    },
+    "carbx": {
+      "status": "closed",
+      "deadlineLabel": "2026 Cycle 1: EOI closed April 22, 2026; Project Narrative deadline closed May 29, 2026",
+      "notes": "The 2026 Standard Calls Cycle 1 deadlines have passed. Check the website for future funding rounds and cycles (e.g., Tx Target Based Call Cycle 1 or 2027 rounds).",
+      "source": "https://carb-x.org/apply/application-process/",
+      "fetchedAt": "2026-07-01T15:37:34.852Z"
+    },
+    "aha": {
+      "status": "open",
+      "nextDeadline": "Tue Aug 04, 2026",
+      "daysUntil": 34,
+      "deadlineLabel": "Predoctoral Fellowship proposal deadline (earliest mechanism); Additional deadlines: Postdoctoral Fellowship (Aug 5), Institutional Award for Undergraduates (Sep 9), AIREA (Sep 10), Career Development Award (Dec 1)",
+      "notes": "AHA offers multiple funding mechanisms with rolling deadlines throughout 2026. All listed mechanisms are currently open. Full proposals for some programs require pre-proposals. Check individual program pages for eligibility and submission details.",
+      "source": "https://professional.heart.org/en/research-programs/aha-funding-opportunities",
+      "fetchedAt": "2026-07-01T15:38:10.948Z"
+    },
+    "mjff": {
+      "status": "open",
+      "nextDeadline": "Wed Jul 21, 2026",
+      "daysUntil": 20,
+      "deadlineLabel": "Parkinson's Disease Proteoforms Program (Full Proposal). Multiple other programs with rolling deadlines and fixed dates through July 22, 2026.",
+      "notes": "MJFF maintains multiple concurrent funding programs. Open programs include: (1) Bridge Funding for Disrupted Neurodegenerative Research - Rolling; (2) Parkinson's Disease Proteoforms Program - July 21, 2026; (3) GBA1 Parkinson's Disease Research Catalyst Program - July 22, 2026 (Full Proposals); (4) Parkinson's Disease Therapeutics Pipeline Program - Rolling. Several other programs listed as 'Programs in Review' with past pre-proposal deadlines. Founders should check the full funding page for all active opportunities.",
+      "source": "https://www.michaeljfox.org/funding",
+      "fetchedAt": "2026-07-01T15:38:36.170Z"
+    },
+    "cfft": {
+      "status": "unknown",
+      "deadlineLabel": "Unable to access CFF website for current intake status",
+      "notes": "The Cystic Fibrosis Foundation website (cff.org) is blocking automated access (HTTP 403). Unable to verify rolling contract model status or current application intake. The CFF Therapeutics program is known to operate on a rolling basis typically, but current status cannot be confirmed. Manual review of https://www.cff.org/researchers or direct contact with CFF required.",
+      "source": "https://www.cff.org/researchers",
+      "fetchedAt": "2026-07-01T15:38:46.963Z"
+    },
+    "wellcome": {
+      "status": "closed",
+      "nextDeadline": "Tue 29, 2026",
+      "daysUntil": 28,
+      "deadlineLabel": "Full proposal submission deadline was June 29, 2026; decision notifications expected July 29, 2026. Application window closed.",
+      "notes": "Focused Antibiotics program had a two-stage application process: abstracts due May 15, 2026 (closed) and full proposals due June 29, 2026 (closed). Decisions will be sent July 29, 2026. This represents a single program from Wellcome Leap's portfolio. Other programs on the main page may have different timelines.",
+      "source": "https://wellcomeleap.org/programs/focused-antibiotics/",
+      "fetchedAt": "2026-07-01T15:38:54.658Z"
+    },
+    "bwf": {
+      "status": "open",
+      "nextDeadline": "Wed 16, Jul 2026",
+      "daysUntil": 15,
+      "deadlineLabel": "Letter of Intent deadline for Investigators in the Pathogenesis of Infectious Disease (PATH) program",
+      "notes": "BWF offers multiple grant mechanisms with staggered deadlines. Other upcoming deadlines include Jul 23 (Climate Change rolling), Aug 14 (CASI LOI), and Sep 30 (STEM Teachers). Check website for complete annual cycle information by mechanism.",
+      "source": "https://www.bwfund.org/grants/upcoming-deadlines/",
+      "fetchedAt": "2026-07-01T15:39:07.247Z"
+    },
+    "coulter": {
+      "status": "unknown",
+      "deadlineLabel": "Unable to determine—website access restricted",
+      "notes": "The primary URL (https://cbid.bme.jhu.edu/research/translational-research/coulter-program/) returns HTTP 403 Forbidden error, preventing access to deadline information. Alternative domain routes also inaccessible. Contact JHU CBID directly or check internal JHU resources for current LOI/application deadlines.",
+      "source": "https://cbid.bme.jhu.edu/research/translational-research/coulter-program/",
+      "fetchedAt": "2026-07-01T15:39:15.768Z"
     }
   }
 }
