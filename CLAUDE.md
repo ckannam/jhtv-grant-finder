@@ -18,7 +18,7 @@ node stress_test.js          # or: npm test
 # Fetch live data for the 6 API-sourced federal grants (writes grants_live.json)
 node fetch_grants.js         # or: npm run fetch
 
-# Scrape deadlines for the 18 non-API grant websites (merges into grants_live.json)
+# Scrape deadlines for the 22 non-API grant websites (merges into grants_live.json)
 node scrape_grants.js        # or: npm run scrape
 
 # AI-powered grant deadline updater (requires ANTHROPIC_API_KEY env var)
@@ -32,12 +32,14 @@ One npm dependency: `@anthropic-ai/sdk` (used only by `ai_grant_updater.js`). Al
 
 ## Architecture
 
-**`jhtv_grant_eligibility.html`** — the entire frontend in one file (HTML + CSS + JS). Key sections in the script block:
+**`jhtv_grant_eligibility.html`** — the frontend (HTML + CSS + JS), loading the eligibility engine from `grant_engine.js` via script tag. Key sections in the script block:
 
 - `loadLiveData()` / `applyLiveData()` — fetches `grants_live.json` on page load and overlays live deadline/status onto grants
 - `selectStage()` / `showLanding()` / `updateFormForStage()` — stage-gate landing screen logic (Pre-Co vs Co-Investment mode)
 - `collectData()` — reads all form fields into a plain object `d`
-- `getGrants(d)` — the core eligibility engine; takes the form data object, returns an array of 28 grant objects each with `{id, title, org, cat, s, amount, deadline, tags, r[]}` where `s` is `eligible | conditional | ineligible` and `r` is the array of pass/warn/fail reasons
+- URL hash restore on `DOMContentLoaded` — `#stage=pre_co&ventureStage=…` prefills the form and skips the landing screen; used by JHTV Second Brain deep links. `evaluate()` writes the current form (incl. stage) back into the hash.
+
+**`grant_engine.js`** — `getGrants(d)`, the core eligibility engine; takes the form data object, returns an array of 28 grant objects each with `{id, title, org, cat, s, amount, deadline, tags, r[]}` where `s` is `eligible | conditional | ineligible` and `r` is the array of pass/warn/fail reasons. **Shared cross-repo:** the JHTV Second Brain (`ckannam/VC_Matching_Second_Brain`) fetches this file and `grants_live.json` from the deployed site for per-tech preliminary grant screens — renaming the file or changing `getGrants()`'s signature breaks that consumer. Also `require()`d directly by `stress_test.js`.
 - `renderResults(grants, browseMode)` — renders the results panel; in browse mode (empty form) shows all grants as a catalog without eligibility scoring; otherwise groups by eligible/conditional/ineligible. Stage filtering (PRE_CO_HIDE) applies in both modes. Never filter grants in `getGrants()`.
 - `cardHTML(g, browseMode)` — renders a single grant card; in browse mode hides status pill, reasons list, and conflict badges so cards show as neutral catalog entries
 - `getConflicts(pursuing, allGrants)` — conflict detection across 7 rules (pick-one, equivalent-work, sequential, disclose)
@@ -47,13 +49,11 @@ One npm dependency: `@anthropic-ai/sdk` (used only by `ai_grant_updater.js`). Al
 
 **`fetch_grants.js`** — hits three APIs (grants.gov search2, NIH Reporter v2, NSF Awards) for the 6 federal grants that have public APIs: `nih_sbir`, `nih_sttr`, `nsf_sbir`, `dod_sbir`, `darpa`, `doe_sbir`. Reads existing `grants_live.json` first and merges results to avoid wiping data on API failure.
 
-**`scrape_grants.js`** — scrapes grant websites that have no API (Maryland programs, disease foundations, private foundations). Also merges into existing `grants_live.json`.
+**`scrape_grants.js`** — scrapes the 22 grant websites that have no API (Maryland programs, disease foundations, private foundations). Also merges into existing `grants_live.json`. Grants whose scrape fails are simply left out of the merge; the HTML falls back to each grant's hardcoded deadline string, so `grants_live.json` may legitimately contain fewer than 28 keys.
 
 **`ai_grant_updater.js`** — uses the Claude API (`claude-haiku-4-5-20251001`) with a `web_fetch` tool to visit 22 non-API grant websites and extract deadline/status data via AI inference rather than code parsing (more accurate than `scrape_grants.js` for dynamic content). Requires `ANTHROPIC_API_KEY` env var. Exits 0 on partial success (exits 1 only if every grant fails). Runs on a quarterly schedule in CI; can also be triggered manually.
 
-**`stress_test.js`** — runs 8 founder personas against `getGrants()` and verifies 224 expected outcomes (8 × 28 grants). Extracts `getGrants()` directly from `jhtv_grant_eligibility.html` at runtime using `new Function()`, so it always stays in sync with the HTML — no manual code duplication needed.
-
-> **Critical:** `stress_test.js` extracts `getGrants()` by scanning for the exact strings `'\nfunction getGrants(d) {'` and `'\n// ── Pursuing Tracker'` as start/end boundaries. Renaming either comment marker in the HTML will silently break the test (it exits with an error before running any checks).
+**`stress_test.js`** — runs 8 founder personas against `getGrants()` and verifies 224 expected outcomes (8 × 28 grants). Requires the engine directly via `require('./grant_engine.js')`.
 
 ## All grant IDs
 
