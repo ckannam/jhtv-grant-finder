@@ -7,6 +7,10 @@ on:
   # Also allow manual trigger from GitHub Actions tab
   workflow_dispatch:
 
+# Serialize with the other grants_live.json workflows so concurrent pushes don't collide
+concurrency:
+  group: grants-data
+
 jobs:
   refresh:
     runs-on: ubuntu-latest
@@ -31,4 +35,5 @@ jobs:
           git config user.email "grantbot@users.noreply.github.com"
           git add grants_live.json
           git diff --staged --quiet || git commit -m "chore: refresh grant live data $(date -u '+%Y-%m-%d')"
+          git pull --rebase origin main
           git push
