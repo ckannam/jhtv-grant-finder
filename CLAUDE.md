@@ -38,12 +38,12 @@ One npm dependency: `@anthropic-ai/sdk` (used only by `ai_grant_updater.js`). Al
 - `selectStage()` / `showLanding()` / `updateFormForStage()` — stage-gate landing screen logic (Pre-Co vs Co-Investment mode)
 - `collectData()` — reads all form fields into a plain object `d`
 - URL hash restore on `DOMContentLoaded` — `#stage=pre_co&ventureStage=…` prefills the form and skips the landing screen; used by JHTV Second Brain deep links. `evaluate()` writes the current form (incl. stage) back into the hash.
-
-**`grant_engine.js`** — `getGrants(d)`, the core eligibility engine; takes the form data object, returns an array of 28 grant objects each with `{id, title, org, cat, s, amount, deadline, tags, r[]}` where `s` is `eligible | conditional | ineligible` and `r` is the array of pass/warn/fail reasons. **Shared cross-repo:** the JHTV Second Brain (`ckannam/VC_Matching_Second_Brain`) fetches this file and `grants_live.json` from the deployed site for per-tech preliminary grant screens — renaming the file or changing `getGrants()`'s signature breaks that consumer. Also `require()`d directly by `stress_test.js`.
 - `renderResults(grants, browseMode)` — renders the results panel; in browse mode (empty form) shows all grants as a catalog without eligibility scoring; otherwise groups by eligible/conditional/ineligible. Stage filtering (PRE_CO_HIDE) applies in both modes. Never filter grants in `getGrants()`.
 - `cardHTML(g, browseMode)` — renders a single grant card; in browse mode hides status pill, reasons list, and conflict badges so cards show as neutral catalog entries
 - `getConflicts(pursuing, allGrants)` — conflict detection across 7 rules (pick-one, equivalent-work, sequential, disclose)
 - `evaluate()` — called on every form change; sets `browseMode = !anyFieldFilled`, then orchestrates `getGrants → applyLiveData → renderResults(grants, browseMode)`
+
+**`grant_engine.js`** — `getGrants(d)`, the core eligibility engine; takes the form data object, returns an array of 28 grant objects each with `{id, title, org, cat, s, amount, deadline, tags, r[]}` where `s` is `eligible | conditional | ineligible` and `r` is the array of pass/warn/fail reasons. Loaded by the HTML via script tag and `require()`d directly by `stress_test.js`. **Shared cross-repo:** the JHTV Second Brain (`ckannam/VC_Matching_Second_Brain`) fetches this file and `grants_live.json` from the deployed site for per-tech preliminary grant screens — renaming the file or changing `getGrants()`'s signature breaks that consumer.
 
 **`grants_live.json`** — the data file the HTML reads. Top-level fields: `lastUpdated` (set by `fetch_grants.js`) and `lastScrapedAt` (set by `scrape_grants.js`), plus a `grants` object keyed by grant ID.
 
@@ -92,7 +92,7 @@ These are the 28 IDs used as keys in `getGrants()`, `grants_live.json`, and stre
 
 ## Adding a new grant
 
-1. Add a new block inside `getGrants(d)` in `jhtv_grant_eligibility.html` using the same `{id, title, org, cat, s, amount, deadline, tags, r[]}` shape. Follow the existing section comment style (`// ── N. Grant Name ───`).
+1. Add a new block inside `getGrants(d)` in `grant_engine.js` using the same `{id, title, org, cat, s, amount, deadline, tags, r[]}` shape. Follow the existing section comment style (`// ── N. Grant Name ───`).
 2. Add the new grant ID to all 8 persona `expected` objects in `stress_test.js`. Every persona must have an expected outcome for every grant — a missing key will silently pass as if the grant doesn't exist.
 3. If the grant should be hidden in pre-co mode, add its ID to `PRE_CO_HIDE`. If it gets a co-stage fit badge, add it to `CO_FIT`.
 4. If live deadline data is needed, add a fetch/scrape entry in `fetch_grants.js` or `scrape_grants.js`.
@@ -105,8 +105,8 @@ Three automated workflows in `.github/workflows/`:
 | Workflow | Schedule | Script | Covers |
 |---|---|---|---|
 | `refresh_grants.yml` | Every Tuesday 8 AM ET | `fetch_grants.js` | 6 federal API grants |
-| `scrape_grants.yml` | 1st of month 8 AM ET | `scrape_grants.js` | 18 scraped grants |
-| `ai_deadline_updater.yml` | Jan/Apr/Jul/Oct 1st 8 AM ET | `ai_grant_updater.js` | Same 18 grants, AI-read |
+| `scrape_grants.yml` | 1st of month 8 AM ET | `scrape_grants.js` | 22 scraped grants |
+| `ai_deadline_updater.yml` | Jan/Apr/Jul/Oct 1st 8 AM ET | `ai_grant_updater.js` | Same 22 grants, AI-read |
 
 All three use `actions/checkout@v5`, `actions/setup-node@v5` (Node.js 24), `permissions: contents: write`, and native `git push`. They share the `grants-data` concurrency group and run `git pull --rebase` before pushing, because the monthly scrape and quarterly AI update fire at the same time on Jan/Apr/Jul/Oct 1st and would otherwise race on `grants_live.json` (this caused the 2026-07-01 scrape failure). `ai_deadline_updater.yml` requires an Anthropic API key stored as the `PERSONAL_DEV` repository secret (Settings → Secrets and variables → Actions). The workflow maps it to the `ANTHROPIC_API_KEY` env var that the SDK reads.
 
@@ -126,3 +126,5 @@ Two form fields drive Maryland-specific grants beyond `marylandBased`: `baltimor
 ## Updating grant deadline data manually
 
 The `grant-deadline-updater` Claude Code skill (`grant-deadline-updater/SKILL.md`) visits each grant website interactively when you need a one-off refresh. The automated equivalent is `ai_grant_updater.js`, which the quarterly CI workflow runs headlessly using the same logic.
+
+> **Known staleness:** the skill's grant table still lists only 18 grants — it predates the 4 Maryland grants added later (`mii_joint`, `mii_cf`, `bii`, `sbir_match`). The authoritative 22-grant list is the `GRANTS` array in `ai_grant_updater.js`; cross-check against it when running the skill.
