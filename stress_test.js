@@ -1,24 +1,10 @@
 // JHTV Grant Eligibility Stress Test
-// Extracts getGrants() from jhtv_grant_eligibility.html at runtime — always in sync.
+// Tests getGrants() from grant_engine.js (shared by the HTML and the JHTV Second Brain).
 // Run: node stress_test.js
 
 'use strict';
 
-const fs   = require('fs');
-const path = require('path');
-
-// ── Extract getGrants from HTML ────────────────────────────────────────────────
-const html     = fs.readFileSync(path.join(__dirname, 'jhtv_grant_eligibility.html'), 'utf8');
-const fnStart  = html.indexOf('\nfunction getGrants(d) {');
-const fnEnd    = html.indexOf('\n// ── Pursuing Tracker', fnStart);
-
-if (fnStart === -1 || fnEnd === -1) {
-  console.error('❌ Could not locate getGrants() in jhtv_grant_eligibility.html');
-  process.exit(1);
-}
-
-const fnSource  = html.slice(fnStart + 1, fnEnd).trim();
-const getGrants = new Function(`${fnSource}; return getGrants;`)();
+const { getGrants } = require('./grant_engine.js');
 
 // ── Persona definitions ────────────────────────────────────────────────────────
 // All field names match the live HTML form (see collectData() in the HTML).
