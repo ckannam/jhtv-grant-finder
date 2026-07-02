@@ -12,8 +12,8 @@ A single-page grant eligibility diagnostic tool for Johns Hopkins Technology Ven
 # Install npm dependency (only needed once, or after cloning)
 npm install
 
-# Run the eligibility logic stress test (8 personas, 192 checks)
-node stress_test.js          # or: npm test  (8 personas, 224 checks)
+# Run the eligibility logic stress test (8 personas, 224 checks)
+node stress_test.js          # or: npm test
 
 # Fetch live data for the 6 API-sourced federal grants (writes grants_live.json)
 node fetch_grants.js         # or: npm run fetch
@@ -47,11 +47,11 @@ One npm dependency: `@anthropic-ai/sdk` (used only by `ai_grant_updater.js`). Al
 
 **`fetch_grants.js`** — hits three APIs (grants.gov search2, NIH Reporter v2, NSF Awards) for the 6 federal grants that have public APIs: `nih_sbir`, `nih_sttr`, `nsf_sbir`, `dod_sbir`, `darpa`, `doe_sbir`. Reads existing `grants_live.json` first and merges results to avoid wiping data on API failure.
 
-**`scrape_grants.js`** — scrapes 18 grant websites that have no API (Maryland programs, disease foundations, private foundations). Also merges into existing `grants_live.json`.
+**`scrape_grants.js`** — scrapes grant websites that have no API (Maryland programs, disease foundations, private foundations). Also merges into existing `grants_live.json`.
 
-**`ai_grant_updater.js`** — uses the Claude API (`claude-haiku-4-5-20251001`) with a `web_fetch` tool to visit the same 18 grant websites and extract deadline/status data via AI inference rather than code parsing. More accurate than `scrape_grants.js` for sites with dynamic content. Requires `ANTHROPIC_API_KEY` env var. Runs on a quarterly schedule in CI; can also be triggered manually.
+**`ai_grant_updater.js`** — uses the Claude API (`claude-haiku-4-5-20251001`) with a `web_fetch` tool to visit 22 non-API grant websites and extract deadline/status data via AI inference rather than code parsing (more accurate than `scrape_grants.js` for dynamic content). Requires `ANTHROPIC_API_KEY` env var. Exits 0 on partial success (exits 1 only if every grant fails). Runs on a quarterly schedule in CI; can also be triggered manually.
 
-**`stress_test.js`** — runs 8 founder personas against `getGrants()` and verifies 192 expected outcomes. Extracts `getGrants()` directly from `jhtv_grant_eligibility.html` at runtime using `new Function()`, so it always stays in sync with the HTML — no manual code duplication needed.
+**`stress_test.js`** — runs 8 founder personas against `getGrants()` and verifies 224 expected outcomes (8 × 28 grants). Extracts `getGrants()` directly from `jhtv_grant_eligibility.html` at runtime using `new Function()`, so it always stays in sync with the HTML — no manual code duplication needed.
 
 > **Critical:** `stress_test.js` extracts `getGrants()` by scanning for the exact strings `'\nfunction getGrants(d) {'` and `'\n// ── Pursuing Tracker'` as start/end boundaries. Renaming either comment marker in the HTML will silently break the test (it exits with an error before running any checks).
 
@@ -108,7 +108,7 @@ Three automated workflows in `.github/workflows/`:
 | `scrape_grants.yml` | 1st of month 8 AM ET | `scrape_grants.js` | 18 scraped grants |
 | `ai_deadline_updater.yml` | Jan/Apr/Jul/Oct 1st 8 AM ET | `ai_grant_updater.js` | Same 18 grants, AI-read |
 
-All three use `actions/checkout@v5`, `actions/setup-node@v5` (Node.js 24), `permissions: contents: write`, and native `git push`. `ai_deadline_updater.yml` requires an Anthropic API key stored as the `PERSONAL_DEV` repository secret (Settings → Secrets and variables → Actions). The workflow maps it to the `ANTHROPIC_API_KEY` env var that the SDK reads.
+All three use `actions/checkout@v5`, `actions/setup-node@v5` (Node.js 24), `permissions: contents: write`, and native `git push`. They share the `grants-data` concurrency group and run `git pull --rebase` before pushing, because the monthly scrape and quarterly AI update fire at the same time on Jan/Apr/Jul/Oct 1st and would otherwise race on `grants_live.json` (this caused the 2026-07-01 scrape failure). `ai_deadline_updater.yml` requires an Anthropic API key stored as the `PERSONAL_DEV` repository secret (Settings → Secrets and variables → Actions). The workflow maps it to the `ANTHROPIC_API_KEY` env var that the SDK reads.
 
 ## Stage-gate and grant filtering
 
