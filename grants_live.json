@@ -1,16 +1,15 @@
 {
-  "lastUpdated": "2026-06-30T14:07:24.936Z",
-  "lastScrapedAt": "2026-07-01T15:34:47.611Z",
+  "lastUpdated": "2026-07-07T14:18:18.272Z",
   "grants": {
     "nih_sbir": {
       "status": "open",
       "nextDeadline": "Apr 5, 2027",
-      "daysUntil": 279,
+      "daysUntil": 272,
       "openTopics": 3,
       "deadlineLabel": "Apr 5, 2027 · 3 open solicitations",
       "source": "grants.gov",
       "recentAwardCount": 38,
-      "avgAwardAmount": 694588,
+      "avgAwardAmount": 703594,
       "winnerData": {
         "totalRecentAwards": 38,
         "recentProjects": [
@@ -68,7 +67,7 @@
       "deadlineLabel": "Rolling · 1 open solicitation",
       "source": "grants.gov",
       "recentAwardCount": 25,
-      "avgAwardAmount": 463405,
+      "avgAwardAmount": 425594,
       "nsfWinners": [
         {
           "org": "CULTIMAR TECHNOLOGIES, INC",
@@ -77,35 +76,35 @@
           "state": "PR"
         },
         {
-          "org": "HALOGEN POWER, INC",
-          "title": "SBIR Phase I: High-Energy Primary Battery Chemistry Powering Next-Generation Wearable Devices",
+          "org": "ISEECHANGE, Inc.",
+          "title": "SBIR Phase I: Deep Learning Framework for Mapping Flood Extent from Unstructured Photos",
+          "amount": 304018,
+          "state": "LA"
+        },
+        {
+          "org": "PARALLEL ROBOTICS LLC",
+          "title": "SBIR Phase I: A Novel Architecture for blending Human Power and Computer Control in Surgical Robots",
           "amount": 305000,
-          "state": "IL"
+          "state": "MI"
         },
         {
-          "org": "CALEO BIOTECHNOLOGIES, INC.",
-          "title": "SBIR Phase I: Accelerating Targeted Therapies for Colitis-Associated Cancer Using Patient-Derived Human Tissue Models",
-          "amount": 289435,
-          "state": "MD"
-        },
-        {
-          "org": "AICONIC BIOSCIENCES LLC",
-          "title": "SBIR Phase I: A Novel Gene Therapy Platform to Overcome AAV Cargo Size Limitations",
+          "org": "CHANNEL ROBOTICS, INC.",
+          "title": "SBIR Phase I: AI-Enhanced Robotic Continuum Robotic Instruments for use in Endoscopic Surgery",
           "amount": 305000,
           "state": "CA"
         },
         {
-          "org": "PAVEX LLC",
-          "title": "SBIR Phase I: AI-enabled Affordable and Autonomous Road Condition Assessment System",
-          "amount": 305000,
-          "state": "IN"
+          "org": "DESNA THERAPEUTICS INC",
+          "title": "SBIR Phase I: Development of a tolerizing platform for autoimmune diseases",
+          "amount": 304489,
+          "state": "CA"
         }
       ]
     },
     "nih_sttr": {
       "status": "open",
       "nextDeadline": "Apr 5, 2027",
-      "daysUntil": 279,
+      "daysUntil": 272,
       "openTopics": 1,
       "deadlineLabel": "Apr 5, 2027 · 1 open solicitation",
       "source": "grants.gov",
@@ -138,14 +137,14 @@
           {
             "company": "SIGMOVIR BIOSYSTEMS, INC.",
             "title": "Inducible HMGB1 antagonist for viral-induced acute lung injury.",
-            "amount": 488080,
+            "amount": 62894,
             "year": 2024,
             "mechanism": "R41"
           },
           {
             "company": "SIGMOVIR BIOSYSTEMS, INC.",
             "title": "Inducible HMGB1 antagonist for viral-induced acute lung injury.",
-            "amount": 62894,
+            "amount": 488080,
             "year": 2024,
             "mechanism": "R41"
           },
@@ -163,7 +162,7 @@
     "dod_sbir": {
       "status": "open",
       "nextDeadline": "Nov 16, 2026",
-      "daysUntil": 139,
+      "daysUntil": 132,
       "openTopics": 7,
       "deadlineLabel": "Nov 16, 2026 · 7 open solicitations",
       "source": "grants.gov"
@@ -171,7 +170,7 @@
     "darpa": {
       "status": "open",
       "nextDeadline": "Sep 30, 2026",
-      "daysUntil": 92,
+      "daysUntil": 85,
       "openTopics": 1,
       "deadlineLabel": "Sep 30, 2026 · 1 open solicitation",
       "source": "grants.gov"
@@ -179,7 +178,7 @@
     "doe_sbir": {
       "status": "open",
       "nextDeadline": "Sep 30, 2026",
-      "daysUntil": 92,
+      "daysUntil": 85,
       "openTopics": 1,
       "deadlineLabel": "Sep 30, 2026 · 1 open solicitation",
       "source": "grants.gov"
