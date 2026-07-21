@@ -1,10 +1,10 @@
 {
-  "lastUpdated": "2026-07-14T13:20:52.570Z",
+  "lastUpdated": "2026-07-21T13:26:00.027Z",
   "grants": {
     "nih_sbir": {
       "status": "open",
       "nextDeadline": "Apr 5, 2027",
-      "daysUntil": 265,
+      "daysUntil": 258,
       "openTopics": 3,
       "deadlineLabel": "Apr 5, 2027 · 3 open solicitations",
       "source": "grants.gov",
@@ -44,15 +44,15 @@
           {
             "company": "KALOCYTE, INC.",
             "title": "ErythroMer: Nanoscale BioSynthetic Red Cell Substitute",
-            "amount": 997590,
-            "year": 2024,
+            "amount": 995470,
+            "year": 2025,
             "mechanism": "R44"
           },
           {
             "company": "KALOCYTE, INC.",
             "title": "ErythroMer: Nanoscale BioSynthetic Red Cell Substitute",
-            "amount": 995470,
-            "year": 2025,
+            "amount": 997590,
+            "year": 2024,
             "mechanism": "R44"
           }
         ],
@@ -67,7 +67,7 @@
       "deadlineLabel": "Rolling · 1 open solicitation",
       "source": "grants.gov",
       "recentAwardCount": 25,
-      "avgAwardAmount": 451071,
+      "avgAwardAmount": 629816,
       "nsfWinners": [
         {
           "org": "CULTIMAR TECHNOLOGIES, INC",
@@ -76,35 +76,35 @@
           "state": "PR"
         },
         {
-          "org": "ISEECHANGE, Inc.",
-          "title": "SBIR Phase I: Deep Learning Framework for Mapping Flood Extent from Unstructured Photos",
-          "amount": 304018,
-          "state": "LA"
-        },
-        {
-          "org": "CYTROGEN",
-          "title": "SBIR Phase I: Gelatrix: A Light-Curable Bioadhesive for the Treatment of Bony Defects",
-          "amount": 305000,
+          "org": "ZEBRAMD INC.",
+          "title": "SBIR Phase II: A Clinical Decision Making tool to improve diagnosis, management and research",
+          "amount": 1239701,
           "state": "CA"
         },
         {
-          "org": "PARALLEL ROBOTICS LLC",
-          "title": "SBIR Phase I: A Novel Architecture for blending Human Power and Computer Control in Surgical Robots",
-          "amount": 305000,
-          "state": "MI"
+          "org": "SOWN TO GROW, INC.",
+          "title": "SBIR Phase II: Fostering Growth in Trusting Relationships between Students and Educators with Natural Language Processing and Machine Learning Technologies",
+          "amount": 1250000,
+          "state": "CA"
         },
         {
-          "org": "CHANNEL ROBOTICS, INC.",
-          "title": "SBIR Phase I: AI-Enhanced Robotic Continuum Robotic Instruments for use in Endoscopic Surgery",
-          "amount": 305000,
-          "state": "CA"
+          "org": "SMARTCHARTS INC.",
+          "title": "SBIR Phase II: AI-Driven Visualization of Rehabilitation Documentation to Support Decision-Making Across Care Settings",
+          "amount": 1250000,
+          "state": "IL"
+        },
+        {
+          "org": "NEUROBIONICS INC",
+          "title": "SBIR Phase II: NeuroBionics IO Fiber: A Multifunctional Neural Probe for Advancing Neuroscience Research",
+          "amount": 1202116,
+          "state": "MA"
         }
       ]
     },
     "nih_sttr": {
       "status": "open",
       "nextDeadline": "Apr 5, 2027",
-      "daysUntil": 265,
+      "daysUntil": 258,
       "openTopics": 1,
       "deadlineLabel": "Apr 5, 2027 · 1 open solicitation",
       "source": "grants.gov",
@@ -162,7 +162,7 @@
     "dod_sbir": {
       "status": "open",
       "nextDeadline": "Nov 16, 2026",
-      "daysUntil": 125,
+      "daysUntil": 118,
       "openTopics": 7,
       "deadlineLabel": "Nov 16, 2026 · 7 open solicitations",
       "source": "grants.gov"
@@ -170,7 +170,7 @@
     "darpa": {
       "status": "open",
       "nextDeadline": "Sep 30, 2026",
-      "daysUntil": 78,
+      "daysUntil": 71,
       "openTopics": 1,
       "deadlineLabel": "Sep 30, 2026 · 1 open solicitation",
       "source": "grants.gov"
@@ -178,7 +178,7 @@
     "doe_sbir": {
       "status": "open",
       "nextDeadline": "Sep 30, 2026",
-      "daysUntil": 78,
+      "daysUntil": 71,
       "openTopics": 1,
       "deadlineLabel": "Sep 30, 2026 · 1 open solicitation",
       "source": "grants.gov"
