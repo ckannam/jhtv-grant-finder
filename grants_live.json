@@ -1,10 +1,10 @@
 {
-  "lastUpdated": "2026-07-28T13:51:26.902Z",
+  "lastUpdated": "2026-08-04T13:56:45.766Z",
   "grants": {
     "nih_sbir": {
       "status": "open",
       "nextDeadline": "Apr 5, 2027",
-      "daysUntil": 251,
+      "daysUntil": 244,
       "openTopics": 3,
       "deadlineLabel": "Apr 5, 2027 · 3 open solicitations",
       "source": "grants.gov",
@@ -67,7 +67,7 @@
       "deadlineLabel": "Rolling · 1 open solicitation",
       "source": "grants.gov",
       "recentAwardCount": 25,
-      "avgAwardAmount": 1223519,
+      "avgAwardAmount": 1206955,
       "nsfWinners": [
         {
           "org": "CULTIMAR TECHNOLOGIES, INC",
@@ -76,27 +76,27 @@
           "state": "PR"
         },
         {
-          "org": "PATHFLOW INC.",
-          "title": "SBIR Phase II: Enhancing Pathology Efficiency with On-Chip Optical Coherence Tomography (OCT) Imaging Technology",
-          "amount": 1247250,
+          "org": "NEW ENGLAND HEMOLYTICS, INC.",
+          "title": "SBIR Phase II: Rapid Sepsis Screening System Based on Pathogen DNA Extraction",
+          "amount": 1249902,
+          "state": "CT"
+        },
+        {
+          "org": "MELLICELL, INC.",
+          "title": "SBIR Phase II: Industrial-Scale Technology for Drug Development",
+          "amount": 1250000,
           "state": "MA"
         },
         {
-          "org": "FINIKS FORGE, INC.",
-          "title": "SBIR Phase II: Conversion of Keratin-Rich Materials into Regenerated Textile Fibers",
-          "amount": 1250000,
-          "state": "NY"
+          "org": "DESIGNER ECOSYSTEMS LLC",
+          "title": "SBIR Phase II: Sensor Platform for Novel Submerged Barriers",
+          "amount": 1242694,
+          "state": "VA"
         },
         {
-          "org": "CIRCULARITY FUELS, INC.",
-          "title": "SBIR Phase II: Joule-Heated Sorbent-Enhanced Catalysis for High-Purity Methane Production in Semiconductor and Advanced Carbon Material Manufacturing",
-          "amount": 1250000,
-          "state": "CA"
-        },
-        {
-          "org": "WATER ILLUMINATION INC",
-          "title": "SBIR Phase II: Next-Generation Deep Ultraviolet Photochemical Reactor",
-          "amount": 1239973,
+          "org": "BEKEN BIO, INC.",
+          "title": "SBIR Phase II: Liquid Biopsy Diagnostic Targeting Novel Extracellular Vesicle Biomarkers",
+          "amount": 1249464,
           "state": "CA"
         }
       ]
@@ -104,7 +104,7 @@
     "nih_sttr": {
       "status": "open",
       "nextDeadline": "Apr 5, 2027",
-      "daysUntil": 251,
+      "daysUntil": 244,
       "openTopics": 1,
       "deadlineLabel": "Apr 5, 2027 · 1 open solicitation",
       "source": "grants.gov",
@@ -137,14 +137,14 @@
           {
             "company": "SIGMOVIR BIOSYSTEMS, INC.",
             "title": "Inducible HMGB1 antagonist for viral-induced acute lung injury.",
-            "amount": 488080,
+            "amount": 62894,
             "year": 2024,
             "mechanism": "R41"
           },
           {
             "company": "SIGMOVIR BIOSYSTEMS, INC.",
             "title": "Inducible HMGB1 antagonist for viral-induced acute lung injury.",
-            "amount": 62894,
+            "amount": 488080,
             "year": 2024,
             "mechanism": "R41"
           },
@@ -162,15 +162,15 @@
     "dod_sbir": {
       "status": "open",
       "nextDeadline": "Nov 16, 2026",
-      "daysUntil": 111,
-      "openTopics": 7,
-      "deadlineLabel": "Nov 16, 2026 · 7 open solicitations",
+      "daysUntil": 104,
+      "openTopics": 6,
+      "deadlineLabel": "Nov 16, 2026 · 6 open solicitations",
       "source": "grants.gov"
     },
     "darpa": {
       "status": "open",
       "nextDeadline": "Sep 30, 2026",
-      "daysUntil": 64,
+      "daysUntil": 57,
       "openTopics": 1,
       "deadlineLabel": "Sep 30, 2026 · 1 open solicitation",
       "source": "grants.gov"
@@ -178,7 +178,7 @@
     "doe_sbir": {
       "status": "open",
       "nextDeadline": "Sep 30, 2026",
-      "daysUntil": 64,
+      "daysUntil": 57,
       "openTopics": 1,
       "deadlineLabel": "Sep 30, 2026 · 1 open solicitation",
       "source": "grants.gov"
@@ -466,6 +466,5 @@
         "https://www.alz.org/research/for_researchers/grants"
       ]
     }
-  },
-  "lastScrapedAt": "2026-08-01T14:25:04.811Z"
+  }
 }
