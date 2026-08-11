@@ -1,10 +1,10 @@
 {
-  "lastUpdated": "2026-08-04T13:56:45.766Z",
+  "lastUpdated": "2026-08-11T12:50:43.144Z",
   "grants": {
     "nih_sbir": {
       "status": "open",
       "nextDeadline": "Apr 5, 2027",
-      "daysUntil": 244,
+      "daysUntil": 237,
       "openTopics": 3,
       "deadlineLabel": "Apr 5, 2027 · 3 open solicitations",
       "source": "grants.gov",
@@ -67,7 +67,7 @@
       "deadlineLabel": "Rolling · 1 open solicitation",
       "source": "grants.gov",
       "recentAwardCount": 25,
-      "avgAwardAmount": 1206955,
+      "avgAwardAmount": 1889894,
       "nsfWinners": [
         {
           "org": "CULTIMAR TECHNOLOGIES, INC",
@@ -76,35 +76,35 @@
           "state": "PR"
         },
         {
-          "org": "NEW ENGLAND HEMOLYTICS, INC.",
-          "title": "SBIR Phase II: Rapid Sepsis Screening System Based on Pathogen DNA Extraction",
-          "amount": 1249902,
-          "state": "CT"
-        },
-        {
-          "org": "MELLICELL, INC.",
-          "title": "SBIR Phase II: Industrial-Scale Technology for Drug Development",
+          "org": "IN VIRTUALIS LLC",
+          "title": "SBIR Phase II: Ai-mediated Neurotechnology for Enhanced Access to Virtual and Physical Reality",
           "amount": 1250000,
-          "state": "MA"
+          "state": "WA"
         },
         {
-          "org": "DESIGNER ECOSYSTEMS LLC",
-          "title": "SBIR Phase II: Sensor Platform for Novel Submerged Barriers",
-          "amount": 1242694,
-          "state": "VA"
-        },
-        {
-          "org": "BEKEN BIO, INC.",
-          "title": "SBIR Phase II: Liquid Biopsy Diagnostic Targeting Novel Extracellular Vesicle Biomarkers",
-          "amount": 1249464,
+          "org": "WESTWOOD AEROGEL CO.",
+          "title": "SBIR Phase II: Advanced Manufacturing for Aerogels for Battery Safety Applications",
+          "amount": 1249955,
           "state": "CA"
+        },
+        {
+          "org": "PRAIRIELEARN, INC.",
+          "title": "SBIR Phase II: An online learning and assessment platform for sophisticated and secure exams",
+          "amount": 1211080,
+          "state": "IL"
+        },
+        {
+          "org": "SOFAB INKS LLC",
+          "title": "SBIR Phase I: SnO2 Layers for Scalable Fullerene-Free Perovskite Solar Cells",
+          "amount": 300165,
+          "state": "KY"
         }
       ]
     },
     "nih_sttr": {
       "status": "open",
       "nextDeadline": "Apr 5, 2027",
-      "daysUntil": 244,
+      "daysUntil": 237,
       "openTopics": 1,
       "deadlineLabel": "Apr 5, 2027 · 1 open solicitation",
       "source": "grants.gov",
@@ -162,7 +162,7 @@
     "dod_sbir": {
       "status": "open",
       "nextDeadline": "Nov 16, 2026",
-      "daysUntil": 104,
+      "daysUntil": 97,
       "openTopics": 6,
       "deadlineLabel": "Nov 16, 2026 · 6 open solicitations",
       "source": "grants.gov"
@@ -170,7 +170,7 @@
     "darpa": {
       "status": "open",
       "nextDeadline": "Sep 30, 2026",
-      "daysUntil": 57,
+      "daysUntil": 50,
       "openTopics": 1,
       "deadlineLabel": "Sep 30, 2026 · 1 open solicitation",
       "source": "grants.gov"
@@ -178,7 +178,7 @@
     "doe_sbir": {
       "status": "open",
       "nextDeadline": "Sep 30, 2026",
-      "daysUntil": 57,
+      "daysUntil": 50,
       "openTopics": 1,
       "deadlineLabel": "Sep 30, 2026 · 1 open solicitation",
       "source": "grants.gov"
