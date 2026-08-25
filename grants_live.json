@@ -1,10 +1,10 @@
 {
-  "lastUpdated": "2026-08-18T12:33:32.077Z",
+  "lastUpdated": "2026-08-25T12:35:57.467Z",
   "grants": {
     "nih_sbir": {
       "status": "open",
       "nextDeadline": "Apr 5, 2027",
-      "daysUntil": 230,
+      "daysUntil": 223,
       "openTopics": 3,
       "deadlineLabel": "Apr 5, 2027 · 3 open solicitations",
       "source": "grants.gov",
@@ -67,44 +67,44 @@
       "deadlineLabel": "Rolling · 1 open solicitation",
       "source": "grants.gov",
       "recentAwardCount": 25,
-      "avgAwardAmount": 1540477,
+      "avgAwardAmount": 300812,
       "nsfWinners": [
         {
-          "org": "VERDE TECHNOLOGIES INCORPORATED",
-          "title": "SBIR Phase I: Perovskite Solar Cells on Metal Foil Substrates: Enabling Low-Cost and Flexible Solar Technology",
-          "amount": 305000,
-          "state": "VT"
+          "org": "LAB2701 LLC",
+          "title": "SBIR Phase I: Quantum Oscillator Processing Unit",
+          "amount": 304526,
+          "state": "OK"
         },
         {
-          "org": "MODULAR MATTER, INC.",
-          "title": "SBIR Phase I: Universally-Adjustable Modular Prosthesis Socket",
+          "org": "UltraMend Inc",
+          "title": "SBIR Phase I: 3D Micropillar Scaffolds for Self-Powered Bioelectric Stimulation",
           "amount": 305000,
-          "state": "MD"
+          "state": "NJ"
         },
         {
-          "org": "TERASPATIAL INC",
-          "title": "SBIR Phase II: Simultaneous Transmit-Receive and Full-Duplex Millimeter-Wave Massive Multiple-Input and Multiple-Output Systems",
-          "amount": 312456,
+          "org": "IZOTE BIOSCIENCES INC.",
+          "title": "SBIR Phase I: An Energy-Efficient Fermentation Platform to Lower the Cost of Industrial Biomanufacturing",
+          "amount": 304950,
           "state": "CA"
         },
         {
-          "org": "RARETERRA, INC.",
-          "title": "SBIR Phase I: Assessing and Enhancing Microbiological Rare Earth Element Recovery for Domestic Production",
-          "amount": 303808,
-          "state": "CA"
+          "org": "ORION WAVE TECHNOLOGY CORPORATION",
+          "title": "SBIR Phase I: Analog Neural Networks Enabled by Tunable Apertures",
+          "amount": 304943,
+          "state": "MA"
         },
         {
-          "org": "CULTIMAR TECHNOLOGIES, INC",
-          "title": "SBIR Phase I: Introduction of a Novel Chemical Protein Filtration Method for Aquaculture Production",
-          "amount": 304645,
-          "state": "PR"
+          "org": "MEDENOVATE LLC",
+          "title": "SBIR Phase I: Prosthetic implantable lens with integrated intraocular pressure sensor",
+          "amount": 305000,
+          "state": "CA"
         }
       ]
     },
     "nih_sttr": {
       "status": "open",
       "nextDeadline": "Apr 5, 2027",
-      "daysUntil": 230,
+      "daysUntil": 223,
       "openTopics": 1,
       "deadlineLabel": "Apr 5, 2027 · 1 open solicitation",
       "source": "grants.gov",
@@ -137,14 +137,14 @@
           {
             "company": "SIGMOVIR BIOSYSTEMS, INC.",
             "title": "Inducible HMGB1 antagonist for viral-induced acute lung injury.",
-            "amount": 488080,
+            "amount": 62894,
             "year": 2024,
             "mechanism": "R41"
           },
           {
             "company": "SIGMOVIR BIOSYSTEMS, INC.",
             "title": "Inducible HMGB1 antagonist for viral-induced acute lung injury.",
-            "amount": 62894,
+            "amount": 488080,
             "year": 2024,
             "mechanism": "R41"
           },
@@ -162,7 +162,7 @@
     "dod_sbir": {
       "status": "open",
       "nextDeadline": "Nov 16, 2026",
-      "daysUntil": 90,
+      "daysUntil": 83,
       "openTopics": 6,
       "deadlineLabel": "Nov 16, 2026 · 6 open solicitations",
       "source": "grants.gov"
@@ -170,7 +170,7 @@
     "darpa": {
       "status": "open",
       "nextDeadline": "Sep 30, 2026",
-      "daysUntil": 43,
+      "daysUntil": 36,
       "openTopics": 1,
       "deadlineLabel": "Sep 30, 2026 · 1 open solicitation",
       "source": "grants.gov"
@@ -178,7 +178,7 @@
     "doe_sbir": {
       "status": "open",
       "nextDeadline": "Sep 30, 2026",
-      "daysUntil": 43,
+      "daysUntil": 36,
       "openTopics": 1,
       "deadlineLabel": "Sep 30, 2026 · 1 open solicitation",
       "source": "grants.gov"
