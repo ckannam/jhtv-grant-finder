@@ -1,10 +1,10 @@
 {
-  "lastUpdated": "2026-08-25T12:35:57.467Z",
+  "lastUpdated": "2026-09-01T15:56:55.379Z",
   "grants": {
     "nih_sbir": {
       "status": "open",
       "nextDeadline": "Apr 5, 2027",
-      "daysUntil": 223,
+      "daysUntil": 216,
       "openTopics": 3,
       "deadlineLabel": "Apr 5, 2027 · 3 open solicitations",
       "source": "grants.gov",
@@ -67,7 +67,7 @@
       "deadlineLabel": "Rolling · 1 open solicitation",
       "source": "grants.gov",
       "recentAwardCount": 25,
-      "avgAwardAmount": 300812,
+      "avgAwardAmount": 381989,
       "nsfWinners": [
         {
           "org": "LAB2701 LLC",
@@ -82,29 +82,29 @@
           "state": "NJ"
         },
         {
-          "org": "IZOTE BIOSCIENCES INC.",
-          "title": "SBIR Phase I: An Energy-Efficient Fermentation Platform to Lower the Cost of Industrial Biomanufacturing",
-          "amount": 304950,
-          "state": "CA"
+          "org": "YADONAI LLC",
+          "title": "SBIR Phase I: Ultra-low volume approach to injections using a novel jet injection system",
+          "amount": 304990,
+          "state": "FL"
         },
         {
-          "org": "ORION WAVE TECHNOLOGY CORPORATION",
-          "title": "SBIR Phase I: Analog Neural Networks Enabled by Tunable Apertures",
-          "amount": 304943,
+          "org": "Teradio Inc.",
+          "title": "SBIR Phase I: Wireless Sidestep Network: Harnessing Sub-terahertz to Enable New Degrees of Freedom in AI Data Center Architectures",
+          "amount": 305000,
           "state": "MA"
         },
         {
-          "org": "MEDENOVATE LLC",
-          "title": "SBIR Phase I: Prosthetic implantable lens with integrated intraocular pressure sensor",
+          "org": "MODULAR MATTER, INC.",
+          "title": "SBIR Phase I: Universally-Adjustable Modular Prosthesis Socket",
           "amount": 305000,
-          "state": "CA"
+          "state": "MD"
         }
       ]
     },
     "nih_sttr": {
       "status": "open",
       "nextDeadline": "Apr 5, 2027",
-      "daysUntil": 223,
+      "daysUntil": 216,
       "openTopics": 1,
       "deadlineLabel": "Apr 5, 2027 · 1 open solicitation",
       "source": "grants.gov",
@@ -162,7 +162,7 @@
     "dod_sbir": {
       "status": "open",
       "nextDeadline": "Nov 16, 2026",
-      "daysUntil": 83,
+      "daysUntil": 76,
       "openTopics": 6,
       "deadlineLabel": "Nov 16, 2026 · 6 open solicitations",
       "source": "grants.gov"
@@ -170,15 +170,15 @@
     "darpa": {
       "status": "open",
       "nextDeadline": "Sep 30, 2026",
-      "daysUntil": 36,
-      "openTopics": 1,
-      "deadlineLabel": "Sep 30, 2026 · 1 open solicitation",
+      "daysUntil": 29,
+      "openTopics": 2,
+      "deadlineLabel": "Sep 30, 2026 · 2 open solicitations",
       "source": "grants.gov"
     },
     "doe_sbir": {
       "status": "open",
       "nextDeadline": "Sep 30, 2026",
-      "daysUntil": 36,
+      "daysUntil": 29,
       "openTopics": 1,
       "deadlineLabel": "Sep 30, 2026 · 1 open solicitation",
       "source": "grants.gov"
