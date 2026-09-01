@@ -188,7 +188,7 @@
       "nextDeadline": "Wed Oct 15, 2026",
       "daysUntil": 106,
       "deadlineLabel": "Quarterly application deadline for Technology Assessment (up to $180K joint/$130K sole) and Company Formation (up to $300K)",
-      "notes": "Fetch failed (404)",
+      "notes": "Fetch failed (403)",
       "source": "https://www.tedco.md/funding/maryland-innovation-initiative/",
       "fetchedAt": "2026-07-01T15:34:47.612Z",
       "urls": [
@@ -202,7 +202,7 @@
       "deadlineLabel": "See website for deadlines",
       "notes": "Fetch failed — quarterly: Jan 15, Apr 15, Jul 15, Oct 15 (same cycle as MII)",
       "source": "https://www.tedco.md/program/maryland-innovation-initiative/",
-      "fetchedAt": "2026-08-01T14:24:07.956Z",
+      "fetchedAt": "2026-09-01T17:07:08.973Z",
       "scrapedUrls": [
         "https://www.tedco.md/program/maryland-innovation-initiative/"
       ]
@@ -214,7 +214,7 @@
       "deadlineLabel": "See website for deadlines",
       "notes": "Fetch failed — quarterly: Jan 15, Apr 15, Jul 15, Oct 15 (same cycle as MII)",
       "source": "https://www.tedco.md/program/maryland-innovation-initiative/",
-      "fetchedAt": "2026-08-01T14:24:09.189Z",
+      "fetchedAt": "2026-09-01T17:07:10.213Z",
       "scrapedUrls": [
         "https://www.tedco.md/program/maryland-innovation-initiative/"
       ]
@@ -224,7 +224,7 @@
       "deadlineLabel": "See website for deadlines",
       "notes": "Fetch failed — BII RFA timeline varies, check TEDCO site for current cycle",
       "source": "https://www.tedco.md/program/baltimore-innovation-initiative/",
-      "fetchedAt": "2026-08-01T14:24:10.714Z",
+      "fetchedAt": "2026-09-01T17:07:11.468Z",
       "nextDeadline": null,
       "daysUntil": null,
       "scrapedUrls": [
@@ -237,7 +237,7 @@
       "deadlineLabel": "Open — see website",
       "notes": null,
       "source": "https://www.mscrf.org/funding-opportunities",
-      "fetchedAt": "2026-08-01T14:24:13.738Z",
+      "fetchedAt": "2026-09-01T17:07:14.081Z",
       "daysUntil": null,
       "scrapedUrls": [
         "https://www.mscrf.org/funding-opportunities",
@@ -250,7 +250,7 @@
       "deadlineLabel": "Rolling — see website",
       "notes": "Rolling equity investments — no fixed deadline",
       "source": "https://www.tedco.md/program/social-impact-funds/",
-      "fetchedAt": "2026-08-01T14:24:15.262Z",
+      "fetchedAt": "2026-09-01T17:07:15.312Z",
       "nextDeadline": null,
       "daysUntil": null,
       "scrapedUrls": [
@@ -262,7 +262,7 @@
       "deadlineLabel": "Rolling — see website",
       "notes": "Equity investment, rolling — contact TEDCO directly",
       "source": "https://www.tedco.md/program/social-impact-funds/",
-      "fetchedAt": "2026-08-01T14:24:16.493Z",
+      "fetchedAt": "2026-09-01T17:07:16.551Z",
       "nextDeadline": null,
       "daysUntil": null,
       "scrapedUrls": [
@@ -274,7 +274,7 @@
       "deadlineLabel": "Rolling — see website",
       "notes": "Contact regional RBII mentor to begin",
       "source": "https://www.tedco.md/program/rural-business-innovation-initiative/",
-      "fetchedAt": "2026-08-01T14:24:18.088Z",
+      "fetchedAt": "2026-09-01T17:07:17.784Z",
       "nextDeadline": null,
       "daysUntil": null,
       "scrapedUrls": [
@@ -286,7 +286,7 @@
       "deadlineLabel": "See website for deadlines",
       "notes": "Could not fetch page",
       "source": "https://usmd.edu/momentum",
-      "fetchedAt": "2026-08-01T14:24:20.554Z",
+      "fetchedAt": "2026-09-01T17:07:19.110Z",
       "nextDeadline": null,
       "daysUntil": null,
       "scrapedUrls": [
@@ -300,7 +300,7 @@
       "deadlineLabel": "Open — see website",
       "notes": "Annual funding rounds (typically Q1 and Q4) — verify on carb-x.org",
       "source": "https://carb-x.org/apply/",
-      "fetchedAt": "2026-08-01T14:24:33.293Z",
+      "fetchedAt": "2026-09-01T17:07:30.791Z",
       "nextDeadline": null,
       "daysUntil": null,
       "scrapedUrls": [
@@ -310,13 +310,13 @@
       ]
     },
     "aha": {
-      "status": "closed",
-      "nextDeadline": "Aug 4, 2026",
-      "daysUntil": 3,
-      "deadlineLabel": "Aug 4, 2026 · 3d remaining",
-      "notes": null,
+      "status": "unknown",
+      "nextDeadline": null,
+      "daysUntil": null,
+      "deadlineLabel": "See website for deadlines",
+      "notes": "See heart.org/professional/research for current cycles",
       "source": "https://professional.heart.org/en/research-programs/aha-funding-opportunities",
-      "fetchedAt": "2026-08-01T14:24:39.093Z",
+      "fetchedAt": "2026-09-01T17:07:38.570Z",
       "scrapedUrls": [
         "https://professional.heart.org/en/research-programs/aha-funding-opportunities",
         "https://professional.heart.org/en/research-programs"
@@ -329,7 +329,7 @@
       "deadlineLabel": "Rolling — see website",
       "notes": "Rolling pre-proposals — see michaeljfox.org/grants",
       "source": "https://www.michaeljfox.org/grants",
-      "fetchedAt": "2026-08-01T14:24:48.068Z",
+      "fetchedAt": "2026-09-01T17:07:46.275Z",
       "scrapedUrls": [
         "https://www.michaeljfox.org/grants",
         "https://www.michaeljfox.org/research-grants"
@@ -340,7 +340,7 @@
       "deadlineLabel": "Rolling — see website",
       "notes": "Rolling — initiate via cff.org/researchers",
       "source": "https://www.cff.org/researchers/therapeutics-development-program",
-      "fetchedAt": "2026-08-01T14:24:54.099Z",
+      "fetchedAt": "2026-09-01T17:07:52.281Z",
       "nextDeadline": null,
       "daysUntil": null,
       "scrapedUrls": [
@@ -356,7 +356,7 @@
       "deadlineLabel": "Open — see website",
       "notes": "Program-specific deadlines — check active programs at wellcomeleap.org",
       "source": "https://wellcomeleap.org/programs/",
-      "fetchedAt": "2026-08-01T14:24:57.118Z",
+      "fetchedAt": "2026-09-01T17:07:54.828Z",
       "scrapedUrls": [
         "https://wellcomeleap.org/programs/",
         "https://wellcomeleap.org/"
@@ -368,8 +368,8 @@
       "daysUntil": null,
       "deadlineLabel": "Open — see website",
       "notes": "Annual cycles — verify at bwfund.org/grant-programs",
-      "source": "https://www.bwfund.org/grant-programs/",
-      "fetchedAt": "2026-08-01T14:24:59.016Z",
+      "source": "https://www.bwfund.org/funding-opportunities/",
+      "fetchedAt": "2026-09-01T17:07:57.975Z",
       "scrapedUrls": [
         "https://www.bwfund.org/grant-programs/",
         "https://www.bwfund.org/funding-opportunities/",
@@ -381,7 +381,7 @@
       "deadlineLabel": "See website for deadlines",
       "notes": "See cbid.bme.jhu.edu for annual cycle dates",
       "source": "https://cbid.bme.jhu.edu/research/translational-research/coulter-program/",
-      "fetchedAt": "2026-08-01T14:25:03.609Z",
+      "fetchedAt": "2026-09-01T17:08:02.222Z",
       "nextDeadline": null,
       "daysUntil": null,
       "scrapedUrls": [
@@ -396,7 +396,7 @@
       "deadlineLabel": "See website for deadlines",
       "notes": "Fetch failed — check TEDCO site for current SBIR/STTR Matching application window",
       "source": "https://www.tedco.md/program/maryland-sbir-sttr-incentive-program/",
-      "fetchedAt": "2026-08-01T14:24:12.248Z",
+      "fetchedAt": "2026-09-01T17:07:12.702Z",
       "scrapedUrls": [
         "https://www.tedco.md/program/maryland-sbir-sttr-incentive-program/"
       ]
@@ -408,7 +408,7 @@
       "deadlineLabel": "Rolling — see website",
       "notes": null,
       "source": "https://arpa-h.gov/explore-funding",
-      "fetchedAt": "2026-08-01T14:24:24.083Z",
+      "fetchedAt": "2026-09-01T17:07:22.470Z",
       "scrapedUrls": [
         "https://arpa-h.gov/explore-funding/sbir-sttr",
         "https://arpa-h.gov/explore-funding"
@@ -421,7 +421,7 @@
       "deadlineLabel": "Rolling — see website",
       "notes": "Rolling BAAs — see medicalcountermeasures.gov for open solicitations",
       "source": "https://medicalcountermeasures.gov/barda/funding",
-      "fetchedAt": "2026-08-01T14:24:30.977Z",
+      "fetchedAt": "2026-09-01T17:07:28.350Z",
       "scrapedUrls": [
         "https://medicalcountermeasures.gov/barda/funding",
         "https://medicalcountermeasures.gov/barda/barda-broad-agency-announcement-baa-hhs-barda-2024-888",
@@ -435,7 +435,7 @@
       "deadlineLabel": "See website for deadlines",
       "notes": "Fetch failed — check seed.nih.gov for current FDA/CDC SBIR joint NOFOs",
       "source": "https://seed.nih.gov/funding-opportunities/fda-sbir-sttr",
-      "fetchedAt": "2026-08-01T14:24:35.392Z",
+      "fetchedAt": "2026-09-01T17:07:32.522Z",
       "scrapedUrls": [
         "https://seed.nih.gov/funding-opportunities/fda-sbir-sttr"
       ]
@@ -447,7 +447,7 @@
       "deadlineLabel": "See website for deadlines",
       "notes": "Fetch failed — check sbir.gov/agencies/VA for open VA solicitations",
       "source": "https://www.va.gov/orod/sbirsttr.asp",
-      "fetchedAt": "2026-08-01T14:24:37.137Z",
+      "fetchedAt": "2026-09-01T17:07:34.322Z",
       "scrapedUrls": [
         "https://www.va.gov/orod/sbirsttr.asp",
         "https://sbir.gov/agencies/VA"
@@ -460,11 +460,12 @@
       "deadlineLabel": "Open — see website",
       "notes": "Annual Letter of Intent cycle — verify at alz.org/research",
       "source": "https://www.alz.org/research/for_researchers/grants",
-      "fetchedAt": "2026-08-01T14:24:42.698Z",
+      "fetchedAt": "2026-09-01T17:07:41.969Z",
       "scrapedUrls": [
         "https://www.alz.org/research/for_researchers/grants_programs",
         "https://www.alz.org/research/for_researchers/grants"
       ]
     }
-  }
+  },
+  "lastScrapedAt": "2026-09-01T17:08:03.423Z"
 }
