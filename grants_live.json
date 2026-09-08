@@ -1,10 +1,10 @@
 {
-  "lastUpdated": "2026-09-01T15:56:55.379Z",
+  "lastUpdated": "2026-09-08T15:50:34.002Z",
   "grants": {
     "nih_sbir": {
       "status": "open",
       "nextDeadline": "Apr 5, 2027",
-      "daysUntil": 216,
+      "daysUntil": 209,
       "openTopics": 3,
       "deadlineLabel": "Apr 5, 2027 · 3 open solicitations",
       "source": "grants.gov",
@@ -44,15 +44,15 @@
           {
             "company": "KALOCYTE, INC.",
             "title": "ErythroMer: Nanoscale BioSynthetic Red Cell Substitute",
-            "amount": 997590,
-            "year": 2024,
+            "amount": 995470,
+            "year": 2025,
             "mechanism": "R44"
           },
           {
             "company": "KALOCYTE, INC.",
             "title": "ErythroMer: Nanoscale BioSynthetic Red Cell Substitute",
-            "amount": 995470,
-            "year": 2025,
+            "amount": 997590,
+            "year": 2024,
             "mechanism": "R44"
           }
         ],
@@ -67,7 +67,7 @@
       "deadlineLabel": "Rolling · 1 open solicitation",
       "source": "grants.gov",
       "recentAwardCount": 25,
-      "avgAwardAmount": 381989,
+      "avgAwardAmount": 319170,
       "nsfWinners": [
         {
           "org": "LAB2701 LLC",
@@ -82,29 +82,29 @@
           "state": "NJ"
         },
         {
-          "org": "YADONAI LLC",
-          "title": "SBIR Phase I: Ultra-low volume approach to injections using a novel jet injection system",
-          "amount": 304990,
-          "state": "FL"
+          "org": "VERDE TECHNOLOGIES INCORPORATED",
+          "title": "SBIR Phase I: Perovskite Solar Cells on Metal Foil Substrates: Enabling Low-Cost and Flexible Solar Technology",
+          "amount": 305000,
+          "state": "VT"
         },
         {
-          "org": "Teradio Inc.",
-          "title": "SBIR Phase I: Wireless Sidestep Network: Harnessing Sub-terahertz to Enable New Degrees of Freedom in AI Data Center Architectures",
-          "amount": 305000,
+          "org": "ORION WAVE TECHNOLOGY CORPORATION",
+          "title": "SBIR Phase I: Analog Neural Networks Enabled by Tunable Apertures",
+          "amount": 304943,
           "state": "MA"
         },
         {
-          "org": "MODULAR MATTER, INC.",
-          "title": "SBIR Phase I: Universally-Adjustable Modular Prosthesis Socket",
-          "amount": 305000,
-          "state": "MD"
+          "org": "IZOTE BIOSCIENCES INC.",
+          "title": "SBIR Phase I: An Energy-Efficient Fermentation Platform to Lower the Cost of Industrial Biomanufacturing",
+          "amount": 304950,
+          "state": "CA"
         }
       ]
     },
     "nih_sttr": {
       "status": "open",
       "nextDeadline": "Apr 5, 2027",
-      "daysUntil": 216,
+      "daysUntil": 209,
       "openTopics": 1,
       "deadlineLabel": "Apr 5, 2027 · 1 open solicitation",
       "source": "grants.gov",
@@ -162,7 +162,7 @@
     "dod_sbir": {
       "status": "open",
       "nextDeadline": "Nov 16, 2026",
-      "daysUntil": 76,
+      "daysUntil": 69,
       "openTopics": 6,
       "deadlineLabel": "Nov 16, 2026 · 6 open solicitations",
       "source": "grants.gov"
@@ -170,7 +170,7 @@
     "darpa": {
       "status": "open",
       "nextDeadline": "Sep 30, 2026",
-      "daysUntil": 29,
+      "daysUntil": 22,
       "openTopics": 2,
       "deadlineLabel": "Sep 30, 2026 · 2 open solicitations",
       "source": "grants.gov"
@@ -178,7 +178,7 @@
     "doe_sbir": {
       "status": "open",
       "nextDeadline": "Sep 30, 2026",
-      "daysUntil": 29,
+      "daysUntil": 22,
       "openTopics": 1,
       "deadlineLabel": "Sep 30, 2026 · 1 open solicitation",
       "source": "grants.gov"
@@ -466,6 +466,5 @@
         "https://www.alz.org/research/for_researchers/grants"
       ]
     }
-  },
-  "lastScrapedAt": "2026-09-01T17:08:03.423Z"
+  }
 }
