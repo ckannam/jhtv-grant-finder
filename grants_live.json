@@ -1,15 +1,15 @@
 {
-  "lastUpdated": "2026-09-08T15:50:34.002Z",
+  "lastUpdated": "2026-09-15T16:03:46.145Z",
   "grants": {
     "nih_sbir": {
       "status": "open",
       "nextDeadline": "Apr 5, 2027",
-      "daysUntil": 209,
+      "daysUntil": 202,
       "openTopics": 3,
       "deadlineLabel": "Apr 5, 2027 · 3 open solicitations",
       "source": "grants.gov",
       "recentAwardCount": 38,
-      "avgAwardAmount": 703594,
+      "avgAwardAmount": 729862,
       "winnerData": {
         "totalRecentAwards": 38,
         "recentProjects": [
@@ -67,8 +67,20 @@
       "deadlineLabel": "Rolling · 1 open solicitation",
       "source": "grants.gov",
       "recentAwardCount": 25,
-      "avgAwardAmount": 319170,
+      "avgAwardAmount": 309562,
       "nsfWinners": [
+        {
+          "org": "ARINNA, INC",
+          "title": "SBIR Phase II: Scaling Power-Dense, Radiation-Tolerant Flexible Solar Panels for High-Value Markets",
+          "amount": 312407,
+          "state": "CA"
+        },
+        {
+          "org": "ULTROPIA CORP",
+          "title": "SBIR Phase II: Development of a Modular Ultrasound Transducer Array Drying System",
+          "amount": 312500,
+          "state": "WA"
+        },
         {
           "org": "LAB2701 LLC",
           "title": "SBIR Phase I: Quantum Oscillator Processing Unit",
@@ -82,29 +94,17 @@
           "state": "NJ"
         },
         {
-          "org": "VERDE TECHNOLOGIES INCORPORATED",
-          "title": "SBIR Phase I: Perovskite Solar Cells on Metal Foil Substrates: Enabling Low-Cost and Flexible Solar Technology",
-          "amount": 305000,
-          "state": "VT"
-        },
-        {
-          "org": "ORION WAVE TECHNOLOGY CORPORATION",
-          "title": "SBIR Phase I: Analog Neural Networks Enabled by Tunable Apertures",
-          "amount": 304943,
-          "state": "MA"
-        },
-        {
-          "org": "IZOTE BIOSCIENCES INC.",
-          "title": "SBIR Phase I: An Energy-Efficient Fermentation Platform to Lower the Cost of Industrial Biomanufacturing",
-          "amount": 304950,
-          "state": "CA"
+          "org": "ENABLE LIFE SCIENCES LLC",
+          "title": "SBIR Phase II: Antibody Therapy that Targets Neoantigens in Acute Myeloid Leukemia by Leveraging Both Innate and Adaptive Immune Mechanisms",
+          "amount": 312500,
+          "state": "CT"
         }
       ]
     },
     "nih_sttr": {
       "status": "open",
       "nextDeadline": "Apr 5, 2027",
-      "daysUntil": 209,
+      "daysUntil": 202,
       "openTopics": 1,
       "deadlineLabel": "Apr 5, 2027 · 1 open solicitation",
       "source": "grants.gov",
@@ -162,7 +162,7 @@
     "dod_sbir": {
       "status": "open",
       "nextDeadline": "Nov 16, 2026",
-      "daysUntil": 69,
+      "daysUntil": 62,
       "openTopics": 6,
       "deadlineLabel": "Nov 16, 2026 · 6 open solicitations",
       "source": "grants.gov"
@@ -170,7 +170,7 @@
     "darpa": {
       "status": "open",
       "nextDeadline": "Sep 30, 2026",
-      "daysUntil": 22,
+      "daysUntil": 15,
       "openTopics": 2,
       "deadlineLabel": "Sep 30, 2026 · 2 open solicitations",
       "source": "grants.gov"
@@ -178,7 +178,7 @@
     "doe_sbir": {
       "status": "open",
       "nextDeadline": "Sep 30, 2026",
-      "daysUntil": 22,
+      "daysUntil": 15,
       "openTopics": 1,
       "deadlineLabel": "Sep 30, 2026 · 1 open solicitation",
       "source": "grants.gov"
