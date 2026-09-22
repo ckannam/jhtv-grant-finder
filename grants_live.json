@@ -1,15 +1,15 @@
 {
-  "lastUpdated": "2026-09-15T16:03:46.145Z",
+  "lastUpdated": "2026-09-22T16:06:39.860Z",
   "grants": {
     "nih_sbir": {
       "status": "open",
       "nextDeadline": "Apr 5, 2027",
-      "daysUntil": 202,
+      "daysUntil": 195,
       "openTopics": 3,
       "deadlineLabel": "Apr 5, 2027 · 3 open solicitations",
       "source": "grants.gov",
       "recentAwardCount": 38,
-      "avgAwardAmount": 729862,
+      "avgAwardAmount": 765828,
       "winnerData": {
         "totalRecentAwards": 38,
         "recentProjects": [
@@ -44,15 +44,15 @@
           {
             "company": "KALOCYTE, INC.",
             "title": "ErythroMer: Nanoscale BioSynthetic Red Cell Substitute",
-            "amount": 995470,
-            "year": 2025,
+            "amount": 997590,
+            "year": 2024,
             "mechanism": "R44"
           },
           {
             "company": "KALOCYTE, INC.",
             "title": "ErythroMer: Nanoscale BioSynthetic Red Cell Substitute",
-            "amount": 997590,
-            "year": 2024,
+            "amount": 995470,
+            "year": 2025,
             "mechanism": "R44"
           }
         ],
@@ -67,7 +67,7 @@
       "deadlineLabel": "Rolling · 1 open solicitation",
       "source": "grants.gov",
       "recentAwardCount": 25,
-      "avgAwardAmount": 309562,
+      "avgAwardAmount": 318057,
       "nsfWinners": [
         {
           "org": "ARINNA, INC",
@@ -104,7 +104,7 @@
     "nih_sttr": {
       "status": "open",
       "nextDeadline": "Apr 5, 2027",
-      "daysUntil": 202,
+      "daysUntil": 195,
       "openTopics": 1,
       "deadlineLabel": "Apr 5, 2027 · 1 open solicitation",
       "source": "grants.gov",
@@ -137,14 +137,14 @@
           {
             "company": "SIGMOVIR BIOSYSTEMS, INC.",
             "title": "Inducible HMGB1 antagonist for viral-induced acute lung injury.",
-            "amount": 62894,
+            "amount": 488080,
             "year": 2024,
             "mechanism": "R41"
           },
           {
             "company": "SIGMOVIR BIOSYSTEMS, INC.",
             "title": "Inducible HMGB1 antagonist for viral-induced acute lung injury.",
-            "amount": 488080,
+            "amount": 62894,
             "year": 2024,
             "mechanism": "R41"
           },
@@ -162,7 +162,7 @@
     "dod_sbir": {
       "status": "open",
       "nextDeadline": "Nov 16, 2026",
-      "daysUntil": 62,
+      "daysUntil": 55,
       "openTopics": 6,
       "deadlineLabel": "Nov 16, 2026 · 6 open solicitations",
       "source": "grants.gov"
@@ -170,7 +170,7 @@
     "darpa": {
       "status": "open",
       "nextDeadline": "Sep 30, 2026",
-      "daysUntil": 15,
+      "daysUntil": 8,
       "openTopics": 2,
       "deadlineLabel": "Sep 30, 2026 · 2 open solicitations",
       "source": "grants.gov"
@@ -178,7 +178,7 @@
     "doe_sbir": {
       "status": "open",
       "nextDeadline": "Sep 30, 2026",
-      "daysUntil": 15,
+      "daysUntil": 8,
       "openTopics": 1,
       "deadlineLabel": "Sep 30, 2026 · 1 open solicitation",
       "source": "grants.gov"
