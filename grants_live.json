@@ -1,10 +1,10 @@
 {
-  "lastUpdated": "2026-09-22T16:06:39.860Z",
+  "lastUpdated": "2026-09-29T17:28:38.109Z",
   "grants": {
     "nih_sbir": {
       "status": "open",
       "nextDeadline": "Apr 5, 2027",
-      "daysUntil": 195,
+      "daysUntil": 188,
       "openTopics": 3,
       "deadlineLabel": "Apr 5, 2027 · 3 open solicitations",
       "source": "grants.gov",
@@ -67,7 +67,7 @@
       "deadlineLabel": "Rolling · 1 open solicitation",
       "source": "grants.gov",
       "recentAwardCount": 25,
-      "avgAwardAmount": 318057,
+      "avgAwardAmount": 318147,
       "nsfWinners": [
         {
           "org": "ARINNA, INC",
@@ -94,17 +94,17 @@
           "state": "NJ"
         },
         {
-          "org": "ENABLE LIFE SCIENCES LLC",
-          "title": "SBIR Phase II: Antibody Therapy that Targets Neoantigens in Acute Myeloid Leukemia by Leveraging Both Innate and Adaptive Immune Mechanisms",
-          "amount": 312500,
-          "state": "CT"
+          "org": "MODULAR MATTER, INC.",
+          "title": "SBIR Phase I: Universally-Adjustable Modular Prosthesis Socket",
+          "amount": 305000,
+          "state": "MD"
         }
       ]
     },
     "nih_sttr": {
       "status": "open",
       "nextDeadline": "Apr 5, 2027",
-      "daysUntil": 195,
+      "daysUntil": 188,
       "openTopics": 1,
       "deadlineLabel": "Apr 5, 2027 · 1 open solicitation",
       "source": "grants.gov",
@@ -137,14 +137,14 @@
           {
             "company": "SIGMOVIR BIOSYSTEMS, INC.",
             "title": "Inducible HMGB1 antagonist for viral-induced acute lung injury.",
-            "amount": 488080,
+            "amount": 62894,
             "year": 2024,
             "mechanism": "R41"
           },
           {
             "company": "SIGMOVIR BIOSYSTEMS, INC.",
             "title": "Inducible HMGB1 antagonist for viral-induced acute lung injury.",
-            "amount": 62894,
+            "amount": 488080,
             "year": 2024,
             "mechanism": "R41"
           },
@@ -162,7 +162,7 @@
     "dod_sbir": {
       "status": "open",
       "nextDeadline": "Nov 16, 2026",
-      "daysUntil": 55,
+      "daysUntil": 48,
       "openTopics": 6,
       "deadlineLabel": "Nov 16, 2026 · 6 open solicitations",
       "source": "grants.gov"
@@ -170,7 +170,7 @@
     "darpa": {
       "status": "open",
       "nextDeadline": "Sep 30, 2026",
-      "daysUntil": 8,
+      "daysUntil": 1,
       "openTopics": 2,
       "deadlineLabel": "Sep 30, 2026 · 2 open solicitations",
       "source": "grants.gov"
@@ -178,7 +178,7 @@
     "doe_sbir": {
       "status": "open",
       "nextDeadline": "Sep 30, 2026",
-      "daysUntil": 8,
+      "daysUntil": 1,
       "openTopics": 1,
       "deadlineLabel": "Sep 30, 2026 · 1 open solicitation",
       "source": "grants.gov"
