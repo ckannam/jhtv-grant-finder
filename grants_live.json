@@ -1,5 +1,6 @@
 {
   "lastUpdated": "2026-09-29T17:28:38.109Z",
+  "lastScrapedAt": "2026-10-01T18:37:30.787Z",
   "grants": {
     "nih_sbir": {
       "status": "open",
@@ -186,23 +187,23 @@
     "mii": {
       "status": "unknown",
       "nextDeadline": "Wed Oct 15, 2026",
-      "daysUntil": 106,
-      "deadlineLabel": "Quarterly application deadline for Technology Assessment (up to $180K joint/$130K sole) and Company Formation (up to $300K)",
-      "notes": "Fetch failed (403)",
-      "source": "https://www.tedco.md/funding/maryland-innovation-initiative/",
-      "fetchedAt": "2026-07-01T15:34:47.612Z",
+      "daysUntil": 14,
+      "deadlineLabel": "Quarterly application deadline (Oct 15)",
+      "notes": "Website access blocked (HTTP 403). Next deadline estimated based on known quarterly schedule (Jan 15, Apr 15, Jul 15, Oct 15), but current status and any changes to the deadline could not be verified.",
+      "source": "https://www.tedco.md/program/maryland-innovation-initiative/",
+      "fetchedAt": "2026-10-01T18:37:30.787Z",
       "urls": [
         "https://www.tedco.md/program/maryland-innovation-initiative/"
       ]
     },
     "mii_joint": {
       "status": "unknown",
-      "nextDeadline": null,
-      "daysUntil": null,
-      "deadlineLabel": "See website for deadlines",
-      "notes": "Fetch failed — quarterly: Jan 15, Apr 15, Jul 15, Oct 15 (same cycle as MII)",
+      "nextDeadline": "Wed Oct 15, 2026",
+      "daysUntil": 14,
+      "deadlineLabel": "Anticipated quarterly deadline (typical schedule: Jan 15, Apr 15, Jul 15, Oct 15) — unconfirmed",
+      "notes": "Primary URL blocked (HTTP 403). Deadline inferred from known quarterly schedule, not verified against current website. Recommend direct contact with TEDCO or manual website check.",
       "source": "https://www.tedco.md/program/maryland-innovation-initiative/",
-      "fetchedAt": "2026-09-01T17:07:08.973Z",
+      "fetchedAt": "2026-10-01T18:37:37.477Z",
       "scrapedUrls": [
         "https://www.tedco.md/program/maryland-innovation-initiative/"
       ]
@@ -211,20 +212,20 @@
       "status": "unknown",
       "nextDeadline": null,
       "daysUntil": null,
-      "deadlineLabel": "See website for deadlines",
-      "notes": "Fetch failed — quarterly: Jan 15, Apr 15, Jul 15, Oct 15 (same cycle as MII)",
+      "deadlineLabel": "Quarterly deadlines typically Jan 15, Apr 15, Jul 15, Oct 15 (Company Formation track)",
+      "notes": "TEDCO website (tedco.md) is blocking automated access (HTTP 403). Based on program documentation, MII typically follows quarterly deadlines. With current date 2026-10-01, the next deadline would likely be Jan 15, 2027, but this could not be verified. Contact TEDCO directly or check their application portal for confirmation.",
       "source": "https://www.tedco.md/program/maryland-innovation-initiative/",
-      "fetchedAt": "2026-09-01T17:07:10.213Z",
+      "fetchedAt": "2026-10-01T18:37:45.081Z",
       "scrapedUrls": [
         "https://www.tedco.md/program/maryland-innovation-initiative/"
       ]
     },
     "bii": {
       "status": "unknown",
-      "deadlineLabel": "See website for deadlines",
-      "notes": "Fetch failed — BII RFA timeline varies, check TEDCO site for current cycle",
+      "deadlineLabel": "Unable to determine — TEDCO website blocked automated access",
+      "notes": "The BII program page at https://www.tedco.md/program/baltimore-innovation-initiative/ returned a 403 Forbidden error. Direct website access was not possible. Recommend manual verification via: (1) visiting the TEDCO website directly in a browser, (2) contacting TEDCO directly, or (3) checking if an RFA document is available via email or secondary sources.",
       "source": "https://www.tedco.md/program/baltimore-innovation-initiative/",
-      "fetchedAt": "2026-09-01T17:07:11.468Z",
+      "fetchedAt": "2026-10-01T18:37:51.352Z",
       "nextDeadline": null,
       "daysUntil": null,
       "scrapedUrls": [
@@ -232,12 +233,12 @@
       ]
     },
     "mscrf": {
-      "status": "open",
+      "status": "unknown",
       "nextDeadline": null,
-      "deadlineLabel": "Open — see website",
-      "notes": null,
+      "deadlineLabel": "RFAs expected to be released late October or early November 2026; specific deadlines not yet available",
+      "notes": "Multiple funding programs offered (Clinical, Commercialization, Validation, Launch, Discovery, Post-Doctoral Fellowship, Manufacturing Assistance) with typical cycles in mid-January and mid-July. Check back for RFA release in coming weeks.",
       "source": "https://www.mscrf.org/funding-opportunities",
-      "fetchedAt": "2026-09-01T17:07:14.081Z",
+      "fetchedAt": "2026-10-01T18:38:04.605Z",
       "daysUntil": null,
       "scrapedUrls": [
         "https://www.mscrf.org/funding-opportunities",
@@ -246,11 +247,11 @@
       ]
     },
     "builder": {
-      "status": "rolling",
-      "deadlineLabel": "Rolling — see website",
-      "notes": "Rolling equity investments — no fixed deadline",
+      "status": "unknown",
+      "deadlineLabel": "Unable to access TEDCO website - HTTP 403 blocked",
+      "notes": "The TEDCO website (tedco.md) is blocking automated access. Cannot verify if Pre-Seed Builder Fund is still active or determine rolling deadline status. Manual verification recommended.",
       "source": "https://www.tedco.md/program/social-impact-funds/",
-      "fetchedAt": "2026-09-01T17:07:15.312Z",
+      "fetchedAt": "2026-10-01T18:38:09.919Z",
       "nextDeadline": null,
       "daysUntil": null,
       "scrapedUrls": [
@@ -258,11 +259,11 @@
       ]
     },
     "inclusion": {
-      "status": "rolling",
-      "deadlineLabel": "Rolling — see website",
-      "notes": "Equity investment, rolling — contact TEDCO directly",
+      "status": "unknown",
+      "deadlineLabel": "Unable to access website - rolling equity program (status unconfirmed)",
+      "notes": "TEDCO website (tedco.md) is blocking automated access (HTTP 403). Cannot verify current program status or confirm if Inclusion Fund/Social Impact Funds are still active. Manual verification recommended.",
       "source": "https://www.tedco.md/program/social-impact-funds/",
-      "fetchedAt": "2026-09-01T17:07:16.551Z",
+      "fetchedAt": "2026-10-01T18:38:16.452Z",
       "nextDeadline": null,
       "daysUntil": null,
       "scrapedUrls": [
@@ -270,11 +271,11 @@
       ]
     },
     "rbii": {
-      "status": "rolling",
-      "deadlineLabel": "Rolling — see website",
-      "notes": "Contact regional RBII mentor to begin",
+      "status": "unknown",
+      "deadlineLabel": "Unable to determine - Rolling applications expected; contact regional mentor",
+      "notes": "Website returned HTTP 403 Forbidden. Per the instructions, this program is expected to operate on a rolling basis. Recommend visiting https://www.tedco.md/program/rural-business-innovation-initiative/ directly or contacting a TEDCO regional mentor for current application status.",
       "source": "https://www.tedco.md/program/rural-business-innovation-initiative/",
-      "fetchedAt": "2026-09-01T17:07:17.784Z",
+      "fetchedAt": "2026-10-01T18:38:22.430Z",
       "nextDeadline": null,
       "daysUntil": null,
       "scrapedUrls": [
@@ -283,10 +284,10 @@
     },
     "mmf": {
       "status": "unknown",
-      "deadlineLabel": "See website for deadlines",
-      "notes": "Could not fetch page",
-      "source": "https://usmd.edu/momentum",
-      "fetchedAt": "2026-09-01T17:07:19.110Z",
+      "deadlineLabel": "Unable to determine - website not accessible",
+      "notes": "Could not fetch https://www.usmd.edu/momentum/ due to certificate verification error. Please visit the site directly to confirm cycle dates and whether applications are rolling or fixed deadline.",
+      "source": "https://www.usmd.edu/momentum/",
+      "fetchedAt": "2026-10-01T18:38:28.007Z",
       "nextDeadline": null,
       "daysUntil": null,
       "scrapedUrls": [
@@ -297,12 +298,12 @@
     },
     "carbx": {
       "status": "open",
-      "deadlineLabel": "Open — see website",
-      "notes": "Annual funding rounds (typically Q1 and Q4) — verify on carb-x.org",
-      "source": "https://carb-x.org/apply/",
-      "fetchedAt": "2026-09-01T17:07:30.791Z",
-      "nextDeadline": null,
-      "daysUntil": null,
+      "deadlineLabel": "EOI (Expression of Interest) submission deadline - 2026 Funding Round Cycle 2",
+      "notes": "EOI portal opens Nov 10, closes Nov 23, 2026. Project Narrative (full proposal) deadline follows in Week of Feb 1, 2027. Three-stage application process: EOI → Confidential Proposal → Advisory Board Presentation.",
+      "source": "https://carb-x.org/apply/application-process/",
+      "fetchedAt": "2026-10-01T18:38:55.679Z",
+      "nextDeadline": "Sun Nov 23, 2026",
+      "daysUntil": 53,
       "scrapedUrls": [
         "https://carb-x.org/apply/",
         "https://carb-x.org/apply",
@@ -313,10 +314,10 @@
       "status": "unknown",
       "nextDeadline": null,
       "daysUntil": null,
-      "deadlineLabel": "See website for deadlines",
-      "notes": "See heart.org/professional/research for current cycles",
+      "deadlineLabel": "Unable to access American Heart Association website",
+      "notes": "Website returns HTTP 403 Forbidden - server blocks automated access. Please visit https://professional.heart.org/en/research-programs/aha-funding-opportunities directly for current deadlines by mechanism.",
       "source": "https://professional.heart.org/en/research-programs/aha-funding-opportunities",
-      "fetchedAt": "2026-09-01T17:07:38.570Z",
+      "fetchedAt": "2026-10-01T18:39:19.679Z",
       "scrapedUrls": [
         "https://professional.heart.org/en/research-programs/aha-funding-opportunities",
         "https://professional.heart.org/en/research-programs"
@@ -324,23 +325,23 @@
     },
     "mjff": {
       "status": "rolling",
-      "nextDeadline": null,
-      "daysUntil": null,
-      "deadlineLabel": "Rolling — see website",
-      "notes": "Rolling pre-proposals — see michaeljfox.org/grants",
-      "source": "https://www.michaeljfox.org/grants",
-      "fetchedAt": "2026-09-01T17:07:46.275Z",
+      "nextDeadline": "Wed Dec 3, 2026",
+      "daysUntil": 63,
+      "deadlineLabel": "Edmond J. Safra Fellowship in Movement Disorders application deadline; multiple rolling programs also open (Bridge Funding, Therapeutics Pipeline)",
+      "notes": "MJFF offers rolling pre-proposals for flagship programs (Bridge Funding for Disrupted Neurodegenerative Research and Parkinson's Disease Therapeutics Pipeline Program). The Edmond J. Safra Fellowship has a specific deadline of December 3, 2026. Multiple programs in review with past deadlines (as of Oct 1, 2026).",
+      "source": "https://www.michaeljfox.org/funding",
+      "fetchedAt": "2026-10-01T18:39:36.199Z",
       "scrapedUrls": [
         "https://www.michaeljfox.org/grants",
         "https://www.michaeljfox.org/research-grants"
       ]
     },
     "cfft": {
-      "status": "rolling",
-      "deadlineLabel": "Rolling — see website",
-      "notes": "Rolling — initiate via cff.org/researchers",
-      "source": "https://www.cff.org/researchers/therapeutics-development-program",
-      "fetchedAt": "2026-09-01T17:07:52.281Z",
+      "status": "unknown",
+      "deadlineLabel": "Rolling intake - CFF Therapeutics operates on a rolling contract model with continuous acceptance",
+      "notes": "Unable to access CFF website (HTTP 403). The Cystic Fibrosis Foundation Therapeutics program historically operates on a rolling basis with year-round applications. Founders should contact CFF directly at grants@cff.org or visit their researchers portal to confirm current intake status and funding priorities.",
+      "source": "https://www.cff.org/researchers",
+      "fetchedAt": "2026-10-01T18:39:48.036Z",
       "nextDeadline": null,
       "daysUntil": null,
       "scrapedUrls": [
@@ -351,12 +352,12 @@
     },
     "wellcome": {
       "status": "open",
-      "nextDeadline": null,
-      "daysUntil": null,
-      "deadlineLabel": "Open — see website",
-      "notes": "Program-specific deadlines — check active programs at wellcomeleap.org",
-      "source": "https://wellcomeleap.org/programs/",
-      "fetchedAt": "2026-09-01T17:07:54.828Z",
+      "nextDeadline": "Wed 22, July 2026",
+      "daysUntil": -71,
+      "deadlineLabel": "Abstract submission deadline: July 22, 2026 at 11:59pm ET (Stage 1 of 2-stage process). Full proposals due September 4, 2026.",
+      "notes": "This is the Resistance Networks program ($50M), a NEW program with support from Bayer. Two-stage application: (1) 7-page abstract due July 22, 2026; (2) 25-page full proposal due Sept 4, 2026 for shortlisted applicants. Decisions on proposals sent Oct 3, 2026. Portal is currently open.",
+      "source": "https://wellcomeleap.org/programs/resistance-networks/",
+      "fetchedAt": "2026-10-01T18:39:55.307Z",
       "scrapedUrls": [
         "https://wellcomeleap.org/programs/",
         "https://wellcomeleap.org/"
@@ -364,12 +365,12 @@
     },
     "bwf": {
       "status": "open",
-      "nextDeadline": null,
-      "daysUntil": null,
-      "deadlineLabel": "Open — see website",
-      "notes": "Annual cycles — verify at bwfund.org/grant-programs",
-      "source": "https://www.bwfund.org/funding-opportunities/",
-      "fetchedAt": "2026-09-01T17:07:57.975Z",
+      "nextDeadline": "Tue Nov 12, 2026",
+      "daysUntil": 42,
+      "deadlineLabel": "Investigators in the Pathogenesis of Infectious Disease (PATH) program application deadline",
+      "notes": "BWF operates multiple grant mechanisms with different annual cycles. Currently open programs: PATH (Nov 12, 2026), NGPI (Nov 17, 2026). Recently closed: CAMS and CAST (Sep 30, 2026). Many programs have sunset or closed status. See source for full program listing.",
+      "source": "https://www.bwfund.org/grants/",
+      "fetchedAt": "2026-10-01T18:40:05.469Z",
       "scrapedUrls": [
         "https://www.bwfund.org/grant-programs/",
         "https://www.bwfund.org/funding-opportunities/",
@@ -378,10 +379,10 @@
     },
     "coulter": {
       "status": "unknown",
-      "deadlineLabel": "See website for deadlines",
-      "notes": "See cbid.bme.jhu.edu for annual cycle dates",
+      "deadlineLabel": "Unable to determine - website access restricted",
+      "notes": "The primary URL (https://cbid.bme.jhu.edu/research/translational-research/coulter-program/) returns HTTP 403 Forbidden. The CBID domain appears to have access restrictions. Please verify the URL or contact the program directly for current deadline information.",
       "source": "https://cbid.bme.jhu.edu/research/translational-research/coulter-program/",
-      "fetchedAt": "2026-09-01T17:08:02.222Z",
+      "fetchedAt": "2026-10-01T18:40:15.064Z",
       "nextDeadline": null,
       "daysUntil": null,
       "scrapedUrls": [
@@ -393,22 +394,22 @@
       "status": "unknown",
       "nextDeadline": null,
       "daysUntil": null,
-      "deadlineLabel": "See website for deadlines",
-      "notes": "Fetch failed — check TEDCO site for current SBIR/STTR Matching application window",
+      "deadlineLabel": "Quarterly application windows — unable to retrieve current dates",
+      "notes": "TEDCO website returned HTTP 403 Forbidden error. Unable to access the Maryland SBIR/STTR Incentive Program page to determine current open window dates. Recommend visiting https://www.tedco.md/program/maryland-sbir-sttr-incentive-program/ directly or contacting TEDCO to confirm active application windows.",
       "source": "https://www.tedco.md/program/maryland-sbir-sttr-incentive-program/",
-      "fetchedAt": "2026-09-01T17:07:12.702Z",
+      "fetchedAt": "2026-10-01T18:37:58.953Z",
       "scrapedUrls": [
         "https://www.tedco.md/program/maryland-sbir-sttr-incentive-program/"
       ]
     },
     "arpah": {
-      "status": "rolling",
+      "status": "closed",
       "nextDeadline": null,
       "daysUntil": null,
-      "deadlineLabel": "Rolling — see website",
-      "notes": null,
+      "deadlineLabel": "No open SBIR/STTR opportunities currently available",
+      "notes": "ARPA-H's Open Funding Opportunities page (as of October 1, 2026) states 'There are currently no open small business opportunities.' SBIR/STTR opportunities are announced periodically based on ARPA-H's specific needs and are open for limited times. Interested applicants should check back regularly for new solicitations.",
       "source": "https://arpa-h.gov/explore-funding",
-      "fetchedAt": "2026-09-01T17:07:22.470Z",
+      "fetchedAt": "2026-10-01T18:38:33.811Z",
       "scrapedUrls": [
         "https://arpa-h.gov/explore-funding/sbir-sttr",
         "https://arpa-h.gov/explore-funding"
