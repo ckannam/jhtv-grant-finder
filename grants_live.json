@@ -1,10 +1,10 @@
 {
-  "lastUpdated": "2026-10-06T17:46:10.990Z",
+  "lastUpdated": "2026-10-13T18:45:57.099Z",
   "grants": {
     "nih_sbir": {
       "status": "open",
       "nextDeadline": "Apr 5, 2027",
-      "daysUntil": 181,
+      "daysUntil": 174,
       "openTopics": 3,
       "deadlineLabel": "Apr 5, 2027 · 3 open solicitations",
       "source": "grants.gov",
@@ -62,18 +62,18 @@
     "nsf_sbir": {
       "status": "open",
       "nextDeadline": "Sep 30, 2076",
-      "daysUntil": 18257,
+      "daysUntil": 18250,
       "openTopics": 1,
       "deadlineLabel": "Sep 30, 2076 · 1 open solicitation",
       "source": "grants.gov",
       "recentAwardCount": 25,
-      "avgAwardAmount": 356626,
+      "avgAwardAmount": 355557,
       "nsfWinners": [
         {
-          "org": "UltraMend Inc",
-          "title": "SBIR Phase I: 3D Micropillar Scaffolds for Self-Powered Bioelectric Stimulation",
-          "amount": 305000,
-          "state": "NJ"
+          "org": "LAB2701 LLC",
+          "title": "SBIR Phase I: Quantum Oscillator Processing Unit",
+          "amount": 304526,
+          "state": "OK"
         },
         {
           "org": "ULTROPIA CORP",
@@ -82,21 +82,21 @@
           "state": "WA"
         },
         {
+          "org": "UltraMend Inc",
+          "title": "SBIR Phase I: 3D Micropillar Scaffolds for Self-Powered Bioelectric Stimulation",
+          "amount": 305000,
+          "state": "NJ"
+        },
+        {
           "org": "ARINNA, INC",
           "title": "SBIR Phase II: Scaling Power-Dense, Radiation-Tolerant Flexible Solar Panels for High-Value Markets",
           "amount": 312407,
           "state": "CA"
         },
         {
-          "org": "LAB2701 LLC",
-          "title": "SBIR Phase I: Quantum Oscillator Processing Unit",
-          "amount": 304526,
-          "state": "OK"
-        },
-        {
-          "org": "Teradio Inc.",
-          "title": "SBIR Phase I: Wireless Sidestep Network: Harnessing Sub-terahertz to Enable New Degrees of Freedom in AI Data Center Architectures",
-          "amount": 305000,
+          "org": "ORION WAVE TECHNOLOGY CORPORATION",
+          "title": "SBIR Phase I: Analog Neural Networks Enabled by Tunable Apertures",
+          "amount": 304943,
           "state": "MA"
         }
       ]
@@ -104,7 +104,7 @@
     "nih_sttr": {
       "status": "open",
       "nextDeadline": "Apr 5, 2027",
-      "daysUntil": 181,
+      "daysUntil": 174,
       "openTopics": 1,
       "deadlineLabel": "Apr 5, 2027 · 1 open solicitation",
       "source": "grants.gov",
@@ -137,14 +137,14 @@
           {
             "company": "SIGMOVIR BIOSYSTEMS, INC.",
             "title": "Inducible HMGB1 antagonist for viral-induced acute lung injury.",
-            "amount": 488080,
+            "amount": 62894,
             "year": 2024,
             "mechanism": "R41"
           },
           {
             "company": "SIGMOVIR BIOSYSTEMS, INC.",
             "title": "Inducible HMGB1 antagonist for viral-induced acute lung injury.",
-            "amount": 62894,
+            "amount": 488080,
             "year": 2024,
             "mechanism": "R41"
           },
@@ -162,7 +162,7 @@
     "dod_sbir": {
       "status": "open",
       "nextDeadline": "Nov 16, 2026",
-      "daysUntil": 41,
+      "daysUntil": 34,
       "openTopics": 6,
       "deadlineLabel": "Nov 16, 2026 · 6 open solicitations",
       "source": "grants.gov"
@@ -170,7 +170,7 @@
     "darpa": {
       "status": "open",
       "nextDeadline": "Aug 27, 2027",
-      "daysUntil": 325,
+      "daysUntil": 318,
       "openTopics": 1,
       "deadlineLabel": "Aug 27, 2027 · 1 open solicitation",
       "source": "grants.gov"
