@@ -1,10 +1,10 @@
 {
-  "lastUpdated": "2026-10-13T18:45:57.099Z",
+  "lastUpdated": "2026-10-20T16:12:06.883Z",
   "grants": {
     "nih_sbir": {
       "status": "open",
       "nextDeadline": "Apr 5, 2027",
-      "daysUntil": 174,
+      "daysUntil": 167,
       "openTopics": 3,
       "deadlineLabel": "Apr 5, 2027 · 3 open solicitations",
       "source": "grants.gov",
@@ -61,13 +61,13 @@
     },
     "nsf_sbir": {
       "status": "open",
-      "nextDeadline": "Sep 30, 2076",
-      "daysUntil": 18250,
+      "nextDeadline": "Oct 15, 2076",
+      "daysUntil": 18258,
       "openTopics": 1,
-      "deadlineLabel": "Sep 30, 2076 · 1 open solicitation",
+      "deadlineLabel": "Oct 15, 2076 · 1 open solicitation",
       "source": "grants.gov",
       "recentAwardCount": 25,
-      "avgAwardAmount": 355557,
+      "avgAwardAmount": 356626,
       "nsfWinners": [
         {
           "org": "LAB2701 LLC",
@@ -76,16 +76,16 @@
           "state": "OK"
         },
         {
-          "org": "ULTROPIA CORP",
-          "title": "SBIR Phase II: Development of a Modular Ultrasound Transducer Array Drying System",
-          "amount": 312500,
-          "state": "WA"
-        },
-        {
           "org": "UltraMend Inc",
           "title": "SBIR Phase I: 3D Micropillar Scaffolds for Self-Powered Bioelectric Stimulation",
           "amount": 305000,
           "state": "NJ"
+        },
+        {
+          "org": "ULTROPIA CORP",
+          "title": "SBIR Phase II: Development of a Modular Ultrasound Transducer Array Drying System",
+          "amount": 312500,
+          "state": "WA"
         },
         {
           "org": "ARINNA, INC",
@@ -94,17 +94,17 @@
           "state": "CA"
         },
         {
-          "org": "ORION WAVE TECHNOLOGY CORPORATION",
-          "title": "SBIR Phase I: Analog Neural Networks Enabled by Tunable Apertures",
-          "amount": 304943,
-          "state": "MA"
+          "org": "ENABLE LIFE SCIENCES LLC",
+          "title": "SBIR Phase II: Antibody Therapy that Targets Neoantigens in Acute Myeloid Leukemia by Leveraging Both Innate and Adaptive Immune Mechanisms",
+          "amount": 312500,
+          "state": "CT"
         }
       ]
     },
     "nih_sttr": {
       "status": "open",
       "nextDeadline": "Apr 5, 2027",
-      "daysUntil": 174,
+      "daysUntil": 167,
       "openTopics": 1,
       "deadlineLabel": "Apr 5, 2027 · 1 open solicitation",
       "source": "grants.gov",
@@ -162,7 +162,7 @@
     "dod_sbir": {
       "status": "open",
       "nextDeadline": "Nov 16, 2026",
-      "daysUntil": 34,
+      "daysUntil": 27,
       "openTopics": 6,
       "deadlineLabel": "Nov 16, 2026 · 6 open solicitations",
       "source": "grants.gov"
@@ -170,7 +170,7 @@
     "darpa": {
       "status": "open",
       "nextDeadline": "Aug 27, 2027",
-      "daysUntil": 318,
+      "daysUntil": 311,
       "openTopics": 1,
       "deadlineLabel": "Aug 27, 2027 · 1 open solicitation",
       "source": "grants.gov"
