@@ -1,10 +1,10 @@
 {
-  "lastUpdated": "2026-10-20T16:12:06.883Z",
+  "lastUpdated": "2026-10-27T17:15:45.616Z",
   "grants": {
     "nih_sbir": {
       "status": "open",
       "nextDeadline": "Apr 5, 2027",
-      "daysUntil": 167,
+      "daysUntil": 160,
       "openTopics": 3,
       "deadlineLabel": "Apr 5, 2027 · 3 open solicitations",
       "source": "grants.gov",
@@ -62,13 +62,19 @@
     "nsf_sbir": {
       "status": "open",
       "nextDeadline": "Oct 15, 2076",
-      "daysUntil": 18258,
+      "daysUntil": 18251,
       "openTopics": 1,
       "deadlineLabel": "Oct 15, 2076 · 1 open solicitation",
       "source": "grants.gov",
       "recentAwardCount": 25,
-      "avgAwardAmount": 356626,
+      "avgAwardAmount": 355560,
       "nsfWinners": [
+        {
+          "org": "ULTROPIA CORP",
+          "title": "SBIR Phase II: Development of a Modular Ultrasound Transducer Array Drying System",
+          "amount": 312500,
+          "state": "WA"
+        },
         {
           "org": "LAB2701 LLC",
           "title": "SBIR Phase I: Quantum Oscillator Processing Unit",
@@ -82,29 +88,23 @@
           "state": "NJ"
         },
         {
-          "org": "ULTROPIA CORP",
-          "title": "SBIR Phase II: Development of a Modular Ultrasound Transducer Array Drying System",
-          "amount": 312500,
-          "state": "WA"
-        },
-        {
           "org": "ARINNA, INC",
           "title": "SBIR Phase II: Scaling Power-Dense, Radiation-Tolerant Flexible Solar Panels for High-Value Markets",
           "amount": 312407,
           "state": "CA"
         },
         {
-          "org": "ENABLE LIFE SCIENCES LLC",
-          "title": "SBIR Phase II: Antibody Therapy that Targets Neoantigens in Acute Myeloid Leukemia by Leveraging Both Innate and Adaptive Immune Mechanisms",
-          "amount": 312500,
-          "state": "CT"
+          "org": "ORION WAVE TECHNOLOGY CORPORATION",
+          "title": "SBIR Phase I: Analog Neural Networks Enabled by Tunable Apertures",
+          "amount": 304943,
+          "state": "MA"
         }
       ]
     },
     "nih_sttr": {
       "status": "open",
       "nextDeadline": "Apr 5, 2027",
-      "daysUntil": 167,
+      "daysUntil": 160,
       "openTopics": 1,
       "deadlineLabel": "Apr 5, 2027 · 1 open solicitation",
       "source": "grants.gov",
@@ -137,14 +137,14 @@
           {
             "company": "SIGMOVIR BIOSYSTEMS, INC.",
             "title": "Inducible HMGB1 antagonist for viral-induced acute lung injury.",
-            "amount": 62894,
+            "amount": 488080,
             "year": 2024,
             "mechanism": "R41"
           },
           {
             "company": "SIGMOVIR BIOSYSTEMS, INC.",
             "title": "Inducible HMGB1 antagonist for viral-induced acute lung injury.",
-            "amount": 488080,
+            "amount": 62894,
             "year": 2024,
             "mechanism": "R41"
           },
@@ -162,7 +162,7 @@
     "dod_sbir": {
       "status": "open",
       "nextDeadline": "Nov 16, 2026",
-      "daysUntil": 27,
+      "daysUntil": 20,
       "openTopics": 6,
       "deadlineLabel": "Nov 16, 2026 · 6 open solicitations",
       "source": "grants.gov"
@@ -170,17 +170,17 @@
     "darpa": {
       "status": "open",
       "nextDeadline": "Aug 27, 2027",
-      "daysUntil": 311,
+      "daysUntil": 304,
       "openTopics": 1,
       "deadlineLabel": "Aug 27, 2027 · 1 open solicitation",
       "source": "grants.gov"
     },
     "doe_sbir": {
       "status": "open",
-      "nextDeadline": "Sep 30, 2026",
-      "daysUntil": 1,
+      "nextDeadline": "Nov 20, 2026",
+      "daysUntil": 24,
       "openTopics": 1,
-      "deadlineLabel": "Sep 30, 2026 · 1 open solicitation",
+      "deadlineLabel": "Nov 20, 2026 · 1 open solicitation",
       "source": "grants.gov"
     },
     "mii": {
