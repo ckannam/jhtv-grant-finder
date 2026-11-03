@@ -1,10 +1,10 @@
 {
-  "lastUpdated": "2026-10-27T17:15:45.616Z",
+  "lastUpdated": "2026-11-03T18:56:22.567Z",
   "grants": {
     "nih_sbir": {
       "status": "open",
       "nextDeadline": "Apr 5, 2027",
-      "daysUntil": 160,
+      "daysUntil": 153,
       "openTopics": 3,
       "deadlineLabel": "Apr 5, 2027 · 3 open solicitations",
       "source": "grants.gov",
@@ -62,18 +62,18 @@
     "nsf_sbir": {
       "status": "open",
       "nextDeadline": "Oct 15, 2076",
-      "daysUntil": 18251,
+      "daysUntil": 18244,
       "openTopics": 1,
       "deadlineLabel": "Oct 15, 2076 · 1 open solicitation",
       "source": "grants.gov",
       "recentAwardCount": 25,
-      "avgAwardAmount": 355560,
+      "avgAwardAmount": 318151,
       "nsfWinners": [
         {
-          "org": "ULTROPIA CORP",
-          "title": "SBIR Phase II: Development of a Modular Ultrasound Transducer Array Drying System",
-          "amount": 312500,
-          "state": "WA"
+          "org": "UltraMend Inc",
+          "title": "SBIR Phase I: 3D Micropillar Scaffolds for Self-Powered Bioelectric Stimulation",
+          "amount": 305000,
+          "state": "NJ"
         },
         {
           "org": "LAB2701 LLC",
@@ -82,10 +82,10 @@
           "state": "OK"
         },
         {
-          "org": "UltraMend Inc",
-          "title": "SBIR Phase I: 3D Micropillar Scaffolds for Self-Powered Bioelectric Stimulation",
-          "amount": 305000,
-          "state": "NJ"
+          "org": "ULTROPIA CORP",
+          "title": "SBIR Phase II: Development of a Modular Ultrasound Transducer Array Drying System",
+          "amount": 312500,
+          "state": "WA"
         },
         {
           "org": "ARINNA, INC",
@@ -104,7 +104,7 @@
     "nih_sttr": {
       "status": "open",
       "nextDeadline": "Apr 5, 2027",
-      "daysUntil": 160,
+      "daysUntil": 153,
       "openTopics": 1,
       "deadlineLabel": "Apr 5, 2027 · 1 open solicitation",
       "source": "grants.gov",
@@ -162,7 +162,7 @@
     "dod_sbir": {
       "status": "open",
       "nextDeadline": "Nov 16, 2026",
-      "daysUntil": 20,
+      "daysUntil": 13,
       "openTopics": 6,
       "deadlineLabel": "Nov 16, 2026 · 6 open solicitations",
       "source": "grants.gov"
@@ -170,7 +170,7 @@
     "darpa": {
       "status": "open",
       "nextDeadline": "Aug 27, 2027",
-      "daysUntil": 304,
+      "daysUntil": 297,
       "openTopics": 1,
       "deadlineLabel": "Aug 27, 2027 · 1 open solicitation",
       "source": "grants.gov"
@@ -178,7 +178,7 @@
     "doe_sbir": {
       "status": "open",
       "nextDeadline": "Nov 20, 2026",
-      "daysUntil": 24,
+      "daysUntil": 17,
       "openTopics": 1,
       "deadlineLabel": "Nov 20, 2026 · 1 open solicitation",
       "source": "grants.gov"
@@ -466,6 +466,5 @@
         "https://www.alz.org/research/for_researchers/grants"
       ]
     }
-  },
-  "lastScrapedAt": "2026-11-01T18:14:46.258Z"
+  }
 }
