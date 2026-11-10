@@ -1,10 +1,10 @@
 {
-  "lastUpdated": "2026-11-03T18:56:22.567Z",
+  "lastUpdated": "2026-11-10T19:11:47.309Z",
   "grants": {
     "nih_sbir": {
       "status": "open",
       "nextDeadline": "Apr 5, 2027",
-      "daysUntil": 153,
+      "daysUntil": 146,
       "openTopics": 3,
       "deadlineLabel": "Apr 5, 2027 · 3 open solicitations",
       "source": "grants.gov",
@@ -44,15 +44,15 @@
           {
             "company": "KALOCYTE, INC.",
             "title": "ErythroMer: Nanoscale BioSynthetic Red Cell Substitute",
-            "amount": 997590,
-            "year": 2024,
+            "amount": 995470,
+            "year": 2025,
             "mechanism": "R44"
           },
           {
             "company": "KALOCYTE, INC.",
             "title": "ErythroMer: Nanoscale BioSynthetic Red Cell Substitute",
-            "amount": 995470,
-            "year": 2025,
+            "amount": 997590,
+            "year": 2024,
             "mechanism": "R44"
           }
         ],
@@ -62,18 +62,18 @@
     "nsf_sbir": {
       "status": "open",
       "nextDeadline": "Oct 15, 2076",
-      "daysUntil": 18244,
+      "daysUntil": 18237,
       "openTopics": 1,
       "deadlineLabel": "Oct 15, 2076 · 1 open solicitation",
       "source": "grants.gov",
       "recentAwardCount": 25,
-      "avgAwardAmount": 318151,
+      "avgAwardAmount": 722946,
       "nsfWinners": [
         {
-          "org": "UltraMend Inc",
-          "title": "SBIR Phase I: 3D Micropillar Scaffolds for Self-Powered Bioelectric Stimulation",
-          "amount": 305000,
-          "state": "NJ"
+          "org": "ULTROPIA CORP",
+          "title": "SBIR Phase II: Development of a Modular Ultrasound Transducer Array Drying System",
+          "amount": 1243571,
+          "state": "WA"
         },
         {
           "org": "LAB2701 LLC",
@@ -82,15 +82,15 @@
           "state": "OK"
         },
         {
-          "org": "ULTROPIA CORP",
-          "title": "SBIR Phase II: Development of a Modular Ultrasound Transducer Array Drying System",
-          "amount": 312500,
-          "state": "WA"
+          "org": "UltraMend Inc",
+          "title": "SBIR Phase I: 3D Micropillar Scaffolds for Self-Powered Bioelectric Stimulation",
+          "amount": 305000,
+          "state": "NJ"
         },
         {
           "org": "ARINNA, INC",
           "title": "SBIR Phase II: Scaling Power-Dense, Radiation-Tolerant Flexible Solar Panels for High-Value Markets",
-          "amount": 312407,
+          "amount": 1216068,
           "state": "CA"
         },
         {
@@ -104,7 +104,7 @@
     "nih_sttr": {
       "status": "open",
       "nextDeadline": "Apr 5, 2027",
-      "daysUntil": 153,
+      "daysUntil": 146,
       "openTopics": 1,
       "deadlineLabel": "Apr 5, 2027 · 1 open solicitation",
       "source": "grants.gov",
@@ -162,15 +162,15 @@
     "dod_sbir": {
       "status": "open",
       "nextDeadline": "Nov 16, 2026",
-      "daysUntil": 13,
-      "openTopics": 6,
-      "deadlineLabel": "Nov 16, 2026 · 6 open solicitations",
+      "daysUntil": 6,
+      "openTopics": 7,
+      "deadlineLabel": "Nov 16, 2026 · 7 open solicitations",
       "source": "grants.gov"
     },
     "darpa": {
       "status": "open",
       "nextDeadline": "Aug 27, 2027",
-      "daysUntil": 297,
+      "daysUntil": 290,
       "openTopics": 1,
       "deadlineLabel": "Aug 27, 2027 · 1 open solicitation",
       "source": "grants.gov"
@@ -178,7 +178,7 @@
     "doe_sbir": {
       "status": "open",
       "nextDeadline": "Nov 20, 2026",
-      "daysUntil": 17,
+      "daysUntil": 10,
       "openTopics": 1,
       "deadlineLabel": "Nov 20, 2026 · 1 open solicitation",
       "source": "grants.gov"
