@@ -1,10 +1,10 @@
 {
-  "lastUpdated": "2026-11-10T19:11:47.309Z",
+  "lastUpdated": "2026-11-17T20:21:11.535Z",
   "grants": {
     "nih_sbir": {
       "status": "open",
       "nextDeadline": "Apr 5, 2027",
-      "daysUntil": 146,
+      "daysUntil": 139,
       "openTopics": 3,
       "deadlineLabel": "Apr 5, 2027 · 3 open solicitations",
       "source": "grants.gov",
@@ -44,15 +44,15 @@
           {
             "company": "KALOCYTE, INC.",
             "title": "ErythroMer: Nanoscale BioSynthetic Red Cell Substitute",
-            "amount": 995470,
-            "year": 2025,
+            "amount": 997590,
+            "year": 2024,
             "mechanism": "R44"
           },
           {
             "company": "KALOCYTE, INC.",
             "title": "ErythroMer: Nanoscale BioSynthetic Red Cell Substitute",
-            "amount": 997590,
-            "year": 2024,
+            "amount": 995470,
+            "year": 2025,
             "mechanism": "R44"
           }
         ],
@@ -62,12 +62,12 @@
     "nsf_sbir": {
       "status": "open",
       "nextDeadline": "Oct 15, 2076",
-      "daysUntil": 18237,
+      "daysUntil": 18230,
       "openTopics": 1,
       "deadlineLabel": "Oct 15, 2076 · 1 open solicitation",
       "source": "grants.gov",
       "recentAwardCount": 25,
-      "avgAwardAmount": 722946,
+      "avgAwardAmount": 830752,
       "nsfWinners": [
         {
           "org": "ULTROPIA CORP",
@@ -76,10 +76,10 @@
           "state": "WA"
         },
         {
-          "org": "LAB2701 LLC",
-          "title": "SBIR Phase I: Quantum Oscillator Processing Unit",
-          "amount": 304526,
-          "state": "OK"
+          "org": "ARINNA, INC",
+          "title": "SBIR Phase II: Scaling Power-Dense, Radiation-Tolerant Flexible Solar Panels for High-Value Markets",
+          "amount": 1216068,
+          "state": "CA"
         },
         {
           "org": "UltraMend Inc",
@@ -88,23 +88,23 @@
           "state": "NJ"
         },
         {
-          "org": "ARINNA, INC",
-          "title": "SBIR Phase II: Scaling Power-Dense, Radiation-Tolerant Flexible Solar Panels for High-Value Markets",
-          "amount": 1216068,
-          "state": "CA"
+          "org": "LAB2701 LLC",
+          "title": "SBIR Phase I: Quantum Oscillator Processing Unit",
+          "amount": 304526,
+          "state": "OK"
         },
         {
-          "org": "ORION WAVE TECHNOLOGY CORPORATION",
-          "title": "SBIR Phase I: Analog Neural Networks Enabled by Tunable Apertures",
-          "amount": 304943,
-          "state": "MA"
+          "org": "ENABLE LIFE SCIENCES LLC",
+          "title": "SBIR Phase II: Antibody Therapy that Targets Neoantigens in Acute Myeloid Leukemia by Leveraging Both Innate and Adaptive Immune Mechanisms",
+          "amount": 1244469,
+          "state": "CT"
         }
       ]
     },
     "nih_sttr": {
       "status": "open",
       "nextDeadline": "Apr 5, 2027",
-      "daysUntil": 146,
+      "daysUntil": 139,
       "openTopics": 1,
       "deadlineLabel": "Apr 5, 2027 · 1 open solicitation",
       "source": "grants.gov",
@@ -137,14 +137,14 @@
           {
             "company": "SIGMOVIR BIOSYSTEMS, INC.",
             "title": "Inducible HMGB1 antagonist for viral-induced acute lung injury.",
-            "amount": 488080,
+            "amount": 62894,
             "year": 2024,
             "mechanism": "R41"
           },
           {
             "company": "SIGMOVIR BIOSYSTEMS, INC.",
             "title": "Inducible HMGB1 antagonist for viral-induced acute lung injury.",
-            "amount": 62894,
+            "amount": 488080,
             "year": 2024,
             "mechanism": "R41"
           },
@@ -161,16 +161,16 @@
     },
     "dod_sbir": {
       "status": "open",
-      "nextDeadline": "Nov 16, 2026",
-      "daysUntil": 6,
-      "openTopics": 7,
-      "deadlineLabel": "Nov 16, 2026 · 7 open solicitations",
+      "nextDeadline": "Dec 14, 2026",
+      "daysUntil": 27,
+      "openTopics": 6,
+      "deadlineLabel": "Dec 14, 2026 · 6 open solicitations",
       "source": "grants.gov"
     },
     "darpa": {
       "status": "open",
       "nextDeadline": "Aug 27, 2027",
-      "daysUntil": 290,
+      "daysUntil": 283,
       "openTopics": 1,
       "deadlineLabel": "Aug 27, 2027 · 1 open solicitation",
       "source": "grants.gov"
@@ -178,7 +178,7 @@
     "doe_sbir": {
       "status": "open",
       "nextDeadline": "Nov 20, 2026",
-      "daysUntil": 10,
+      "daysUntil": 3,
       "openTopics": 1,
       "deadlineLabel": "Nov 20, 2026 · 1 open solicitation",
       "source": "grants.gov"
